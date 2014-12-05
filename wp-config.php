@@ -21,7 +21,7 @@ define('DB_NAME', 'wordpress');
 define('DB_USER', 'root');
 
 /** MySQL数据库密码 */
-define('DB_PASSWORD', '123456');
+define('DB_PASSWORD', 'modernmedia');
 
 /** MySQL主机 */
 define('DB_HOST', 'localhost');
