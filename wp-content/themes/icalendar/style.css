@@ -819,13 +819,20 @@ span + .edit-link:before,
 
 .site {
 	background-color: #fff;
-	max-width: 1260px;
+	width: 100%;
 	position: relative;
 }
 
 .main-content {
 	width: 100%;
 }
+/*fanzhanao add */
+a{
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+/*fanzhanao add end*/
 
 
 /**
