@@ -334,3 +334,16 @@ function wpcf_fix_translated_post_relationships($post_id)
     wpcf_post_relationship_set_translated_children( $post_id );
 }
 
+//Define the function
+
+function customize_customtaxonomy_archive_display ( $query ) {
+    if (($query->is_main_query()) && (is_tax('city'))) {
+        $query->set('posts_per_page', '3');
+        $query->set('orderby', 'title');
+        $query->set('order', 'ASC');
+    }
+}
+
+//Hook the function
+
+add_action( 'pre_get_posts', 'customize_customtaxonomy_archive_display' );

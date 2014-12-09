@@ -372,3 +372,9 @@ if ( is_multisite() ) {
  * @since 3.0.0
  */
 do_action( 'wp_loaded' );
+    add_filter( 'pre_get_posts', 'change_default_type' );
+    function change_default_type( $query ) {
+        if ( is_home() && $query->is_main_query() )
+            $query->set( 'post_type', array( 'event' ) );
+        return $query;
+    }

@@ -1001,7 +1001,6 @@ function dynamic_sidebar($index = 1) {
 			array( array_merge( $sidebar, array('widget_id' => $id, 'widget_name' => $wp_registered_widgets[$id]['name']) ) ),
 			(array) $wp_registered_widgets[$id]['params']
 		);
-
 		// Substitute HTML id and class attributes into before_widget
 		$classname_ = '';
 		foreach ( (array) $wp_registered_widgets[$id]['classname'] as $cn ) {
@@ -1011,6 +1010,7 @@ function dynamic_sidebar($index = 1) {
 				$classname_ .= '_' . get_class($cn);
 		}
 		$classname_ = ltrim($classname_, '_');
+        echo $classname;
 		$params[0]['before_widget'] = sprintf($params[0]['before_widget'], $id, $classname_);
 
 		/**
