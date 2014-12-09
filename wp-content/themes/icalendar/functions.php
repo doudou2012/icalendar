@@ -211,7 +211,7 @@ function twentyfourteen_font_url() {
 	 * by Lato, translate this to 'off'. Do not translate into your own language.
 	 */
 	if ( 'off' !== _x( 'on', 'Lato font: on or off', 'twentyfourteen' ) ) {
-		$font_url = add_query_arg( 'family', urlencode( 'Lato:300,400,700,900,300italic,400italic,700italic' ), "//fonts.googleapis.com/css" );
+//		$font_url = add_query_arg( 'family', urlencode( 'Lato:300,400,700,900,300italic,400italic,700italic' ), "//fonts.googleapis.com/css" );
 	}
 
 	return $font_url;
@@ -362,7 +362,7 @@ function twentyfourteen_list_authors() {
 
 	<div class="contributor">
 		<div class="contributor-info">
-			<div class="contributor-avatar"><?php echo get_avatar( $contributor_id, 132 ); ?></div>
+<!--			<div class="contributor-avatar">--><?php //echo get_avatar( $contributor_id, 132 ); ?><!--</div>-->
 			<div class="contributor-summary">
 				<h2 class="contributor-name"><?php echo get_the_author_meta( 'display_name', $contributor_id ); ?></h2>
 				<p class="contributor-bio">

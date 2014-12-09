@@ -1436,7 +1436,7 @@ function _admin_notice_post_locked() {
 
 		?>
 		<div class="post-locked-message">
-		<div class="post-locked-avatar"><?php echo get_avatar( $user->ID, 64 ); ?></div>
+		<div class="post-locked-avatar"><?php //echo get_avatar( $user->ID, 64 ); ?></div>
 		<p class="currently-editing wp-tab-first" tabindex="0">
 		<?php
 			_e( 'This content is currently locked.' );
