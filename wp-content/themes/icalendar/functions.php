@@ -523,21 +523,15 @@ if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow
 	require get_template_directory() . '/inc/featured-content.php';
 }
 
-define('DEBUG_DIVICE',1);
 function my_get_header(){
-    $header_file_name = '';
-    if (DEBUG_DIVICE || wp_is_mobile()){
-        $header_file_name = 'icalendar';
-    }
-
+    $header_file_name = custom_header_footer();
     get_header($header_file_name);
 }
 
 function my_get_footer(){
-    $footer_file_name = '';
-    if (DEBUG_DIVICE || wp_is_mobile()){
-        $footer_file_name = 'icalendar';
-    }
-
+    $footer_file_name = custom_header_footer();
     get_footer($footer_file_name);
+}
+function custom_header_footer(){
+    return wp_is_mobile() ? 'icalendar' : '';
 }

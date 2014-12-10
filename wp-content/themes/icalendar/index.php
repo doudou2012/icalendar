@@ -14,7 +14,7 @@
  * @since iCalender 1.0
  */
 
-my_get_header();?>
+my_get_header()?>
 
 <div id="main-content" class="main-content">
 

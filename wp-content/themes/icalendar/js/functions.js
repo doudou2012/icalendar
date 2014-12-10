@@ -132,9 +132,5 @@
 				controlsContainer: '.featured-content'
 			} );
 		}
-
-        body.on('longPress',function(event){
-
-        });
 	} );
 } )( jQuery );
