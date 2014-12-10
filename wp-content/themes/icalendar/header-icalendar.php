@@ -11,7 +11,8 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width">
-    <?php //wp_enqueue_scripts();?>
+    <link rel='stylesheet' id='genericons-css'  href='/wp-content/themes/icalendar/genericons/genericons.css?ver=3.0.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='twentyfourteen-style-css'  href='/wp-content/themes/icalendar/style.css?ver=4.0.1'
 </head>
 <body>
 
