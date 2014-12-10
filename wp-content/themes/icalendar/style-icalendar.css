@@ -978,8 +978,8 @@ span + .edit-link:before,
 	text-transform: uppercase;
 }
 
-.site-navigation a:hover {
-	/*color: #41a62a;*/
+.site-navigation a:hover, a:active,{
+	color: #ff000;
 }
 
 .site-navigation .current_page_item > a,
@@ -1054,7 +1054,7 @@ span + .edit-link:before,
 .menu-toggle:active,
 .menu-toggle:focus,
 .menu-toggle:hover {
-	background-color: #444;
+	/*background-color: #444;*/
 }
 
 .menu-toggle:focus {

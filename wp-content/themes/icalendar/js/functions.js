@@ -133,5 +133,8 @@
 			} );
 		}
 
+        body.on('longPress',function(event){
+
+        });
 	} );
 } )( jQuery );
