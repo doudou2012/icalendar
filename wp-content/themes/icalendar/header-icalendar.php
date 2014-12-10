@@ -14,5 +14,21 @@
     <link rel='stylesheet' id='genericons-css'  href='/wp-content/themes/icalendar/genericons/genericons.css?ver=3.0.3' type='text/css' media='all' />
     <link rel='stylesheet' id='twentyfourteen-style-css'  href='/wp-content/themes/icalendar/style.css?ver=4.0.1'
 </head>
-<body>
+<body <?php body_class(); ?>>
+<div id="page" class="hfeed site">
+    <header id="masthead" class="site-header" role="banner">
+        <div class="header-main">
+            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+            <div class="search-toggle">
+                <a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'twentyfourteen' ); ?></a>
+            </div>
+        </div>
+        <div id="search-container" class="search-box-wrapper hide">
+            <div class="search-box">
+                <?php get_search_form(); ?>
+            </div>
+        </div>
+    </header>
+    <div id="main" class="site-main">
+
 
