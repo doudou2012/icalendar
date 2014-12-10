@@ -506,7 +506,8 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	background-color: #24890d;
+	/*background-color: #24890d;*/
+    background-color: #ff0000;
 	border: 0;
 	border-radius: 2px;
 	color: #fff;
@@ -527,7 +528,8 @@ input[type="reset"]:hover,
 input[type="reset"]:focus,
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-	background-color: #41a62a;
+	/*background-color: #41a62a;*/
+    background-color: #ff0000;
 	color: #fff;
 }
 
@@ -536,7 +538,8 @@ button:active,
 input[type="button"]:active,
 input[type="reset"]:active,
 input[type="submit"]:active {
-	background-color: #55d737;
+	/*background-color: #55d737;*/
+    background-color: #ff0000;
 }
 
 .search-field {
@@ -797,6 +800,9 @@ div.wp-caption.alignright .wp-caption-text {
 	font: normal 16px/1 Genericons;
 	text-decoration: inherit;
 	vertical-align: text-bottom;
+}
+.menu-toggle{
+    background-color: #ff0000;
 }
 
 /* Separators */
