@@ -527,7 +527,7 @@ if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow
 
 function my_get_header(){
     $header_file_name = '';
-    if (true || wp_is_mobile()){
+    if (wp_is_mobile()){
         $header_file_name = 'icalendar';
     }
 
@@ -536,7 +536,7 @@ function my_get_header(){
 
 function my_get_footer(){
     $footer_file_name = '';
-    if (true || wp_is_mobile()){
+    if (wp_is_mobile()){
         $footer_file_name = 'icalendar';
     }
 
