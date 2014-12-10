@@ -785,7 +785,7 @@ class WP_Widget_Recent_Comments extends WP_Widget {
 		$this->alt_option_name = 'widget_recent_comments';
 
 		if ( is_active_widget(false, false, $this->id_base) )
-			add_action( 'wp_head', array($this, 'recent_comments_style') );
+			add_action( 'wp_head', array($this, '') );
 
 		add_action( 'comment_post', array($this, 'flush_widget_cache') );
 		add_action( 'edit_comment', array($this, 'flush_widget_cache') );

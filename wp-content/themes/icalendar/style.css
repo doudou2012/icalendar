@@ -827,10 +827,9 @@ span + .edit-link:before,
 	width: 100%;
 }
 /*fanzhanao add */
-a{
+*:not(input,textarea){
     -webkit-user-select: none;
     -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
 }
 /*fanzhanao add end*/
 

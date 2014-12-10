@@ -505,6 +505,16 @@ require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /*
+ * Load script
+ * */
+function load_the_script(){
+    do_action('load_the_script');
+    wp_deregister_script('jquery');
+    wp_register_script('jquery','http://libs.baidu.com/jquery/2.0.0/jquery.min.js');
+    wp_enqueue_script('jquery');
+}
+add_filter('wp_enqueue_scripts','load_the_script');
+/*
  * Add Featured Content functionality.
  *
  * To overwrite in a plugin, define your own Featured_Content class on or
@@ -512,4 +522,23 @@ require get_template_directory() . '/inc/customizer.php';
  */
 if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow'] ) {
 	require get_template_directory() . '/inc/featured-content.php';
+}
+
+
+function my_get_header(){
+    $header_file_name = '';
+    if (wp_is_mobile()){
+        $header_file_name = 'icalendar';
+    }
+
+    get_header($header_file_name);
+}
+
+function my_get_footer(){
+    $footer_file_name = '';
+    if (wp_is_mobile()){
+        $footer_file_name = 'icalendar';
+    }
+
+    get_footer($footer_file_name);
 }
