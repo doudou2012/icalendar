@@ -116,7 +116,7 @@ body {
 }
 
 a {
-	color: #24890d;
+	/*color: #24890d;*/
 	text-decoration: none;
 }
 
@@ -131,7 +131,17 @@ a:active {
 
 a:active,
 a:hover {
-	color: #41a62a;
+	/*color: #41a62a;*/
+}
+body,
+a,
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 h1,
@@ -969,7 +979,7 @@ span + .edit-link:before,
 }
 
 .site-navigation a:hover {
-	color: #41a62a;
+	/*color: #41a62a;*/
 }
 
 .site-navigation .current_page_item > a,
@@ -1127,7 +1137,7 @@ a.post-thumbnail:hover {
 }
 
 .entry-title a:hover {
-	color: #41a62a;
+	/*color: #41a62a;*/
 }
 
 .site-content .entry-header {
@@ -1159,7 +1169,7 @@ a.post-thumbnail:hover {
 }
 
 .entry-meta a:hover {
-	color: #41a62a;
+	/*color: #41a62a;*/
 }
 
 .sticky .entry-date {
@@ -1176,7 +1186,7 @@ a.post-thumbnail:hover {
 }
 
 .cat-links a:hover {
-	color: #41a62a;
+	/*color: #41a62a;*/
 }
 
 .byline {
@@ -1215,7 +1225,7 @@ a.post-thumbnail:hover {
 }
 
 .entry-meta .tag-links a:hover {
-	background-color: #41a62a;
+	/*background-color: #41a62a;*/
 	color: #fff;
 }
 

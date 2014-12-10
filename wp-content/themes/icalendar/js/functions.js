@@ -11,7 +11,7 @@
 
 	// Enable menu toggle for small screens.
 	( function() {
-		var nav = $( '#primary-navigation' ), button, menu;
+		var nav =$( '#primary-navigation' ), button, menu;
 		if ( ! nav ) {
 			return;
 		}
@@ -30,6 +30,7 @@
 
 		$( '.menu-toggle' ).on( 'click.twentyfourteen', function() {
 			nav.toggleClass( 'toggled-on' );
+            $( '#search-container').addClass('hide');
 		} );
 	} )();
 
@@ -66,6 +67,7 @@
 			var that    = $( this ),
 				wrapper = $( '.search-box-wrapper' );
 
+            $('#primary-navigation').toggleClass('toggled-on',false);
 			that.toggleClass( 'active' );
 			wrapper.toggleClass( 'hide' );
 
@@ -130,5 +132,6 @@
 				controlsContainer: '.featured-content'
 			} );
 		}
+
 	} );
 } )( jQuery );
