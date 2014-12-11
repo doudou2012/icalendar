@@ -56,11 +56,13 @@
 	<div class="entry-content">
 		<?php
             //展览类型，取自定义字段的值
-            if(get_post_type() === 'event'):
-                echo types_render_field('description',array('output'=>'html'));
-            else:
-			    the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
-            endif;
+            if ( get_post_type() === 'event'){
+                echo types_render_field('description', array('output'=>'html'));
+            }
+            else{
+                the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
+            }
+
 //			wp_link_pages( array(
 //				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
 //				'after'       => '</div>',
