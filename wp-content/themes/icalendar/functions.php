@@ -539,8 +539,7 @@ function custom_header_footer(){
             $theme_name = 'icalendar';
         }else if(is_single()){
             $theme_name = 'show';
-        }
-        else{
+        }else{
             $theme_name = 'icalendar';
         }
     }
