@@ -11,7 +11,7 @@
 ?>
         </div><!-- #main -->
     </div><!-- #page -->
-<?php wp_print_scripts(array('jquery'));?>
-<script type='text/javascript' src='/wp-content/themes/icalendar/js/functions.js?ver=20140616'></script>
+<script type='text/javascript' src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
+<script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/functions.js'></script>
 </body>
 </html>
