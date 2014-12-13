@@ -72,12 +72,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	padding: 0;
 	vertical-align: baseline;
 }
-/*fanzhanao add */
-*:not(input),*:not(textarea){
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-}
-/*fanzhanao add end*/
 
 article,
 aside,
@@ -977,7 +971,7 @@ span + .edit-link:before,
 .site-navigation .current-menu-item > a,
 .site-navigation .current-menu-ancestor > a {
 	/*color: #55d737;*/
-    color: #ff0000;
+    color: #fff;
 	font-weight: 900;
 }
 
@@ -1045,10 +1039,11 @@ span + .edit-link:before,
 .menu-toggle:focus,
 .menu-toggle:hover {
 	/*background-color: #444;*/
+    background-color: #ff0000;
 }
 
 .menu-toggle:focus {
-	outline: 1px dotted;
+	outline: 0px dotted;
 }
 
 
@@ -1058,11 +1053,12 @@ span + .edit-link:before,
  */
 
 .content-area {
-	padding-top: 48px;
+	/*padding-top: 48px;*/
 }
 
 .hentry {
-	margin: 0 auto 48px;
+	/*margin: 0 auto 48px;*/
+    margin: 0 auto 0;
 	max-width: 672px;
 }
 
@@ -1114,7 +1110,7 @@ a.post-thumbnail:hover {
 }
 
 .entry-title {
-	font-size: 33px;
+	font-size: 23px;
 	font-weight: 300;
 	line-height: 1.0909090909;
 	margin-bottom: 12px;
@@ -2159,7 +2155,7 @@ a.post-thumbnail:hover {
 
 #secondary {
 	background-color: #fff;
-	border-top: 1px solid #000;
+	/*border-top: 1px solid #000;*/
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 	clear: both;
 	color: rgba(255, 255, 255, 0.7);
@@ -3243,4 +3239,5 @@ a.post-thumbnail:hover {
         padding: 0 10px;
     }
 }
+
 

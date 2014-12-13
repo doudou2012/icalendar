@@ -533,5 +533,21 @@ function my_get_footer(){
     get_footer($footer_file_name);
 }
 function custom_header_footer(){
-    return wp_is_mobile() ? 'icalendar' : '';
+    $theme_name = '';
+    if(wp_is_mobile()){
+        if (is_weixin_browser()){
+            $theme_name = 'icalendar';
+        }else if(is_single()){
+            $theme_name = 'show';
+        }
+        else{
+            $theme_name = 'icalendar';
+        }
+    }
+    return $theme_name;
+//    return wp_is_mobile() ? 'icalendar' : '';
+}
+
+function is_weixin_browser(){
+    return strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Windows Phone') !== false ;
 }
