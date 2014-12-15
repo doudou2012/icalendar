@@ -1113,8 +1113,9 @@ a.post-thumbnail:hover {
 	font-size: 23px;
 	font-weight: 300;
 	line-height: 1.0909090909;
-	margin-bottom: 12px;
-	margin: 0 0 12px 0;
+	/*margin-bottom: 12px;*/
+	/*margin: 0 0 12px 0;*/
+    margin: 0;
 	text-transform: uppercase;
 }
 
@@ -1897,7 +1898,7 @@ a.post-thumbnail:hover {
  */
 
 .singular .site-content .hentry.has-post-thumbnail {
-	margin-top: -48px;
+	/*margin-top: -48px;*/
 }
 
 
@@ -3185,7 +3186,7 @@ a.post-thumbnail:hover {
     }
 
     .list-view .content-area {
-        padding: 3vw;
+        padding: 1vw 3vw;
     }
 
     .list-view .site-content .hentry {

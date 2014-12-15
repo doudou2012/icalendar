@@ -33,7 +33,10 @@
             $( '#search-container').addClass('hide');
 		} );
 	} )();
-
+    /**
+     * fanzhanao add
+     */
+    /*fanzhana  add end */
 	/*
 	 * Makes "skip to content" link work correctly in IE9 and Chrome for better
 	 * accessibility.

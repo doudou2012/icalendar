@@ -1,0 +1,44 @@
+/* Hide unecessary stuff */
+
+.page header#masthead, div#secondary, div#comments, .site::before {
+    display: none;
+}
+
+/* Tweak the overall layout */
+
+.page div#main {
+    margin-top: 0;
+}
+
+.page div#content {
+    margin-left: 0;
+}
+
+.page .site, .page .site-content .entry-header, .page .site-content .entry-content, .page .site-content .entry-summary, .page .site-content .entry-meta, .page .page-content {
+    max-width: 100%;
+}
+
+/* Custom layout */
+
+#cred-event-main {
+    width: 60%;
+    float: left;
+    margin-right: 3%;
+}
+
+#cred-event-category {
+    width: 15%;
+    float: left;
+    margin-right: 3%;
+}
+
+#cred-event-misc {
+    width: 15%;
+    float: left;
+    margin-right: 3%;
+}
+
+#cred-event-main .wpt-form-textarea {
+    min-height: 60vh;
+}
+

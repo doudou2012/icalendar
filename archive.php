@@ -53,7 +53,14 @@ my_get_header(); ?>
 						 * use this in a child theme, then include a file called called content-___.php
 						 * (where ___ is the post format) and that will be used instead.
 						 */
-						get_template_part( 'content', get_post_format() );
+                        $content_name = '';
+                        if  (wp_is_mobile() && is_single()):
+                            $content_name = 'show';
+                        else:
+                            $content_name =  get_post_format();
+                        endif;
+                        get_template_part( 'content',$content_name);
+//						get_template_part( 'content', get_post_format() );
 
 					endwhile;
 					// Previous/next page navigation.

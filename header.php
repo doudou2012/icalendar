@@ -28,9 +28,12 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
+    <?php if (is_single()) : ?>
+        <link rel='stylesheet' id='genericons-css'  href='<?php echo get_template_directory_uri();?>/css/gxy-cred-editor.css' type='text/css' media='all' />
+    <?php endif;?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class( (is_user_logged_in() && is_single() ? 'page' : '') ); ?>>
 <div id="page" class="hfeed site">
 	<?php if ( get_header_image() ) : ?>
 	<div id="site-header">

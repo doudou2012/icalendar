@@ -20,9 +20,13 @@ my_get_header(); ?>
 					 * use this in a child theme, then include a file called called content-___.php
 					 * (where ___ is the post format) and that will be used instead.
 					 */
-//					get_template_part( 'content', get_post_format() );
-                    get_template_part( 'content','show' );
-
+                    $content_name = '';
+                    if  (wp_is_mobile() || (!wp_is_mobile() && !is_user_logged_in())):
+                        $content_name = 'show';
+                    else:
+                        $content_name =  get_post_format();
+                    endif;
+                    get_template_part( 'content',$content_name);
 					// Previous/next post navigation.
 //					twentyfourteen_post_nav();
 
