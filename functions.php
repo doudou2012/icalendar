@@ -534,8 +534,8 @@ function my_get_footer(){
 }
 function custom_header_footer(){
     $theme_name = '';
-    if(wp_is_mobile()){
-        if (is_weixin_browser()){
+    if(wp_is_mobile() || is_weixin_browser()){
+        if (is_weixin_browser() && !is_single()){
             $theme_name = 'icalendar';
         }else if(is_single()){
             $theme_name = 'show';
