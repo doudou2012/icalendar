@@ -57,5 +57,8 @@ my_get_header()?>
 </div><!-- #main-content -->
 
 <?php
-get_sidebar();
+//get_sidebar();
+if (!wp_is_mobile()){
+    get_sidebar();
+}
 my_get_footer();

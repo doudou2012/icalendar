@@ -26,7 +26,7 @@ and (max-width: 1024px)
     }
 
     .list-view .site-content .hentry {
-        max-width: 41%;
+        max-width: 40%;
         float: left;
         min-height: 60px;
         margin: 1% 3% 1% 3%;
@@ -104,13 +104,27 @@ and (max-width: 1024px)
     }
 
     .list-view .site-content .hentry {
-        max-width: 41%;
+        max-width: 40%;
         min-width: 30%;
         float: left;
         /*border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
         min-height: 60px;
         margin: 1% 3% 1% 3%;
     }
+}
+.home .site-content .hentry:first-of-type, .home .site-content .hentry.has-post-thumbnail{
+   padding-top:72px;
+}
+.home .paging-navigation{
+  margin: 24px 20px 0 0;
+}
+.paging-navigation {
+  border-top:5px solid #000;
+  width:100%;
+  float:right;
+}
+.paging-navigation .loop-pagination{
+  text-align:right;
 }
 /**
  * 列表页面调整

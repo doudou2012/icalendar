@@ -534,8 +534,8 @@ function my_get_footer(){
 }
 function custom_header_footer(){
     $theme_name = '';
-    if(wp_is_mobile()){
-        if (is_weixin_browser()){
+    if(wp_is_mobile() || is_weixin_browser()){
+        if (is_weixin_browser() && !is_single()){
             $theme_name = 'icalendar';
         }else if(is_single()){
             $theme_name = 'show';
@@ -566,14 +566,16 @@ function is_weixin_browser(){
 */
 function wrap_tag($arr,$tagname='p',$class='',$string = true){
     if (is_string($arr)){
-        $arr =preg_split("/[\s,;]+/",$arr);
+        //$arr =preg_split("/[\s,;]+/",$arr);
+	$arr = explode("\n",$arr);
     }
     $result = array();
     $begintag = '<'.$tagname .($class ? ' class="'.$class .'" ': ' ').'>';
     $endtag = '</'.$tagname.'>';
     if (!empty($arr)){
        while(list($k,$v) = each($arr)){
-          $result[] = ($begintag.$v.$endtag);
+	  if (trim($v))
+          	$result[] = ($begintag.$v.$endtag);
        }
     }
     return $string === false ?  $result : implode(' ',$result);
