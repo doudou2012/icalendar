@@ -542,6 +542,11 @@ function custom_header_footer(){
         }else{
             $theme_name = 'icalendar';
         }
+    }else{
+        //加载自定义style
+//        $custom_style = get_template_directory_uri().'/style-custom.css';
+//        wp_register_style('style-custom',$custom_style);
+//        wp_enqueue_style('style-custom',$custom_style);
     }
     return $theme_name;
 //    return wp_is_mobile() ? 'icalendar' : '';
@@ -549,4 +554,27 @@ function custom_header_footer(){
 
 function is_weixin_browser(){
     return strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Windows Phone') !== false ;
+}
+
+/*fanzhanao 添加
+ * @desc 对自定义字段值，加上标签和class
+ * @param array|string $arr 要处理的字符串或者数组
+ * @param string  $tagname  标签名 如 p,span,div etc
+ * @param string  $class   样式class
+ * @param Boolean $string  是否返回string
+ * @return string | array
+*/
+function wrap_tag($arr,$tagname='p',$class='',$string = true){
+    if (is_string($arr)){
+        $arr =preg_split("/[\s,;]+/",$arr);
+    }
+    $result = array();
+    $begintag = '<'.$tagname .($class ? ' class="'.$class .'" ': ' ').'>';
+    $endtag = '</'.$tagname.'>';
+    if (!empty($arr)){
+       while(list($k,$v) = each($arr)){
+          $result[] = ($begintag.$v.$endtag);
+       }
+    }
+    return $string === false ?  $result : implode(' ',$result);
 }

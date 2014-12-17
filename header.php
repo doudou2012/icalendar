@@ -29,8 +29,9 @@
 	<![endif]-->
 	<?php wp_head(); ?>
     <?php if (is_single()) : ?>
-        <link rel='stylesheet' id='genericons-css'  href='<?php echo get_template_directory_uri();?>/css/gxy-cred-editor.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='genericons-css'  href='<?php echo get_template_directory_uri();?>/css/gxy-single-event.css' type='text/css' media='all' />
     <?php endif;?>
+    <link rel="stylesheet" id="style-custom" href="<?php echo get_template_directory_uri();?>/style-custom.css" type="text/css" />
 </head>
 
 <body <?php body_class( (is_user_logged_in() && is_single() ? 'page' : '') ); ?>>
