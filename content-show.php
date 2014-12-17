@@ -1,5 +1,6 @@
 <?php
 /**
+ *
  * The default template for displaying content-show
  *
  * Used for both single and index/archive/search.
@@ -36,25 +37,64 @@
                 <th>展览时间</th>
                 <td><?php   echo types_render_field('start-time',array('output'=>'normal')), '&nbsp;  -   &nbsp;', types_render_field('end-time',array('output'=>'normal')); ?></td>
             </tr>
+            <?php
+                $place= types_render_field('place','');
+                if (!empty($place)):
+            ?>
             <tr>
                 <th>展览场馆</th>
-                <td><?php echo types_render_field('place',''); ?></td>
+                <td><?php echo $place; ?></td>
             </tr>
+            <?php endif;
+                $address  = types_render_field('address','');
+                if (!empty($address)):
+            ?>
             <tr>
                 <th>展览地址</th>
-                <td><?php echo types_render_field('address',''); ?></td>
+                <td><?php echo $address ; ?></td>
             </tr>
+           <?php endif;
+            $host  =  types_render_field('hosts','');
+            if (!empty($host)):
+            ?>
             <tr>
                 <th>主办单位</th>
-                <td><?php echo types_render_field('hosts',''); ?></td>
+                <td><?php echo $host; ?></td>
             </tr>
+            <?php endif;
+            $organizer = wrap_tag(types_render_field('organizer',''),'span','artist', false);
+            if (!empty($organizer)):?>
             <tr>
                 <th>策展人</th>
                 <td><?php
-                    $organizer = wrap_tag(types_render_field('organizer',''),'span','artist', false);
                     echo implode('、',$organizer);
                     ?></td>
             </tr>
+            <?php endif;
+            $pid = get_the_ID();
+            $city = get_the_term_list($pid,'city');
+            $artist = get_the_term_list($pid,'artist');
+            if (!empty($artist)):
+            ?>
+            <tr>
+                <th>艺术家</th>
+                <td>
+                    <?php the_terms($pid,'artist');?>
+                </td>
+            </tr>
+            <?php endif;
+            if (!empty($city)):
+            ?>
+                <tr>
+                    <th>城市</th>
+                    <td>
+                        <?php the_terms($pid,'city');?>
+                    </td>
+                </tr>
+                <?php endif;
+            $url = types_render_field('url',array('output'=>'html'));
+            if (!empty($url)):
+            ?>
             <tr>
                 <th>网址</th>
                 <td><?php
@@ -62,10 +102,15 @@
                     ?>
                 </td>
             </tr>
+            <?php endif;
+            $phone = types_render_field('phone','');
+            if (!empty($phone)):
+            ?>
             <tr>
                 <th>联系电话</th>
                 <td><?php echo types_render_field('phone',''); ?></td>
             </tr>
+            <?php endif;?>
             </tbody>
         </table>
         <div class="show-content">
