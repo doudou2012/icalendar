@@ -26,7 +26,12 @@ my_get_header(); ?>
 //                    else:
 //                        $content_name =  get_post_format();
 //                    endif;
-                    get_template_part( 'content','show');
+		    $content_name = 'show';
+                    if (is_user_logged_in()){
+                        $content_name = get_post_format();
+                    }
+                    get_template_part( 'content',$content_name);
+                   // get_template_part( 'content','show');
 					// Previous/next post navigation.
 //					twentyfourteen_post_nav();
 
