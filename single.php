@@ -27,7 +27,7 @@ my_get_header(); ?>
 //                        $content_name =  get_post_format();
 //                    endif;
 		    $content_name = 'show';
-                    if (is_user_logged_in()){
+                    if (is_user_logged_in() && array_key_exists('cred-edit-form',$_GET) && is_singular()){
                         $content_name = get_post_format();
                     }
                     get_template_part( 'content',$content_name);

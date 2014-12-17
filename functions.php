@@ -574,7 +574,8 @@ function wrap_tag($arr,$tagname='p',$class='',$string = true){
     $endtag = '</'.$tagname.'>';
     if (!empty($arr)){
        while(list($k,$v) = each($arr)){
-          $result[] = ($begintag.$v.$endtag);
+	  if (trim($v))
+          	$result[] = ($begintag.$v.$endtag);
        }
     }
     return $string === false ?  $result : implode(' ',$result);
