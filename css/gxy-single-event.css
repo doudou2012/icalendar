@@ -1,0 +1,69 @@
+body {
+    font-family: Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #F6F5F2;
+}
+
+h1, h2, h3, h4, th, td, p {
+    color: #1A1A1A;
+}
+
+article {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 10px 20px 10px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 1.4em;
+}
+
+h2 {
+    font-size: 1.2em;
+    line-height: 2em;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.post-thumbnail {
+    width: 100%;
+}
+
+img.attachment-twentyfourteen-full-width.wp-post-image {
+    width: 100%;
+    height: auto;
+}
+
+table.table-show {
+    width: 100%;
+    padding: 0;
+    margin: 1em 0;
+}
+
+tr {
+    line-height: 1.5em;
+}
+
+th {
+    padding: 0;
+    margin: 0;
+    width: 5em;
+    vertical-align: top;
+    text-align: justify;
+}
+
+td {padding: 0;}
+
+span.artist {
+    display: inline-block;
+}
+
+p {
+    line-height: 1.6em;
+}
+
+a {
+    text-decoration: none;
+}

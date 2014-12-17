@@ -29,11 +29,12 @@
 
     <?php twentyfourteen_post_thumbnail(); ?>
 	<div class="entry-content">
+        <h2>展览信息</h2>
         <table class="table-show">
             <tbody>
             <tr>
                 <th>展览时间</th>
-                <td><?php   echo types_render_field('start-time',array('output'=>'normal')), '&nbsp; - &nbsp;', types_render_field('end-time',array('output'=>'normal')); ?></td>
+                <td><?php   echo types_render_field('start-time',array('output'=>'normal')), '  -   ', types_render_field('end-time',array('output'=>'normal')); ?></td>
             </tr>
             <tr>
                 <th>展览场馆</th>
@@ -49,7 +50,10 @@
             </tr>
             <tr>
                 <th>策展人</th>
-                <td><?php echo types_render_field('organizer',''); ?></td>
+                <td><?php
+                    $organizer = wrap_tag(types_render_field('organizer',''),'span','artist', false);
+                    echo implode('、',$organizer);
+                    ?></td>
             </tr>
             <tr>
                 <th>网址</th>
@@ -65,7 +69,10 @@
             </tbody>
         </table>
         <div class="show-content">
-            <?php echo types_render_field('description',array('output'=>'html'));?>
+            <h2>展览介绍</h2>
+            <?php
+                echo wrap_tag(types_render_field('description',array('output'=>'raw')));
+            ?>
         </div>
 
 	</div> <!-- .entry-content -->

@@ -1,0 +1,208 @@
+
+body {
+    font-family: Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+}
+@media screen and (min-width: 415px)
+and (max-width: 1024px)
+{
+    .site-content .post-thumbnail img {
+        float: left;
+        margin: 0 10px 3px 0;
+        width: 100%;
+    }
+    .full-width .site-content .hentry.has-post-thumbnail:first-child{
+        widows: 100%;
+        float: left;
+        margin: 1% 3% 1% 3%;
+    }
+
+    .list-view .site-content .entry-header {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .list-view .content-area {
+        padding: 0vw 1vw;
+    }
+
+    .list-view .site-content .hentry {
+        max-width: 40%;
+        float: left;
+        min-height: 60px;
+        margin: 1% 3% 1% 3%;
+    }
+
+    .list-view .site-content .cat-links,
+    .list-view .site-content .type-post .entry-content,
+    .list-view .site-content .type-page .entry-content,
+    .list-view .site-content .type-post .entry-summary,
+    .list-view .site-content .type-page .entry-summary,
+    .list-view .site-content footer.entry-meta {
+        display: none;
+    }
+
+    .list-view .site-content .entry-title {
+        clear: none;
+        font-size: 1.2em;
+        font-weight: normal;
+        text-transform: none;
+        line-height: 2;
+    }
+
+    .list-view .site-content .format-aside .entry-title,
+    .list-view .site-content .format-link .entry-title,
+    .list-view .site-content .format-quote .entry-title {
+        display: block;
+    }
+
+    .list-view .site-content .entry-meta {
+        background-color: transparent;
+        clear: none;
+        margin: 0;
+        text-transform: none;
+    }
+
+    .archive-header,
+    .page-header {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        margin: 24px auto 0;
+        padding-bottom: 24px;
+    }
+
+    .error404 .page-header {
+        border-bottom: 0;
+        margin: 0 auto 24px;
+        padding: 0 10px;
+    }
+}
+
+@media screen and (min-width: 1025px)
+{
+    .site:before{
+        background-color:#fff;
+        color:#000;
+    }
+
+    .site-content .post-thumbnail img {
+        float: left;
+        margin: 0 10px 3px 0;
+        width: 100%;
+    }
+    .full-width .site-content .hentry.has-post-thumbnail:first-child{
+        widows: 100%;
+        float: left;
+        margin: 1% 3% 1% 3%;
+    }
+
+    .list-view .site-content .entry-header {
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .list-view .content-area {
+        padding: 0vw 1vw;
+    }
+
+    .list-view .site-content .hentry {
+        max-width: 40%;
+        min-width: 30%;
+        float: left;
+        /*border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
+        min-height: 60px;
+        margin: 1% 3% 1% 3%;
+    }
+}
+/**
+ * 列表页面调整
+ */
+#secondary
+{
+    margin-top: 1vh ;
+}
+.secondary-navigation a{
+    color: #000;
+    font-size: larger;
+}
+
+.secondary-navigation ul ul {
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: -999em;
+    width: 182px;
+    z-index: 99999;
+}
+
+.secondary-navigation li:hover > a,
+.secondary-navigation li.focus > a {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.secondary-navigation ul ul a:hover,
+.secondary-navigation ul ul li.focus > a {
+    background-color: #fff;
+}
+.site-description{
+    font-size: 16px;
+}
+.search-box-wrapper, .featured-content{
+    padding-left: 0px;
+}
+.search-box{
+    z-index: 99;
+}
+::selection {
+    background: #ff0000;
+    color: #fff;
+    text-shadow: none;
+}
+
+.post-thumbnail{
+    z-index: 2;
+}
+.menu-toggle:active,
+.menu-toggle:focus,
+.menu-toggle:hover {
+    background-color: #ff0000;
+}
+.menu-toggle{
+    background-color: #ff0000;
+}
+.entry-title{
+    padding-top: 10px;
+}
+.single .entry-title{
+    padding-top: 0px;
+}
+
+/*
+ * 文章页面调整
+ *
+ */
+
+.content-area, .content-sidebar{
+    padding-top: 10px;
+}
+/*search page*/
+.archive-header,
+.page-header {
+    margin: 0 auto ;
+    padding: 0 10px;
+}
+.site-navigation .current_page_item > a,
+.site-navigation .current_page_ancestor > a,
+.site-navigation .current-menu-item > a,
+.site-navigation .current-menu-ancestor > a {
+    color: #fff;
+    background-color: #ff0000;
+    font-weight: 900;
+}
+.archive-header,
+.page-header {
+    margin: 10px auto;
+    max-width: 474px;
+}
+.table-show{
+    margin-top: 16px;
+}

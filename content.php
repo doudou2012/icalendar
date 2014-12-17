@@ -11,7 +11,8 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php twentyfourteen_post_thumbnail(); ?>
+
+	<?php if(!is_single()): twentyfourteen_post_thumbnail(); endif;?>
 
 	<header class="entry-header">
 		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) && twentyfourteen_categorized_blog() ) : ?>
@@ -47,6 +48,7 @@
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
+    <?php if(is_single()): twentyfourteen_post_thumbnail(); endif;?>
 
 	<?php if ( is_search() ) : ?>
 	<div class="entry-summary">
