@@ -31,7 +31,7 @@
 
 		<div class="entry-meta">
             <span class="time-span">
-               <?php   echo types_render_field('start-time',array('output'=>'normal')), '-', types_render_field('end-time',array('output'=>'normal')); ?>
+               <?php   echo types_render_field('start-time',array('output'=>'normal')), ' - ', types_render_field('end-time',array('output'=>'normal')); ?>
             </span>
 			<?php
 //				if ( 'post' == get_post_type() )

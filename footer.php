@@ -11,11 +11,12 @@
 ?>
 
 		</div><!-- #main -->
+		<!--
 		<footer id="colophon" class="site-footer" role="contentinfo">
 
-			<?php get_sidebar( 'footer' ); ?>
+			<?php //get_sidebar( 'footer' ); ?>
 
-		</footer>
+		</footer> -->
 	</div><!-- #page -->
 
 	<?php wp_footer(); ?>
