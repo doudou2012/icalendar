@@ -2,9 +2,22 @@
 body {
     font-family: Helvetica, "Hiragino Sans GB", Arial, sans-serif;
 }
+@media screen and (max-width: 414px)
+{
+    .single .entry-title{
+        padding-top: 50px;
+    }
+}
 @media screen and (min-width: 415px)
 and (max-width: 1024px)
 {
+    .single .entry-title{
+        padding-top: 20px;
+    }
+    .paged .site-content .hentry:first-of-type, .list-view .site-content .hentry.has-post-thumbnail{
+       border-top: 0;
+        padding-top: 78px;
+    }
     .site-content .post-thumbnail img {
         float: left;
         margin: 0 10px 3px 0;
@@ -102,6 +115,15 @@ and (max-width: 1024px)
     .list-view .content-area {
         padding: 0vw 1vw;
     }
+    .paged .site-content .hentry:first-of-type, .list-view .site-content .hentry.has-post-thumbnail{
+        border-top: 0;
+        padding-top: 78px;
+    }
+
+
+    .entry-title{
+        padding-top: 10px;
+    }
 
     .list-view .site-content .hentry {
         max-width: 40%;
@@ -172,9 +194,7 @@ and (max-width: 1024px)
 .entry-title{
     padding-top: 10px;
 }
-.single .entry-title{
-    padding-top: 0px;
-}
+
 
 /*
  * 文章页面调整
