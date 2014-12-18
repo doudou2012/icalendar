@@ -1711,11 +1711,13 @@ a.post-thumbnail:hover {
 .paging-navigation {
 	border-top: 5px solid #000;
 	margin: 48px 0;
+	float:right;
+	width:100%;
 }
 
 .paging-navigation .loop-pagination {
 	margin-top: -5px;
-	text-align: center;
+	text-align: right;
 }
 
 .paging-navigation .page-numbers {
