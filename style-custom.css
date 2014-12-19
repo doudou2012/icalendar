@@ -40,7 +40,9 @@ and (max-width: 1024px)
 
     .list-view .site-content .hentry {
         max-width: 40%;
+	min-width: 30%;
         float: left;
+        height: 288px;
         min-height: 60px;
         margin: 1% 3% 1% 3%;
     }
@@ -106,6 +108,9 @@ and (max-width: 1024px)
         float: left;
         margin: 1% 3% 1% 3%;
     }
+    .site-content, .site-main .widecolumn{
+	margin-left:220px;	
+     }
 
     .list-view .site-content .entry-header {
         background-color: transparent;
@@ -130,7 +135,7 @@ and (max-width: 1024px)
         min-width: 30%;
         float: left;
         /*border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
-        min-height: 60px;
+        height: 288px;
         margin: 1% 3% 1% 3%;
     }
 }
