@@ -536,11 +536,11 @@ function custom_header_footer(){
     $theme_name = '';
     if(wp_is_mobile() || is_weixin_browser()){
         if (is_weixin_browser() && !is_single()){
-            $theme_name = 'icalendar';
+            $theme_name = 'mobile';
         }else if(is_single()){
-            $theme_name = 'show';
+            $theme_name = 'mobile-single';
         }else{
-            $theme_name = 'icalendar';
+            $theme_name = 'mobile';
         }
     }else{
         //加载自定义style

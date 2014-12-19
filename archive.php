@@ -55,7 +55,7 @@ my_get_header(); ?>
 						 */
                         $content_name = '';
                         if  (wp_is_mobile() && is_single()):
-                            $content_name = 'show';
+                            $content_name = 'mobile-single';
                         else:
                             $content_name =  get_post_format();
                         endif;

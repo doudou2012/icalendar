@@ -26,7 +26,7 @@ my_get_header(); ?>
 //                    else:
 //                        $content_name =  get_post_format();
 //                    endif;
-		    $content_name = 'show';
+		            $content_name = 'mobile-single';
                     if (is_user_logged_in() && array_key_exists('cred-edit-form',$_GET) && is_singular()){
                         $content_name = get_post_format();
                     }
