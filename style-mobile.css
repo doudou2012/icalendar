@@ -3138,7 +3138,7 @@ a.post-thumbnail:hover {
         font-size: 1.2em;
         font-weight: normal;
         text-transform: none;
-        line-height: 2;
+        line-height: 1.3;
     }
 
     .list-view .site-content .format-aside .entry-title,
@@ -3150,7 +3150,7 @@ a.post-thumbnail:hover {
     .list-view .site-content .entry-meta {
         background-color: transparent;
         clear: none;
-        margin: 0;
+	margin-top:5px;
         text-transform: none;
     }
 
@@ -3195,7 +3195,7 @@ a.post-thumbnail:hover {
         max-width: 45vw;
         float: left;
         /*border-bottom: 1px solid rgba(0, 0, 0, 0.1);*/
-        min-height: 60px;
+        height: 288px;
         margin: 1vw;
     }
 
@@ -3213,7 +3213,7 @@ a.post-thumbnail:hover {
         font-size: 1.2em;
         font-weight: normal;
         text-transform: none;
-        line-height: 2;
+        line-height: 1.3;
     }
 
     .list-view .site-content .format-aside .entry-title,
@@ -3225,7 +3225,7 @@ a.post-thumbnail:hover {
     .list-view .site-content .entry-meta {
         background-color: transparent;
         clear: none;
-        margin: 0;
+        margin-top: 6px;
         text-transform: none;
     }
 
