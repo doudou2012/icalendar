@@ -555,7 +555,64 @@ function custom_header_footer(){
 function is_weixin_browser(){
     return strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false || strpos($_SERVER['HTTP_USER_AGENT'], 'Windows Phone') !== false ;
 }
+/*
+ * @desc 自定义字段搜索
+ * @param string $search 搜索字符串
+ * @return string 搜索字符串
+ * */
+function custom_field_search($search){
+    $s = $_GET['s'];
+    if (!trim($s)) return $search;
+//    if(preg_match('/[\d]+年\d+月\d+日/',$s)) {
+//        $s = str_replace(array('年', '月', '日'), '', $s);
+//    }
+//    if (strtotime($s)){
+//        $s = strtotime($s);
+//        $search = "AND ( $s<= (CAST wp_postmeta.meta_value  AS bigint) OR $s >= (CAST wp_postmeta.meta_value  AS bigint)) ";
+//     }else
+    $search = "AND (((wp_posts.post_title LIKE '%{$s}%')
+                OR (wp_postmeta.meta_value LIKE '%{$s}%')))";
+//    }
+    $search .=  " AND (wp_posts.post_password = '')";
+    return $search;
+}
+//add_filter( 'posts_search', 'custom_field_search' );
+function custom_search_where($where) { // put the custom fields into an array
+    global $wpdb;
+    $s = $_GET['s'];
+    if (!trim($s)) return $where;
 
+    $customs = array('wpcf-place', 'wpcf-address', 'wpcf-description','wpcf-organizer','wpcf-hosts');
+    $query = '';
+    $sep = '';
+    foreach($customs as $custom) {
+        $query .= $sep;//" OR (";
+        $query .= "(wp_postmeta.meta_key = '$custom')";
+        $query .= " AND (wp_postmeta.meta_value LIKE '%{$s}%')";
+        $query .= ")";
+        $sep = ' OR (';
+    }
+    $query = ' ('.$query;
+    $where = " AND ({$query}) AND ($wpdb->posts.post_status = 'publish') ";
+    return($where);
+}
+add_filter('posts_where', 'custom_search_where');
+function custom_filed_join($join){
+    $join = "INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
+    return $join;
+}
+add_filter('posts_join','custom_filed_join');
+
+function search_distinct() {
+    return "DISTINCT";
+}
+add_filter('posts_distinct', 'search_distinct');
+
+//add_filter( 'posts_request', 'dump_request' );
+function dump_request( $input ) {
+    var_dump($input);
+    return $input;
+}
 /*fanzhanao 添加
  * @desc 对自定义字段值，加上标签和class
  * @param array|string $arr 要处理的字符串或者数组
