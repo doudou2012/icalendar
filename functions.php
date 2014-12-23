@@ -570,10 +570,6 @@ function custom_field_search($search){
 //        $s = strtotime($s);
 //        $search = "AND ( $s<= (CAST wp_postmeta.meta_value  AS bigint) OR $s >= (CAST wp_postmeta.meta_value  AS bigint)) ";
 //     }else
-    $search = "AND (((wp_posts.post_title LIKE '%{$s}%')
-                OR (wp_postmeta.meta_value LIKE '%{$s}%')))";
-//    }
-    $search .=  " AND (wp_posts.post_password = '')";
     return $search;
 }
 //add_filter( 'posts_search', 'custom_field_search' );
@@ -602,7 +598,6 @@ function custom_filed_join($join){
     return $join;
 }
 add_filter('posts_join','custom_filed_join');
-
 function search_distinct() {
     return "DISTINCT";
 }
