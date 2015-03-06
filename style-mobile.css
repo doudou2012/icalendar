@@ -3242,5 +3242,8 @@ a.post-thumbnail:hover {
         padding: 0 10px;
     }
 }
-
-
+@media screen and (min-device-width: 768px) and (max-device-width:1024px){
+	.site{
+		max-width:670px;
+	}
+}
