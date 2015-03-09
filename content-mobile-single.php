@@ -29,12 +29,24 @@
 	</header><!-- .entry-header -->
 
     <?php 
-    $html = getThumbImages();
-     if ($html){
+    $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','url'=>true));
+    if ($str) {
+        $images = explode(' ',$str);
+        $html = '<div class="flexslider"><ul class="slides">';
+        foreach ($images as  $value) {
+            $html.= '<li><img src="'.$value.'" /> </li>';
+        }
+        $html.='</ul></div>';
         echo $thml;
-     }else{
+    }else{
         twentyfourteen_post_thumbnail();
-     }
+    }
+    // $html = getThumbImages();
+    //  if ($html){
+    //     echo $thml;
+    //  }else{
+    //     twentyfourteen_post_thumbnail();
+    //  }
     ?>
 	<div class="entry-content">
         <h2>展览信息</h2>
