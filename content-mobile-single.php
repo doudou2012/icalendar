@@ -28,7 +28,14 @@
 		?>
 	</header><!-- .entry-header -->
 
-    <?php twentyfourteen_post_thumbnail(); ?>
+    <?php 
+    $html = getThumbImages();
+     if ($html){
+        echo $thml;
+     }else{
+        twentyfourteen_post_thumbnail();
+     }
+    ?>
 	<div class="entry-content">
         <h2>展览信息</h2>
         <table class="table-show">

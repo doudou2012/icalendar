@@ -632,3 +632,17 @@ function wrap_tag($arr,$tagname='p',$class='',$string = true){
     }
     return $string === false ?  $result : implode(' ',$result);
 }
+
+function getThumbImages() {
+	$str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','url'=>true));
+	if ($str) {
+		$images = explode(' ',$str);
+		$html = '<div class="flexslider"><ul class="slides">';
+		foreach ($images as  $value) {
+			$html.= '<li><img src="'.$value.'" /> </li>'
+		}
+		$html.='</ul></div>'
+		return $thml;
+	}
+	return false;
+}
