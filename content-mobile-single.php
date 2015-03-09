@@ -29,7 +29,7 @@
 	</header><!-- .entry-header -->
 
     <?php 
-    $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','url'=>true));
+    $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
     if ($str) {
         $images = explode(' ',$str);
         $html = '<div class="flexslider"><ul class="slides">';
@@ -37,7 +37,7 @@
             $html.= '<li><img src="'.$value.'" /> </li>';
         }
         $html.='</ul></div>';
-        echo $thml;
+        echo $html;
     }else{
         twentyfourteen_post_thumbnail();
     }

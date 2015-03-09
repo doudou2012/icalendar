@@ -231,7 +231,7 @@ function twentyfourteen_scripts() {
 
 	// Load our main stylesheet.
 	wp_enqueue_style( 'twentyfourteen-style', get_stylesheet_uri(), array( 'genericons' ) );
-
+	wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . 'css/flexslider.css', array() );
 	// Load the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style', 'genericons' ), '20131205' );
 	wp_style_add_data( 'twentyfourteen-ie', 'conditional', 'lt IE 9' );
@@ -257,6 +257,7 @@ function twentyfourteen_scripts() {
 	}
 
 	wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20140616', true );
+	wp_enqueue_script( 'slider',get_template_directory_uri() . 'js/slider.js');
 }
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
 
@@ -632,17 +633,15 @@ function wrap_tag($arr,$tagname='p',$class='',$string = true){
     }
     return $string === false ?  $result : implode(' ',$result);
 }
-
-function getThumbImages() {
-	$str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','url'=>true));
-	if ($str) {
-		$images = explode(' ',$str);
-		$html = '<div class="flexslider"><ul class="slides">';
-		foreach ($images as  $value) {
-			$html.= '<li><img src="'.$value.'" /> </li>'
-		}
-		$html.='</ul></div>'
-		return $thml;
-	}
-	return false;
+add_action('wp_footer','flex_slider');
+function flex_slider(){
+    echo <<<EOF
+    <script type="text/javascript">
+        $(document).ready(function(){
+            if ($('.flexslider').length > 0){
+                $('.flexslider').flexslider();
+            }
+        });
+	</script>
+	EOF;
 }
