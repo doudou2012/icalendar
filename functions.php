@@ -597,7 +597,6 @@ function custom_search_where($where) { // put the custom fields into an array
     }
     return($where);
 }
-
 add_filter('posts_where', 'custom_search_where');
 function custom_filed_join($join){
 	if (!is_single() || get_query_var('s'))  {
@@ -620,6 +619,52 @@ function search_distinct() {
     return "DISTINCT"; 
 }
 
+/**
+ * 查询置顶贴
+ */ 
+add_filter( 'the_posts', 'sticky_post_top' );
+function sticky_post_top( $posts ) {
+	if ( is_main_query() && is_post_type_archive() ) {
+		global $wp_query;
+		$sticky_posts = get_option( 'sticky_posts' );
+		$post_nums = count($posts);
+		$sticky_offset = 0;
+		for ($i= 0; $i < count($post_nums) ; $i++){
+			if ( in_array( $posts[$i]->ID, $sticky_posts ) ) {
+				$sticky_post = $posts[$i];
+				array_splice( $posts, $i, 1 );
+				array_splice( $posts, $sticky_offset, 0, array($sticky_post) );
+				$sticky_offset++;
+				$offset = array_search($sticky_post->ID, $sticky_posts);
+				unset( $sticky_posts[$offset] );
+			}
+		}
+		if ( !empty( $sticky_posts) ) {
+			$stickies = get_posts( array(
+				'post__in' => $sticky_posts,
+				'post_type' => $wp_query->query_vars['post_type'],
+				'post_status' => 'publish',
+				'nopaging' => true
+				) );
+			foreach ( $stickies as $sticky_post ) {
+				array_splice( $posts, $sticky_offset, 0, array( $sticky_post ) );
+				$sticky_offset++;
+			}
+		}
+	}
+	return $post;
+}
+/**
+ * 设置样式 
+ */
+
+function set_sticky_class($classes) {
+	if ( is_sticky()){
+		$classes[] = 'sticky';
+	}
+	return $classes;
+}
+add_filter('post_class', 'set_sticky_class');
 //add_filter( 'posts_request', 'dump_request' );
 function dump_request( $input ) {
     var_dump($input);
