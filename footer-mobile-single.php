@@ -11,6 +11,8 @@
 ?>
         </div><!-- #main -->
 <?php if (wp_is_mobile() && is_single()):?>
+    <script type='text/javascript' src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
+    <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/jquery.flexslider.js'></script>
     <footer id="colophon" class="site-footer" role="contentinfo">
         <div id="supplementary">
             <div id="footer-sidebar" class="footer-sidebar widget-area" role="complementary">
@@ -22,6 +24,13 @@
                     </form></aside>	</div><!-- #footer-sidebar -->
         </div><!-- #supplementary -->
     </footer>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            if ($('.flexslider').length > 0){
+                $('.flexslider').flexslider({"smoothHeight":true});
+            }
+        });
+    </script>
 <?php endif;?>
     </div><!-- #page -->
 </body>

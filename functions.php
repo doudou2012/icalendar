@@ -652,7 +652,7 @@ function sticky_post_top( $posts ) {
 			}
 		}
 	}
-	return $post;
+	return $posts;
 }
 /**
  * 设置样式 
@@ -700,7 +700,7 @@ function flex_slider(){
     <script type="text/javascript">
         $(document).ready(function(){
             if ($('.flexslider').length > 0){
-                $('.flexslider').flexslider();
+                $('.flexslider').flexslider({"smoothHeight":true});
             }
         });
 	</script>

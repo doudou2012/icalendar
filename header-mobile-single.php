@@ -15,6 +15,7 @@
     <link rel='stylesheet' id='genericons-css'  href='<?php echo get_template_directory_uri();?>/genericons/genericons.css' type='text/css' media='all' />
     <?php if (is_single()) : ?>
         <link rel='stylesheet' id='genericons-css'  href='<?php echo get_template_directory_uri();?>/css/gxy-single-event.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='flexslider-style-css'  href="<?php echo get_template_directory_uri();?>/css/flexslider.css" type='text/css' media='all' />
     <?php endif;?>
 </head>
 <body <?php body_class(); ?>>
