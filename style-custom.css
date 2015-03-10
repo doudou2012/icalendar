@@ -278,7 +278,7 @@ input.search-submit {
 .post-thumbnail img{
     height: auto;
     max-width: 100%;
-    max-height: 230px;
+    /*max-height: 230px;*/
 }
 
 

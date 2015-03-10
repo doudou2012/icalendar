@@ -696,11 +696,15 @@ function wrap_tag($arr,$tagname='p',$class='',$string = true){
 }
 add_action('wp_footer','flex_slider');
 function flex_slider(){
+	echo 'var is_single = '. is_single() ? ' true' : 'false';
     echo <<<EOF
     <script type="text/javascript">
         $(document).ready(function(){
             if ($('.flexslider').length > 0){
                 $('.flexslider').flexslider({"smoothHeight":true});
+            }
+            if (!is_single){
+            	$('.post-thumbnail img').css('max-height':'230px');
             }
         });
 	</script>
