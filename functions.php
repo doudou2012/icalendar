@@ -577,8 +577,8 @@ function custom_field_search($search){
 function custom_search_where($where) { // put the custom fields into an array
     global $wpdb;
     $s = get_query_var('s');
-    $where .= " AND ($wpdb->posts.post_status = 'publish') ";
     if (trim($s)){
+    	$where = " AND ($wpdb->posts.post_status = 'publish') ";
     	$customs = array('wpcf-place', 'wpcf-address', 'wpcf-description','wpcf-organizer','wpcf-hosts');
     	$query = '';
     	$sep = '';
