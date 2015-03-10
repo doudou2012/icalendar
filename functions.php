@@ -576,7 +576,7 @@ function custom_field_search($search){
 //add_filter( 'posts_search', 'custom_field_search' );
 function custom_search_where($where) { // put the custom fields into an array
     global $wpdb;
-    $s = $_GET['s'];
+    $s = get_query_var('s');
     if (!trim($s)) return $where;
 
     $customs = array('wpcf-place', 'wpcf-address', 'wpcf-description','wpcf-organizer','wpcf-hosts');
@@ -596,14 +596,22 @@ function custom_search_where($where) { // put the custom fields into an array
 
 add_filter('posts_where', 'custom_search_where');
 function custom_filed_join($join){
-	if (isset($_GET['s']) && $_GET['s'] )  {
+	if (!is_single())  {
 		$join = "INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
 	}
     return $join;
 }
+
+functon queryOrderby($orderby_statement){
+	if (! is_single()) {
+		$orderby_statement = ' wp_postmeta.wpcf-start-time DESC';
+	}
+	return $orderby_statement;
+}
 add_filter('posts_join','custom_filed_join');
 add_filter('posts_distinct', 'search_distinct');
-	
+add_filter( 'posts_orderby','queryOrderby');
+
 function search_distinct() {
     return isset($_GET['s']) && $_GET['s'] ? "DISTINCT" : ''; 
 }
