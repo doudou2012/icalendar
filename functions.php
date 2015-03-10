@@ -577,7 +577,7 @@ function custom_field_search($search){
 function custom_search_where($where) { // put the custom fields into an array
     global $wpdb;
     $s = get_query_var('s');
-    $where = " AND ($wpdb->posts.post_status = 'publish') ";
+    $where .= " AND ($wpdb->posts.post_status = 'publish') ";
     if (trim($s)){
     	$customs = array('wpcf-place', 'wpcf-address', 'wpcf-description','wpcf-organizer','wpcf-hosts');
     	$query = '';
@@ -592,7 +592,7 @@ function custom_search_where($where) { // put the custom fields into an array
     	$query = ' ('.$query;
     	$where .= " AND ({$query})";
     }
-    if (!is_single() || get_query_var('s')) {
+    if (!is_single() && !get_query_var('s')) {
     	$where.= " AND  wp_postmeta.meta_key =  'wpcf-start-time'";
     }
     return($where);
@@ -607,7 +607,7 @@ function custom_filed_join($join){
 }
 
 function queryOrderby($orderby_statement){
-	if (! is_single() || get_query_var('s')) {
+	if (! is_single() && !get_query_var('s')) {
 		$orderby_statement = ' wp_postmeta.meta_value DESC';
 	}
 	return $orderby_statement;
