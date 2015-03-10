@@ -577,34 +577,38 @@ function custom_field_search($search){
 function custom_search_where($where) { // put the custom fields into an array
     global $wpdb;
     $s = get_query_var('s');
-    if (!trim($s)) return $where;
-
-    $customs = array('wpcf-place', 'wpcf-address', 'wpcf-description','wpcf-organizer','wpcf-hosts');
-    $query = '';
-    $sep = '';
-    foreach($customs as $custom) {
-        $query .= $sep;//" OR (";
-        $query .= "(wp_postmeta.meta_key = '$custom')";
-        $query .= " AND (wp_postmeta.meta_value LIKE '%{$s}%')";
-        $query .= ")";
-        $sep = ' OR (';
+    if (trim($s)){
+    	$customs = array('wpcf-place', 'wpcf-address', 'wpcf-description','wpcf-organizer','wpcf-hosts');
+    	$query = '';
+    	$sep = '';
+    	foreach($customs as $custom) {
+        	$query .= $sep;//" OR (";
+        	$query .= "(wp_postmeta.meta_key = '$custom')";
+        	$query .= " AND (wp_postmeta.meta_value LIKE '%{$s}%')";
+        	$query .= ")";
+        	$sep = ' OR (';
+    	}
+    	$query = ' ('.$query;
+    	$where .= " AND ({$query})";
     }
-    $query = ' ('.$query;
-    $where = " AND ({$query}) AND ($wpdb->posts.post_status = 'publish') ";
+    $where .= " AND ($wpdb->posts.post_status = 'publish') ";
+    if (!is_single() || get_query_var('s')) {
+    	$where.= " AND  wp_postmeta.meta_key =  'wpcf-start-time'";
+    }
     return($where);
 }
 
 add_filter('posts_where', 'custom_search_where');
 function custom_filed_join($join){
-	if (!is_single())  {
+	if (!is_single() || get_query_var('s'))  {
 		$join = "INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
 	}
     return $join;
 }
 
-functon queryOrderby($orderby_statement){
-	if (! is_single()) {
-		$orderby_statement = ' wp_postmeta.wpcf-start-time DESC';
+function queryOrderby($orderby_statement){
+	if (! is_single() || get_query_var('s')) {
+		$orderby_statement = ' wp_postmeta.meta_value DESC';
 	}
 	return $orderby_statement;
 }
@@ -613,7 +617,7 @@ add_filter('posts_distinct', 'search_distinct');
 add_filter( 'posts_orderby','queryOrderby');
 
 function search_distinct() {
-    return isset($_GET['s']) && $_GET['s'] ? "DISTINCT" : ''; 
+    return "DISTINCT"; 
 }
 
 //add_filter( 'posts_request', 'dump_request' );
