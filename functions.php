@@ -601,7 +601,7 @@ function custom_search_where($where) { // put the custom fields into an array
 add_filter('posts_where', 'custom_search_where');
 function custom_filed_join($join){
 	if (!is_single() || get_query_var('s'))  {
-		$join = "INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
+		$join .= " INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
 	}
     return $join;
 }
