@@ -710,7 +710,7 @@ EOF;
 		echo <<<EOF
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.post-thumbnail img').css('max-height':'230px');
+            $('.post-thumbnail img').css('max-height','230px');
         });
 	</script>
 EOF;
