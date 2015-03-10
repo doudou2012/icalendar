@@ -596,17 +596,16 @@ function custom_search_where($where) { // put the custom fields into an array
 
 add_filter('posts_where', 'custom_search_where');
 function custom_filed_join($join){
-    $join = "INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
+	if (isset($_GET['s']) && $_GET['s'] )  {
+		$join = "INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
+	}
     return $join;
 }
-/*搜索*/
-if (isset($_GET['s']) && $_GET['S']) {
-	add_filter('posts_	join','custom_filed_join');
-	add_filter('posts_distinct', 'search_distinct');
-}
+add_filter('posts_join','custom_filed_join');
+add_filter('posts_distinct', 'search_distinct');
 	
 function search_distinct() {
-    return "DISTINCT";
+    return isset($_GET['s']) && $_GET['s'] ? "DISTINCT" : ''; 
 }
 
 //add_filter( 'posts_request', 'dump_request' );
