@@ -593,16 +593,21 @@ function custom_search_where($where) { // put the custom fields into an array
     $where = " AND ({$query}) AND ($wpdb->posts.post_status = 'publish') ";
     return($where);
 }
+
 add_filter('posts_where', 'custom_search_where');
 function custom_filed_join($join){
     $join = "INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
     return $join;
 }
-add_filter('posts_join','custom_filed_join');
+/*搜索*/
+if (isset($_GET['s']) && $_GET['S']) {
+	add_filter('posts_	join','custom_filed_join');
+	add_filter('posts_distinct', 'search_distinct');
+}
+	
 function search_distinct() {
     return "DISTINCT";
 }
-add_filter('posts_distinct', 'search_distinct');
 
 //add_filter( 'posts_request', 'dump_request' );
 function dump_request( $input ) {
