@@ -3247,5 +3247,5 @@ a.post-thumbnail:hover {
 		max-width:670px;
 	}*/
 }
-body { overflow: hidden;}
+html,body { overflow: hidden; width:100%;}
 
