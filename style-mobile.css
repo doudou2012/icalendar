@@ -3243,7 +3243,8 @@ a.post-thumbnail:hover {
     }
 }
 @media screen and (min-device-width: 768px) and (max-device-width:1024px){
-	.site{
+/*	.site{
 		max-width:670px;
-	}
+	}*/
 }
+body{ overflow: hidden;}
