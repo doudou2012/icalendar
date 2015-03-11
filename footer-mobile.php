@@ -18,7 +18,7 @@
  	var ua = navigator.userAgent,
         reg = /Slate/;
 	if (reg.test(ua)) {
-		$(document.body).css('width','670px');
+		$('#page').css('max-width','670px');
 	};
 	$('.post-thumbnail img').css('max-height','230px');
 	$(document.body).css({"overflow-x":"hidden","overflow-y":"hidden" });

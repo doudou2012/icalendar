@@ -624,7 +624,7 @@ function search_distinct() {
  */ 
 add_filter( 'the_posts', 'sticky_post_top' );
 function sticky_post_top( $posts ) {
-	if ( is_main_query() && is_post_type_archive() ) {
+	if ( is_main_query() && is_single() ) {
 		global $wp_query;
 		$sticky_posts = get_option( 'sticky_posts' );
 		$post_nums = count($posts);
