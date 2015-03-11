@@ -14,12 +14,14 @@
 <script type='text/javascript' src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
 <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/functions.js'></script>
  <script type="text/javascript">
+ $(document).ready(function(){
  	var ua = navigator.userAgent,
-        var reg = /Slate/;
+        reg = /Slate/;
 	if (reg.test(ua)) {
-		$('.site').css('max-width': '670px');
+		$('.site').css('max-width','670px');
 	};
-	 $(document.body).css( {"overflow-x":"hidden"});
+	$(document.body).css({"overflow-x":"hidden","overflow-y":"hidden" });
+ });
  </script>
 </body>
 </html>
