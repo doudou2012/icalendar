@@ -14,12 +14,12 @@
 <script type='text/javascript' src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
 <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/functions.js'></script>
  <script type="text/javascript">
-	var width = $(document.body).width(),
-		ua = navigator.userAgent,
-		patt = new RegExp("Slate");
-	if ((width == 768 || width == 1024) && patt.test(ua)) {
-		$('#page').css('max-width': '670px');
+ 	var ua = navigator.userAgent,
+        var reg = /Slate/;
+	if (reg.test(ua)) {
+		$('.site').css('max-width': '670px');
 	};
+	 $(document.body).css( {"overflow-x":"hidden"});
  </script>
 </body>
 </html>
