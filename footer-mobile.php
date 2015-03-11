@@ -19,6 +19,7 @@
         reg = /Slate/;
 	if (reg.test(ua)) {
 		$('#page').css('max-width','670px');
+		$('#masthead').css('max-width','670px');
 	};
 	$('.post-thumbnail img').css('max-height','230px');
 	$(document.body).css({"overflow-x":"hidden","overflow-y":"hidden" });
