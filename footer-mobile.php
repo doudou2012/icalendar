@@ -18,8 +18,11 @@
  	var ua = navigator.userAgent,
         reg = /Slate/;
 	if (reg.test(ua)) {
+		<?php if (get_query_var('paged') == 1 || !(get_query_var('paged'))):?>
+		$(document.body).css('padding-top','74px');
 		$('.site').css('max-width','670px');
 		$('.site-header').css('max-width','670px');
+		<?php endif;?>
 	};
 	$('.post-thumbnail img').css('max-height','230px');
 	$(document.body).css({"overflow-x":"hidden","overflow-y":"hidden" });
