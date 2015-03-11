@@ -19,7 +19,7 @@
         reg = /Slate/;
 	if (reg.test(ua)) {
 		<?php if (get_query_var('paged') == 1 || !(get_query_var('paged'))):?>
-		$(document.body).css('padding-top','74px');
+		$(document.body).css({"padding-top":"74px","background-color":"#fff"});
 		$('.site').css('max-width','670px');
 		$('.site-header').css('max-width','670px');
 		<?php endif;?>
