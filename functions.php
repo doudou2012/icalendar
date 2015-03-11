@@ -656,6 +656,31 @@ function sticky_post_top( $posts ) {
 	}
 	return $posts;
 }
+
+add_action('init', 'event_rewrite');
+function event_rewrite() {
+    global $wp_rewrite;
+    add_rewrite_rule(
+        'event/(\d+)/?',
+        'index.php?post_type=event&p=$matches[1]',
+        'top'
+    );
+}
+
+add_filter('post_type_link', 'event_permalink', 1, 3);
+function event_permalink($post_link, $id = 0, $leavename) {
+    global $wp_rewrite;
+    $post = &get_post($id);
+    if ( is_wp_error( $post ) )
+        return $post;
+    if ($post->post_type != 'event') return $post_link;
+    $permalink_structure = get_option( 'permalink_structure' );
+    if (trim($permalink_structure) == '') return $post_link;
+    $newlink = $wp_rewrite->get_extra_permastruct('event');
+    $newlink = str_replace("%event%", $post->ID, $newlink);
+    $newlink = home_url(user_trailingslashit($newlink));
+    return $newlink;
+}
 /**
  * 设置样式 
  */
