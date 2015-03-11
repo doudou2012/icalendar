@@ -624,6 +624,8 @@ function search_distinct() {
  */ 
 add_filter( 'the_posts', 'sticky_post_top' );
 function sticky_post_top( $posts ) {
+	$page = get_query_var('paged');
+	if ($page > 1) return $posts;
 	if ( is_main_query() && is_single() ) {
 		global $wp_query;
 		$sticky_posts = get_option( 'sticky_posts' );
