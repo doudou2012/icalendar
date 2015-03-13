@@ -692,6 +692,7 @@ function set_sticky_class($classes) {
 	return $classes;
 }
 add_filter('post_class', 'set_sticky_class');
+
 //add_filter( 'posts_request', 'dump_request' );
 function dump_request( $input ) {
     var_dump($input);
@@ -721,6 +722,24 @@ function wrap_tag($arr,$tagname='p',$class='',$string = true){
     }
     return $string === false ?  $result : implode(' ',$result);
 }
+
+function add_sticky_scripts() {
+  wp_enqueue_script( 'sticky_scripts', get_template_directory_uri() . '/js/sticky.js', array('jquery'), '1.0.0', true );
+  wp_localize_script( 'sticky_scripts', 'StickyAjax', array(
+    'ajaxurl' => admin_url( 'admin-ajax.php' ),
+    'security' => wp_create_nonce( 'sticky_post' )
+  ));
+}
+add_action( 'wp_enqueue_scripts', 'add_sticky_scripts' );
+
+function my_action_callback() {
+  check_ajax_referer( 'sticky_post', 'security' );
+  $post_id = post_edit();
+  echo $post_id;
+  die();
+}
+add_action( 'wp_ajax_my_action', 'my_action_callback' );
+
 add_action('wp_footer','flex_slider');
 function flex_slider(){
 	if (is_single()) {
