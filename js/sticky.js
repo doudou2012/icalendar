@@ -4,10 +4,19 @@ $(document).ready(function(){
 			$('input[name="sticky"]').on('click',function(){
 				var sticky = $(this).is(':checked') ? 'sticky':false;
 					pid = $(this).parent().parent().find('td:first').text();
+
 				$.post(StickyAjax.ajaxurl,{"action":"my_action","security":StickyAjax.security,"sticky":sticky,"post_ID":pid},function(data){
 					console.log(data);
 				});
 			});
-		}
-    	}
-    );
+			$('input[name="sticky"]').each(function(){
+				var pid = $(this).parent().parent().find('td:first').text();
+				if ($.inArray(pid,StickyAjax.StickyIds)>=0){
+					$(this).attr('checked',true);
+				}else{
+					$(this).attr('checked',false);
+				}
+			});
+
+			}
+    	});

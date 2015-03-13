@@ -727,8 +727,10 @@ function add_sticky_scripts() {
   wp_enqueue_script( 'sticky_scripts', get_template_directory_uri() . '/js/sticky.js', array('jquery'), '1.0.0', true );
   wp_localize_script( 'sticky_scripts', 'StickyAjax', array(
     'ajaxurl' => admin_url( 'admin-ajax.php' ),
-    'security' => wp_create_nonce( 'sticky_post' )
+    'security' => wp_create_nonce( 'sticky_post' ),
+    'StickyIds' => get_option (''sticky_posts'')
   ));
+
 }
 add_action( 'wp_enqueue_scripts', 'add_sticky_scripts' );
 
@@ -737,12 +739,11 @@ function my_action_callback() {
   $postId = $_POST['post_ID'];
   if ($postId){
   	if ($_POST['sticky']) {
-  		stick_post( $postId );
+  		stick_post( intval($postId) );
   	}else{
-  		unstick_post( $postId);
+  		unstick_post( intval($postId));
   	}
   }
-  $post_id = post_edit();
   echo $post_id;
   die();
 }
