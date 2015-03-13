@@ -11,7 +11,7 @@ $(document).ready(function(){
 			});
 			$('input[name="sticky"]').each(function(){
 				var pid = $(this).parent().parent().find('td:first').text();
-				if ($.inArray(pid,StickyAjax.StickyIds)>=0){
+				if ($.inArray(parseInt(pid),StickyAjax.StickyIds)>=0){
 					$(this).attr('checked',true);
 				}else{
 					$(this).attr('checked',false);
