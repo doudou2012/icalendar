@@ -728,7 +728,7 @@ function add_sticky_scripts() {
   wp_localize_script( 'sticky_scripts', 'StickyAjax', array(
     'ajaxurl' => admin_url( 'admin-ajax.php' ),
     'security' => wp_create_nonce( 'sticky_post' ),
-    'StickyIds' => get_option (''sticky_posts'')
+    'StickyIds' => get_option ('sticky_posts')
   ));
 
 }
