@@ -734,6 +734,14 @@ add_action( 'wp_enqueue_scripts', 'add_sticky_scripts' );
 
 function my_action_callback() {
   check_ajax_referer( 'sticky_post', 'security' );
+  $postId = $_POST['post_ID'];
+  if ($postId){
+  	if ($_POST['sticky']) {
+  		stick_post( $postId );
+  	}else{
+  		unstick_post( $postId);
+  	}
+  }
   $post_id = post_edit();
   echo $post_id;
   die();
