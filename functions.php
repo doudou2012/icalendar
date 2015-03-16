@@ -738,7 +738,7 @@ function my_action_callback() {
   check_ajax_referer( 'sticky_post', 'security' );
   $postId = $_POST['post_ID'];
   if ($postId){
-  	if ($_POST['sticky']) {
+  	if ($_POST['sticky'] == 'sticky') {
   		stick_post( intval($postId) );
   	}else{
   		unstick_post( intval($postId));
