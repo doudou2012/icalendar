@@ -744,7 +744,7 @@ function my_action_callback() {
   		unstick_post( intval($postId));
   	}
   }
-  echo $post_id;
+  echo $postId;
   die();
 }
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
