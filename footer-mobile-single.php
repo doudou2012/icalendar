@@ -13,6 +13,12 @@
 <?php if (wp_is_mobile() && is_single()):?>
     <script type='text/javascript' src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
     <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/jquery.flexslider.js'></script>
+    <?php
+    if (strpos($_SERVER['HTTP_USER_AGENT'], 'iArtCalendar') !== false && wp_is_mobile() ):
+        ?>
+        <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/webridge.js'></script>
+        <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/icalendar.js'></script>
+    <?php endif;?>
     <footer id="colophon" class="site-footer" role="contentinfo">
         <div id="supplementary">
             <div id="footer-sidebar" class="footer-sidebar widget-area" role="complementary">

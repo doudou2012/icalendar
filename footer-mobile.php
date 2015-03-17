@@ -14,10 +14,11 @@
 <script type='text/javascript' src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
 <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/functions.js'></script>
 <?php
-    if (strpos($_SERVER['HTTP_USER_AGENT'], 'iArt Calendar') !== false ):
+    if (strpos($_SERVER['HTTP_USER_AGENT'], 'iArtCalendar') !== false  && wp_is_mobile() ):
 ?>
 <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/webridge.js'></script>
-<?php endif;?>
+        <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/icalendar.js'></script>
+    <?php endif;?>
  <script type="text/javascript">
  $(document).ready(function(){
  	var ua = navigator.userAgent,

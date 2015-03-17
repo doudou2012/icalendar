@@ -733,12 +733,12 @@ function add_sticky_scripts() {
 
 }
 //add_action( 'wp_enqueue_scripts', 'add_sticky_scripts' );
-add_action('wp_enqueue_scripts','add_icalendar_script');
-function add_icalendar_script(){
-    if (wp_is_mobile() && strpos($_SERVER['HTTP_USER_AGENT'], 'iArtCalendar') !== false  ){
-        wp_enqueue_script( 'icalendar_scripts', get_template_directory_uri() . '/js/icalendar.js', array('jquery'), '1.0.0', true );
-    }
-}
+//add_action('wp_enqueue_scripts','add_icalendar_script');
+//function add_icalendar_script(){
+//    if (wp_is_mobile() && strpos($_SERVER['HTTP_USER_AGENT'], 'iArtCalendar') !== false  ){
+//        wp_enqueue_script( 'icalendar_scripts', get_template_directory_uri() . '/js/icalendar.js', array('jquery'), '1.0.0', true );
+//    }
+//}
 
 function my_action_callback() {
   check_ajax_referer( 'sticky_post', 'security' );
