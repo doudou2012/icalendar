@@ -626,7 +626,7 @@ add_filter( 'the_posts', 'sticky_post_top' );
 function sticky_post_top( $posts ) {
 	$page = get_query_var('paged');
 	if ($page > 1) return $posts;
-	if ( is_main_query() && !is_single() ) {
+	if ( is_main_query() && !is_single() && !is_admin() ) {
 		global $wp_query;
 		$sticky_posts = get_option( 'sticky_posts' );
 		$post_nums = count($posts);
@@ -732,7 +732,13 @@ function add_sticky_scripts() {
   ));
 
 }
-add_action( 'wp_enqueue_scripts', 'add_sticky_scripts' );
+//add_action( 'wp_enqueue_scripts', 'add_sticky_scripts' );
+add_action('wp_enqueue_scripts','add_icalendar_script');
+function add_icalendar_script(){
+    if (wp_is_mobile() && strpos($_SERVER['HTTP_USER_AGENT'], 'iArtCalendar') !== false  ){
+        wp_enqueue_script( 'icalendar_scripts', get_template_directory_uri() . '/js/icalendar.js', array('jquery'), '1.0.0', true );
+    }
+}
 
 function my_action_callback() {
   check_ajax_referer( 'sticky_post', 'security' );
