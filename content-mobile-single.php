@@ -27,7 +27,9 @@
 			endif;
 		?>
 	</header><!-- .entry-header -->
-
+    <?php if (ua_icalendar_app()):?>
+        <p ><button type="button" id="add-fav" class="btn btn-link pull-right">收藏</button></p>
+    <?php endif;?>
     <?php 
     $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
     if ($str) {
