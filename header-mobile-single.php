@@ -16,6 +16,9 @@
     <?php if (is_single()) : ?>
         <link rel='stylesheet' id='genericons-css'  href='<?php echo get_template_directory_uri();?>/css/gxy-single-event.css' type='text/css' media='all' />
         <link rel='stylesheet' id='flexslider-style-css'  href="<?php echo get_template_directory_uri();?>/css/flexslider.css" type='text/css' media='all' />
+        <?php if (ua_icalendar_app()):?>
+            <link href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+            <?php endif;?>
     <?php endif;?>
 </head>
 <body <?php body_class(); ?>>
