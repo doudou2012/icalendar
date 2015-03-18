@@ -12,7 +12,8 @@
     $(document).ready(function(){
         shared($(document).find('title').text(),location.href,'');
         if ($('.icalendar-slider').length > 0 ){
-            $('.icalendar').flexslider({"smoothHeight":true,"slideshowSpeed":3000,"controlNav":false,"directionNav":false});
+            $('.flexslider').css("margin","0");
+            $('.flexslider').flexslider({"smoothHeight":true,"slideshowSpeed":3000,"controlNav":false,"directionNav":false});
         }
     });
 })(jQuery);

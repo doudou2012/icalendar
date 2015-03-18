@@ -20,6 +20,14 @@
 </head>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
+    <?php if (ua_icalendar_app() && is_single()):?>
+        <header id="masthead" class="site-header" role="banner">
+            <div class="header-main">
+                <div class="nav-back"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></div>
+                <div class="nav-share"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></div>
+            </div>
+        </header>
+    <?php endif;?>
     <div id="main" class="site-main">
 
 
