@@ -20,12 +20,12 @@
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
     <?php if (ua_icalendar_app()):?>
-    <div class="flexslider">
+    <div class="flexslider icalendar-slider">
         <ul class="slides">
-            <li><img src="http://lorempixel.com/320/100/" /> </li>
-            <li><img src="http://lorempixel.com/320/100/" /> </li>
-            <li><img src="http://lorempixel.com/320/100/" /> </li>
-            <li><img src="http://lorempixel.com/320/100/" /> </li>
+            <li><img src="http://i2.tietuku.com/1bb9d8a54070feba.jpg" /> </li>
+            <li><img src="http://i3.tietuku.com/ae2130e378d62c77.jpg" /> </li>
+            <li><img src="http://i3.tietuku.com/dbea1cb9bc08a055.jpg" /> </li>
+            <li><img src="http://i3.tietuku.com/ff9b8b2e42f6d47a.jpg" /> </li>
         </ul>
     </div>
     <?php else:?>
