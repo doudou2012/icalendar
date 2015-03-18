@@ -41,12 +41,7 @@
     }else{
         twentyfourteen_post_thumbnail();
     }
-    // $html = getThumbImages();
-    //  if ($html){
-    //     echo $thml;
-    //  }else{
-    //     twentyfourteen_post_thumbnail();
-    //  }
+
     ?>
 	<div class="entry-content">
         <h2>展览信息</h2>

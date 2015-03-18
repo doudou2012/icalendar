@@ -740,6 +740,14 @@ function add_sticky_scripts() {
 //    }
 //}
 
+/**
+ * 判断是否为icalendar ua
+ * @return bool
+ */
+function ua_icalendar_app(){
+    return (preg_match('/iArt\s+Calendar/',$_SERVER['HTTP_USER_AGENT']) !== false && wp_is_mobile()) ? true : false;
+}
+
 function my_action_callback() {
   check_ajax_referer( 'sticky_post', 'security' );
   $postId = $_POST['post_ID'];

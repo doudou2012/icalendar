@@ -14,8 +14,9 @@
 <script type='text/javascript' src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
 <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/functions.js'></script>
 <?php
-    if (preg_match('/iArt\s+Calendar/',$_SERVER['HTTP_USER_AGENT'])):
+    if (ua_icalendar_app()):
 ?>
+        <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/jquery.flexslider.js'></script>
 <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/webridge.js'></script>
         <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/icalendar.js'></script>
     <?php endif;?>

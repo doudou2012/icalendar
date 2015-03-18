@@ -8,8 +8,8 @@
         webridge.jsToNative('shared',param,function(result,error){
             console.log(result);
         });
-    }
+    };
     $(document).ready(function(){
-        shared('分享内容','http://icalendar.bbwc.cn','');
+        shared($(document).find('title').text(),location.href,'');
     });
 })(jQuery);
