@@ -2,7 +2,6 @@
  * Created by user on 15/3/17.
  */
 (function($){
-    $('.site-main').css('margin-top','44px');
     var baseUrl = window.location.pathname;
     var shared = function(content,url,img){
         var param = {"content":content,"url":url,"image":img};
@@ -27,6 +26,5 @@
                 shared($(document).find('title').text(),location.href,'');
             });
         }
-        //$('')
     });
 })(jQuery);
