@@ -126,6 +126,7 @@ span.glyphicon{
     height: 44px;
     cursor:pointer;
     text-align:center;
+    padding-top: 6px;
     display: block;
 }
 .nav-back{
