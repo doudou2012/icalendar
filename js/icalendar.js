@@ -42,7 +42,7 @@
                 pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
             }
             if (pid > 0 ){
-                $.getJSON(baseurl+'?favorite&check_fav',{postid:pid},function(data){
+                $.getJSON(baseUrl+'?favorite&check_fav',{postid:pid},function(data){
                     if (data.success){
                         setDisabled();
                     }else{
