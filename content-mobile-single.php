@@ -9,6 +9,7 @@
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */
+//$categories = get_terms(array('name'=>'city'));
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

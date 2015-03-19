@@ -576,6 +576,7 @@ function custom_field_search($search){
 //add_filter( 'posts_search', 'custom_field_search' );
 function custom_search_where($where) { // put the custom fields into an array
     global $wpdb;
+    if (is_admin()) return $where;
     $s = get_query_var('s');
     if (trim($s)){
     	$where = " AND ($wpdb->posts.post_status = 'publish') ";
@@ -619,6 +620,27 @@ function search_distinct() {
     return "DISTINCT"; 
 }
 
+/**
+ * 获取轮播图片
+ */
+function get_slider_img(){
+    if (ua_icalendar_app()){
+        $query_img = new WP_Query();
+        $img_posts = $query_img->query(array('post_type'=>'post','tag'=>'featured','order'=>'DESC','orderby'=>'ID'));// 'tag=featured&post_type=post&order=DESC&limit=5');
+        $html = '';
+        if (count($img_posts)){
+            $html.='<div class="flexslider icalendar-slider"><ul class="slides">';
+            foreach ($img_posts as $img_post) {
+                if ($img_post->post_type == 'post') {
+                    $html .= '<li>' . get_the_post_thumbnail($img_post->ID, 'large') . '</li>';
+                }
+            }
+            $html.='</ul></div>';
+        }
+        return $html;
+    }
+    return '';
+}
 /**
  * 查询置顶贴
  */ 
@@ -745,7 +767,7 @@ function add_sticky_scripts() {
  * @return bool
  */
 function ua_icalendar_app(){
-    return (preg_match('/iArt\s+Calendar/',$_SERVER['HTTP_USER_AGENT']) !== false && wp_is_mobile()) ? true : false;
+    return (preg_match('/iArt\s+Calendar/',$_SERVER['HTTP_USER_AGENT']) > 0 && wp_is_mobile()) ? true : false;
 }
 
 function my_action_callback() {
