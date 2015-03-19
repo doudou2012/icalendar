@@ -35,6 +35,6 @@
             </div>
         </header>
     <?php endif;?>
-    <div id="main" class="site-main<?php if (ua_icalendar_app() && is_single()) echo ' nav-margin-top'; ?>">
+    <div id="main" class="site-main<?php if (ua_icalendar_app()) echo ' nav-margin-top'; ?>">
 
 

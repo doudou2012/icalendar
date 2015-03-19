@@ -22,9 +22,11 @@
 </head>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-    <?php if (ua_icalendar_app()):
-        echo get_slider_img();
-        ?>
+    <?php if (ua_icalendar_app()):?>
+    <header id="masthead" class="site-header" role="banner">
+        <div class="nav-city"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
+    </header>
+        <?php echo get_slider_img();?>
     <?php else:?>
     <header id="masthead" class="site-header" role="banner">
         <div class="header-main">
@@ -45,6 +47,6 @@
         </div>
     </header>
     <?php endif;?>
-    <div id="main" class="site-main">
+    <div id="main" class="site-main<?php if (ua_icalendar_app()) echo ' nav-margin-top'; ?>">
 
 

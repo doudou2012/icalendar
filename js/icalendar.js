@@ -71,6 +71,17 @@
                 shared($(document).find('title').text(),location.href,'');
             });
         }
+        if ($('.nav-city').length > 0){
+            $('.nav-city').on('click',function(){
+                var thisUrl = location.href;
+                if (thisUrl.indexOf('?') >=0){
+                    thisUrl+='&city-list';
+                }else{
+                    thisUrl+='?city-list'
+                }
+                location.href = thisUrl;
+            });
+        }
         checkFav(0);
     });
 })(jQuery);
