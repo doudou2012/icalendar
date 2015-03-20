@@ -42,7 +42,7 @@ my_get_header(); ?>
 //						endif;
 //					?>
 <!--				</h1>-->
-<!--			</header>
+<!--			</header>-->
 
 			<?php
 					// Start the Loop.

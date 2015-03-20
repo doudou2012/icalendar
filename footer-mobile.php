@@ -52,6 +52,7 @@ if (ua_icalendar_app()){
                 <?php endforeach;?>
             <?php endif;?>
         </ul>
+        <hr />
         <p>热门艺术家 <span class="pull-right"><a href="<?=home_url().'?art-list'?>" >more>>></a></span></p>
         <ul class="list-inline">
             <?php if (count($artist) > 0):?>
