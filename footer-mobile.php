@@ -51,7 +51,7 @@ if (ua_icalendar_app()){
                 <?php endforeach;?>
             <?php endif;?>
         </ul>
-        <p><a href="" class="pull-right">more>>></a> </p>
+        <p><a href="<?=home_url().'?city-list'?>" class="pull-right">more>>></a> </p>
         <p>热门艺术家</p>
         <ul>
             <?php if (count($artist) > 0):?>
@@ -60,7 +60,7 @@ if (ua_icalendar_app()){
                 <?php endforeach;?>
             <?php endif;?>
         </ul>
-        <p><a href="" class="pull-right">more>>></a> </p>
+        <p><a href="<?=home_url().'?art-list'?>" class="pull-right">more>>></a> </p>
     </div>
 <?php }
 ?>
