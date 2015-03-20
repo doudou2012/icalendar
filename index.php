@@ -38,12 +38,8 @@ my_get_header()?>
 					 * use this in a child theme, then include a file called called content-___.php
 					 * (where ___ is the post format) and that will be used instead.
 					 */
-                    $content_name = get_post_format();
-                    if (isset($_GET['city-list']) && ua_icalendar_app()){
-                        $content_name = 'city-list';
-                    }
 
-					get_template_part( 'content', $content_name );
+					get_template_part( 'content', get_post_format() );
 
 				endwhile;
 				// Previous/next post navigation.

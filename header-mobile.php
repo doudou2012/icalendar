@@ -26,7 +26,12 @@
 <div id="page" class="hfeed site">
     <?php if (ua_icalendar_app()):?>
     <header id="masthead" class="site-header" role="banner">
+        <?php if(isset($_GET['city-list']) || isset($_GET['art-list'])):?>
+            <div class="nav-back"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></div>
+            <?php else:?>
         <div class="nav-city"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div>
+        <div class="nav-user"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+            <?php endif;?>
     </header>
         <?php echo get_slider_img();?>
     <?php else:?>

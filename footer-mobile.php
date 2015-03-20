@@ -37,5 +37,32 @@
 	$(document.body).css({"overflow-x":"hidden","overflow-y":"hidden" });
  });
  </script>
+<?php
+if (ua_icalendar_app()){
+    $cities = get_terms(array('name'=>'city'),array('order'=>'DESC','orderby'=>'count','number'=>6));
+    $artist = get_terms(array('name'=>'artist'),array('order'=>'DESC','orderby'=>'count','number'=>6));
+    ?>
+    <div class="jumbotron hidden" id="city-artist" >
+        <p>热门城市</p>
+        <ul>
+            <?php if (count($cities) > 0):?>
+                <?php foreach ($cities as $city):?>
+                    <li><a href=""><?=$city->name?></a></li>
+                <?php endforeach;?>
+            <?php endif;?>
+        </ul>
+        <p><a href="" class="pull-right">more>>></a> </p>
+        <p>热门艺术家</p>
+        <ul>
+            <?php if (count($artist) > 0):?>
+                <?php foreach ($artist as $art):?>
+                    <li><a href=""><?=$art->name?></a></li>
+                <?php endforeach;?>
+            <?php endif;?>
+        </ul>
+        <p><a href="" class="pull-right">more>>></a> </p>
+    </div>
+<?php }
+?>
 </body>
 </html>

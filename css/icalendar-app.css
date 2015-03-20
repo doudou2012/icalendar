@@ -6,13 +6,13 @@
 }
 .site-header{
     background-color:#ff0000;
-    max-width:400px;
+    max-width:414px;
     width: 100%;
     z-index: 4;
 }
 .header-main{
     padding-right:0;
-    padding:5 5px;
+    padding:5px 5px;
     height: 44px;
 }
 span.glyphicon{
@@ -28,10 +28,10 @@ span.glyphicon{
     padding-top: 6px;
     display: block;
 }
-.nav-back{
+.nav-back,.nav-city{
     float: left;
 }
-.nav-share,.nav-city{
+.nav-share{
     float: right;
 }
 .nav-margin-top{

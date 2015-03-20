@@ -82,6 +82,15 @@
                 location.href = thisUrl;
             });
         }
+        if ($('nav-user').length > 0 ){
+            $('nav-user').on('click',function(){
+                location.href = baseUrl + '?favorite';
+            });
+        }
+        if ($('.city-artist').length > 0){
+            $('.city-artist').removeClass('hidden');
+            $.layer({type:1,title:"城市和艺术家列表",area:['300px','400px'],closeBtn:[1,true],move:false,maxWidth:300,fadeIn:200,shift:'top',page:{dom:'#city-artist'}});
+        }
         checkFav(0);
     });
 })(jQuery);

@@ -234,6 +234,7 @@ function twentyfourteen_scripts() {
 	wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . '/css/flexslider.css', array() );
 	// Load the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style', 'genericons' ), '20131205' );
+    wp_enqueue_style( 'bootstrap-style' , 'http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css',array(),'');
 	wp_style_add_data( 'twentyfourteen-ie', 'conditional', 'lt IE 9' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -250,6 +251,7 @@ function twentyfourteen_scripts() {
 
 	if ( is_front_page() && 'slider' == get_theme_mod( 'featured_content_layout' ) ) {
 		wp_enqueue_script( 'twentyfourteen-slider', get_template_directory_uri() . '/js/slider.js', array( 'jquery' ), '20131205', true );
+
 		wp_localize_script( 'twentyfourteen-slider', 'featuredSliderDefaults', array(
 			'prevText' => __( 'Previous', 'twentyfourteen' ),
 			'nextText' => __( 'Next', 'twentyfourteen' )
@@ -258,6 +260,9 @@ function twentyfourteen_scripts() {
 
 	wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20140616', true );
 	wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/jquery.flexslider.js');
+    if  (ua_icalendar_app() || true){
+        wp_enqueue_script( 'twentyfourteen-layer', get_template_directory_uri() . '/js/layer/layer.min.js', array( 'jquery' ), '', true );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
 
@@ -620,13 +625,27 @@ function search_distinct() {
     return "DISTINCT"; 
 }
 
+add_filter('template_include', 'my_custom_template');
+function my_custom_template($single)
+{
+    if (isset($_GET['city-list'])) {
+        $single = TEMPLATEPATH . '/content-city-list.php';
+    }
+    return $single;
+}
 /**
  * 获取轮播图片
  */
 function get_slider_img(){
-    if (ua_icalendar_app()){
+    if (true || ua_icalendar_app()){
         $query_img = new WP_Query();
-        $img_posts = $query_img->query(array('post_type'=>'post','tag'=>'featured','order'=>'DESC','orderby'=>'ID'));// 'tag=featured&post_type=post&order=DESC&limit=5');
+        $args = array(
+            'post_type'=>'post',
+            'tag_id'=>300,
+            'order'=>'DESC',
+            'orderby'=>'ID'
+        );
+        $img_posts = $query_img->query($args);// 'tag=featured&post_type=post&order=DESC&limit=5');
         $html = '';
         if (count($img_posts)){
             $html.='<div class="flexslider icalendar-slider"><ul class="slides">';
