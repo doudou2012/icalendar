@@ -48,7 +48,7 @@ if (ua_icalendar_app()){
         <ul class="list-inline">
             <?php if (count($cities) > 0):?>
                 <?php foreach ($cities as $city):?>
-                    <li><a href=""><?=$city->name?></a></li>
+                    <li><a href="<?=get_term_link($city)?>"><?=$city->name?></a></li>
                 <?php endforeach;?>
             <?php endif;?>
         </ul>
@@ -56,7 +56,7 @@ if (ua_icalendar_app()){
         <ul class="list-inline">
             <?php if (count($artist) > 0):?>
                 <?php foreach ($artist as $art):?>
-                    <li><a href=""><?=$art->name?></a></li>
+                    <li><a href="<?=get_term_link($art)?>"><?=$art->name?></a></li>
                 <?php endforeach;?>
             <?php endif;?>
         </ul>

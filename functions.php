@@ -802,6 +802,13 @@ function my_action_callback() {
 }
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
 
+
+//function setArchiveTitle($title){
+//    if (isset($_GET[''])){
+//
+//    }
+//}
+
 add_action('wp_footer','flex_slider');
 function flex_slider(){
 	if (is_single()) {

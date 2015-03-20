@@ -21,7 +21,7 @@ my_get_header();
             <?php foreach ($list as $item):?>
             <li class="list-group-item">
                 <span class="badge"><?=$item->count?></span>
-                <?=$item->name;?>
+                <a href="<?=get_term_link($item)?>"><?=$item->name?></a>
             </li>
             <?php endforeach;?>
         </ul>
