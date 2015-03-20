@@ -61,6 +61,7 @@
         _url += (_url.split('?')[1] ? '&':'?') + param;
         return _url;
     };
+    var layer_index;
     $(document).ready(function(){
         if ($('.icalendar-slider').length > 0 ){
             $('.flexslider').css("margin","0");
@@ -85,9 +86,13 @@
         if ($('.nav-city').length > 0){
             $('.nav-city').on('click',function(){
                 $('#city-artist').removeClass('hidden');
-                $.layer({type:1,title:"城市和艺术家列表",area:['85%','auto'],closeBtn:[1,true],move:false,maxWidth:360,fadeIn:200,shift:'top',page:{dom:'#city-artist'}});
+                layer_index = $.layer({type:1,title:"城市和艺术家列表",area:['85%','auto'],closeBtn:[1,true],move:false,maxWidth:360,fadeIn:200,shift:'top',page:{dom:'#city-artist'}});
             });
-
+            $('#city-artist').find('a').each(function(){
+                $(this).on('click',function(){
+                    $.layer.closeAll();
+                })
+            });
         }
         checkFav(0);
     });
