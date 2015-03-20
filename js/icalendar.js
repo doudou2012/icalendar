@@ -71,25 +71,18 @@
                 shared($(document).find('title').text(),location.href,'');
             });
         }
-        //if ($('.nav-city').length > 0){
-        //    $('.nav-city').on('click',function(){
-        //        var thisUrl = location.href;
-        //        if (thisUrl.indexOf('?') >=0){
-        //            thisUrl+='&city-list';
-        //        }else{
-        //            thisUrl+='?city-list'
-        //        }
-        //        location.href = thisUrl;
-        //    });
-        //}
+
         if ($('.nav-user').length > 0 ){
             $('.nav-user').on('click',function(){
                 location.href = baseUrl + '?favorite';
             });
         }
         if ($('.nav-city').length > 0){
-            $('.city-artist').removeClass('hidden');
-            $.layer({type:1,title:"城市和艺术家列表",area:['300px','400px'],closeBtn:[1,true],move:false,maxWidth:300,fadeIn:200,shift:'top',page:{dom:'#city-artist'}});
+            $('.nav-city').on('click',function(){
+                $('.city-artist').removeClass('hidden');
+                $.layer({type:1,title:"城市和艺术家列表",area:['240px','400px'],closeBtn:[1,true],move:false,maxWidth:300,fadeIn:200,shift:'top',page:{dom:'#city-artist'}});
+            });
+
         }
         checkFav(0);
     });
