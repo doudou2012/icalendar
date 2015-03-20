@@ -260,9 +260,6 @@ function twentyfourteen_scripts() {
 
 	wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20140616', true );
 	wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/jquery.flexslider.js');
-    if  (ua_icalendar_app() || true){
-        wp_enqueue_script( 'twentyfourteen-layer', get_template_directory_uri() . '/js/layer/layer.min.js', array( 'jquery' ), '', true );
-    }
 }
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
 
