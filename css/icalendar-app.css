@@ -19,7 +19,7 @@ span.glyphicon{
     font-size: 30px;
     color:#fff;
 }
-.nav-back,.nav-share,.nav-city{
+.nav-back,.nav-share,.nav-city,.nav-user{
     background-color:#ff0000;
     width: 44px;
     height: 44px;
@@ -31,7 +31,7 @@ span.glyphicon{
 .nav-back,.nav-city{
     float: left;
 }
-.nav-share{
+.nav-share,.nav-user{
     float: right;
 }
 .nav-margin-top{
