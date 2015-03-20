@@ -634,7 +634,7 @@ function my_custom_template($single)
  * 获取轮播图片
  */
 function get_slider_img(){
-    if (true || ua_icalendar_app()){
+    if (ua_icalendar_app()){
         $query_img = new WP_Query();
         $args = array(
             'post_type'=>'post',
@@ -662,6 +662,7 @@ function get_slider_img(){
  */ 
 add_filter( 'the_posts', 'sticky_post_top' );
 function sticky_post_top( $posts ) {
+    global $wp_query;
 	$page = get_query_var('paged');
 	if ($page > 1) return $posts;
 	if ( is_main_query() && !is_single() && !is_admin() ) {

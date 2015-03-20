@@ -56,6 +56,11 @@
             return false;
         }
     };
+    var addParameter = function (param){
+        _url = location.href;
+        _url += (_url.split('?')[1] ? '&':'?') + param;
+        return _url;
+    };
     $(document).ready(function(){
         if ($('.icalendar-slider').length > 0 ){
             $('.flexslider').css("margin","0");
@@ -74,7 +79,7 @@
 
         if ($('.nav-user').length > 0 ){
             $('.nav-user').on('click',function(){
-                location.href = baseUrl + '?favorite';
+                location.href = addParameter('favorite&post_type=event');
             });
         }
         if ($('.nav-city').length > 0){
