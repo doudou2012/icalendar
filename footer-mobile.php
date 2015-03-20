@@ -60,7 +60,6 @@ if (ua_icalendar_app()){
                 <?php endforeach;?>
             <?php endif;?>
         </ul>
-        <p><a href="<?=home_url().'?art-list'?>" class="pull-right">more>>></a> </p>
     </div>
 <?php }
 ?>

@@ -625,7 +625,7 @@ function search_distinct() {
 add_filter('template_include', 'my_custom_template');
 function my_custom_template($single)
 {
-    if (isset($_GET['city-list'])) {
+    if (isset($_GET['city-list']) || isset($_GET['art-list'])) {
         $single = TEMPLATEPATH . '/content-city-list.php';
     }
     return $single;

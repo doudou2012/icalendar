@@ -27,5 +27,4 @@ my_get_header();
         </ul>
     <?php endif;?>
 </div>
-<!--</div><!-- #main-content -->-->
 <?php my_get_footer();?>
