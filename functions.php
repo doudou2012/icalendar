@@ -639,7 +639,7 @@ function archive_title($translate){
         if (get_query_var('s')){
             return  get_query_var('s');
         }else if (isset($_GET[''])){
-            return '我的收藏列表';
+            return '我的收藏夹';
         }else if ($wp_query->query_vars['taxonomy']){
             $value    = get_query_var($wp_query->query_vars['taxonomy']);
             $term = get_term_by('slug',$value,$wp_query->query_vars['taxonomy']);
@@ -831,12 +831,14 @@ add_action( 'wp_ajax_my_action', 'my_action_callback' );
 
 add_action('wp_footer','flex_slider');
 function flex_slider(){
+    if (ua_icalendar_app())
+        return;
 	if (is_single()) {
 		echo <<<EOF
     <script type="text/javascript">
         $(document).ready(function(){
             if ($('.flexslider').length > 0){
-                $('.flexslider').flexslider({"smoothHeight":true});
+                $('.flexslider').flexslider({"smoothHeight":true,"slideshowSpeed":3000,"controlNav":false,"directionNav":true});
             }
         });
 	</script>
