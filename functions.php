@@ -641,7 +641,7 @@ function archive_title($translate){
     if ($translate == '归档'){
         if (get_query_var('s')){
             return  get_query_var('s');
-        }else if (isset($_GET[''])){
+        }else if (isset($_GET['favorite'])){
             return '我的收藏夹';
         }else if ($wp_query->query_vars['taxonomy']){
             $value    = get_query_var($wp_query->query_vars['taxonomy']);
