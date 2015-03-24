@@ -31,13 +31,6 @@
                     </form></aside>	</div><!-- #footer-sidebar -->
         </div><!-- #supplementary -->
     </footer>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            if ($('.flexslider').length > 0){
-                $('.flexslider').flexslider({"smoothHeight":true});
-            }
-        });
-    </script>
 <?php endif;?>
     </div><!-- #page -->
 </body>

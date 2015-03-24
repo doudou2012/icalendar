@@ -35,7 +35,8 @@
     $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
     if ($str) {
         $images = explode(' ',$str);
-        echo renderSliderImages($images);
+        $showBullet = wp_is_mobile()?false:true;
+        echo renderSliderImages($images,$showBullet);
     }else{
         twentyfourteen_post_thumbnail();
     }
