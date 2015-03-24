@@ -630,6 +630,24 @@ function my_custom_template($single)
     }
     return $single;
 }
+if (ua_icalendar_app()){
+    add_filter('gettext','archive_title');
+}
+function archive_title($translate){
+    global $wp_query;
+    if ($translate == '归档'){
+        if (get_query_var('s')){
+            return  get_query_var('s');
+        }else if (isset($_GET[''])){
+            return '我的收藏列表';
+        }else if ($wp_query->query_vars['taxonomy']){
+            $value    = get_query_var($wp_query->query_vars['taxonomy']);
+            $term = get_term_by('slug',$value,$wp_query->query_vars['taxonomy']);
+            return $term->name;
+        }
+    }
+    return $translate;
+}
 /**
  * 获取轮播图片
  */
@@ -662,12 +680,11 @@ function get_slider_img(){
  */ 
 add_filter( 'the_posts', 'sticky_post_top' );
 function sticky_post_top( $posts ) {
-    global $wp_query;
 	$page = get_query_var('paged');
 	if ($page > 1) return $posts;
+    $sticky_posts = get_option( 'sticky_posts' );
 	if ( is_main_query() && !is_single() && !is_admin() ) {
-		global $wp_query;
-		$sticky_posts = get_option( 'sticky_posts' );
+        $oldPosts = $posts;
 		$post_nums = count($posts);
 		$sticky_offset = 0;
 		for ($i= 0; $i < count($post_nums) ; $i++){
@@ -681,12 +698,15 @@ function sticky_post_top( $posts ) {
 			}
 		}
 		if ( !empty( $sticky_posts) ) {
-			$stickies = get_posts( array(
-				'post__in' => $sticky_posts,
-				'post_type' => $wp_query->query_vars['post_type'],
-				'post_status' => 'publish',
-				'nopaging' => true
-				) );
+            global $wp_query;
+            $stickArgs = array(
+                'post__in' => $sticky_posts,
+                'post_type' => $wp_query->query_vars['post_type'],
+                'post_status' => 'publish',
+                'tax_query' => $wp_query->tax_query->queries,
+                'nopaging' => true
+            );
+            $stickies = get_posts( $stickArgs );
 			foreach ( $stickies as $sticky_post ) {
 				array_splice( $posts, $sticky_offset, 0, array( $sticky_post ) );
 				$sticky_offset++;
