@@ -231,7 +231,8 @@ function twentyfourteen_scripts() {
 
 	// Load our main stylesheet.
 	wp_enqueue_style( 'twentyfourteen-style', get_stylesheet_uri(), array( 'genericons' ) );
-	wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . '/css/flexslider.css', array() );
+//	wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . '/css/flexslider.css', array() );
+    wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . '/js/wowslider/style.css', array() );
 	// Load the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style', 'genericons' ), '20131205' );
     wp_enqueue_style( 'bootstrap-style' , 'http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css',array(),'');
@@ -259,7 +260,9 @@ function twentyfourteen_scripts() {
 	}
 
 	wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20140616', true );
-	wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/jquery.flexslider.js');
+//	wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/jquery.flexslider.js');
+    wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/wowslider.js');
+    wp_enqueue_script( 'slider-script',get_template_directory_uri() . '/js/script.js', array('jquery','slider'));
 }
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
 
@@ -663,13 +666,13 @@ function get_slider_img(){
         $img_posts = $query_img->query($args);// 'tag=featured&post_type=post&order=DESC&limit=5');
         $html = '';
         if (count($img_posts)){
-            $html.='<div class="flexslider icalendar-slider"><ul class="slides">';
+            $html.='<div id="wowslider-container1"><div class="ws_images"><ul>';
             foreach ($img_posts as $img_post) {
                 if ($img_post->post_type == 'post') {
                     $html .= '<li>' . get_the_post_thumbnail($img_post->ID, 'large') . '</li>';
                 }
             }
-            $html.='</ul></div>';
+            $html.='</ul></div></div>';
         }
         return $html;
     }
@@ -822,6 +825,26 @@ function my_action_callback() {
 }
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
 
+function renderSliderImages($images,$hasBullet = false){
+    if (is_string($images))
+        $images = explode(' ',$images);
+    $i = 1;
+    $bullets = '<div class="ws_bullets">';
+    $html = '<div id="wowslider-container1"><div class="ws_images"><ul>';
+    foreach ($images as  $value) {
+        $html.= '<li><img src="'.$value.'" alt="image-'.$i.'" title="image-'.$i.'" id="image-id-'.$i.'" /> </li>';
+        $bullets.='<a href="#" title="image-'.$i.'"><span>'.$i.'</span></a>';
+        ++$i;
+    }
+    $html.='</ul></div>';
+    $bullets.='</div>';
+
+    if ($hasBullet){
+        $html.=$bullets;
+    }
+    $html.=('<div class="ws_shadow"></div></div>');
+    return $html;
+}
 
 //function setArchiveTitle($title){
 //    if (isset($_GET[''])){
@@ -831,19 +854,7 @@ add_action( 'wp_ajax_my_action', 'my_action_callback' );
 
 add_action('wp_footer','flex_slider');
 function flex_slider(){
-    if (ua_icalendar_app())
-        return;
-	if (is_single()) {
-		echo <<<EOF
-    <script type="text/javascript">
-        $(document).ready(function(){
-            if ($('.flexslider').length > 0){
-                $('.flexslider').flexslider({"smoothHeight":true,"slideshowSpeed":3000,"controlNav":false,"directionNav":true});
-            }
-        });
-	</script>
-EOF;
-	}else{
+	if (!is_single()) {
 		echo <<<EOF
     <script type="text/javascript">
         $(document).ready(function(){

@@ -35,12 +35,7 @@
     $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
     if ($str) {
         $images = explode(' ',$str);
-        $html = '<div class="flexslider"><ul class="slides">';
-        foreach ($images as  $value) {
-            $html.= '<li><img src="'.$value.'" /> </li>';
-        }
-        $html.='</ul></div>';
-        echo $html;
+        echo renderSliderImages($images);
     }else{
         twentyfourteen_post_thumbnail();
     }

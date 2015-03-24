@@ -63,10 +63,10 @@
     };
     var layer_index;
     $(document).ready(function(){
-        if ($('.icalendar-slider').length > 0 ){
-            $('.flexslider').css("margin","0");
-            $('.flexslider').flexslider({"smoothHeight":true,"slideshowSpeed":3000,"controlNav":false,"directionNav":false});
-        }
+        //if ($('.icalendar-slider').length > 0 ){
+        //    $('.flexslider').css("margin","0");
+        //    $('.flexslider').flexslider({"smoothHeight":true,"slideshowSpeed":3000,"controlNav":false,"directionNav":false});
+        //}
         if ($('.nav-back').length > 0){
             $('.nav-back').on('click',function(){
                 history.go(-1);
