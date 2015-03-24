@@ -4,7 +4,7 @@
 (function($){
     var baseUrl = window.location.pathname;
     var shared = function(content,url,img){
-        var param = {"content":content,"url":url,"image":img};
+        var param = {"url":url};
         webridge.jsToNative('shared',param,function(result,error){
             console.log(result);
         });
