@@ -17,14 +17,14 @@ my_get_header();
 <!--<div id="main-content" class="main-content">-->
 <div class="city-list">
     <?php if (count($list) > 0): ?>
-        <ul class="list-group">
+        <div class="list-group">
             <?php foreach ($list as $item):?>
-            <li class="list-group-item">
+            <a href="<?=get_term_link($item)?>" class="list-group-item">
+                <?=$item->name?>
                 <span class="badge"><?=$item->count?></span>
-                <a href="<?=get_term_link($item)?>"><?=$item->name?></a>
-            </li>
+            </a>
             <?php endforeach;?>
-        </ul>
+        </div>
     <?php endif;?>
 </div>
 <?php my_get_footer();?>

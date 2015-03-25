@@ -97,14 +97,19 @@
                 });
             });
         }
-        if ($('.city-list').length > 0){
-            $('.city-list li').each(function(item){
-                $(this).on('click',function(event){
-                    event.preventDefault();
-                    location.href = $(this).find('a').attr('href');
-                });
-            });
-        }
+
+        $('a').on('click',function(){
+            $('a').removeClass('active');
+            $(this).addClass('active');
+        });
+        //if ($('.city-list').length > 0){
+        //    $('.city-list li').each(function(item){
+        //        $(this).on('click',function(event){
+        //            event.preventDefault();
+        //            location.href = $(this).find('a').attr('href');
+        //        });
+        //    });
+        //}
         checkFav(0);
     });
 })(jQuery);
