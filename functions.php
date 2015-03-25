@@ -656,14 +656,13 @@ function archive_title($translate){
  */
 function get_slider_img(){
     if (ua_icalendar_app()){
-        $query_img = new WP_Query();
-        $args = array(
+        $query_args = array(
+            'tag'=>'featured',
             'post_type'=>'post',
-            'tag_id'=>300,
             'order'=>'DESC',
-            'orderby'=>'ID'
+            'limit' => 5
         );
-        $img_posts = $query_img->query($args);// 'tag=featured&post_type=post&order=DESC&limit=5');
+        $img_posts = get_posts($query_args);
         $html = '';
         if (count($img_posts)){
             $html.='<div id="wowslider-container1"><div class="ws_images"><ul>';

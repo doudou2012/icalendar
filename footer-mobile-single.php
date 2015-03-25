@@ -24,7 +24,7 @@
     <footer id="colophon" class="site-footer" role="contentinfo">
         <div id="supplementary">
             <div id="footer-sidebar" class="footer-sidebar widget-area" role="complementary">
-                <aside id="search-4" class="widget widget_search"><form role="search" method="get" class="search-form" action="http://<?php echo $_SERVER['SERVER_NAME']?>/">
+                <aside id="search-4" class="widget widget_search"><form role="search" method="get" class="search-form" action="<?php echo home_url();?>" >
                         <label>
                             <input type="search" class="search-field" placeholder="搜索&hellip;" value="" name="s" title="搜索：" />
                         </label>
