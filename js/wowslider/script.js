@@ -19,5 +19,10 @@ function ws_blinds(m,l,a){var g=jQuery;var k=g(this);var c=m.parts||3;var j=g(".
 // http://javascript-source.com
 //***********************************************
 if ($('.ws_images li').length > 1){
-    jQuery("#wowslider-container1").wowSlider({effect:"",prev:"",next:"",duration:20*100,delay:20*100,width:640,height:360,autoPlay:true,autoPlayVideo:false,playPause:false,stopOnHover:true,loop:false,bullets:0,caption:false,captionEffect:"parallax",controls:false,controlsThumb:false,responsive:1,fullScreen:false,gestures:2,onBeforeStep:0,images:0});
+    if ($("#wowslider-container1").length > 0){
+        jQuery("#wowslider-container1").wowSlider({effect:"",prev:"",next:"",duration:20*100,delay:20*100,width:640,height:360,autoPlay:true,autoPlayVideo:false,playPause:false,stopOnHover:true,loop:false,bullets:0,caption:false,captionEffect:"parallax",controls:false,controlsThumb:false,responsive:1,fullScreen:false,gestures:2,onBeforeStep:0,images:0});
+    }
+    if ($('#wowslider-container2').length > 0){
+        jQuery("#wowslider-container1").wowSlider({effect:"",prev:"",next:"",duration:20*100,delay:20*100,width:'100%',height:200,autoPlay:true,autoPlayVideo:false,playPause:false,stopOnHover:true,loop:false,bullets:0,caption:false,captionEffect:"parallax",controls:false,controlsThumb:false,responsive:1,fullScreen:false,gestures:2,onBeforeStep:0,images:0});
+    }
 }

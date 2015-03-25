@@ -655,7 +655,8 @@ function archive_title($translate){
  * 获取轮播图片
  */
 function get_slider_img(){
-    if (ua_icalendar_app()){
+    wp_reset_query();
+    if (ua_icalendar_app() && (is_home() || is_front_page())){
         $query_args = array(
             'tag'=>'featured',
             'post_type'=>'post',
