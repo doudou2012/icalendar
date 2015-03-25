@@ -97,6 +97,14 @@
                 });
             });
         }
+        if ($('.city-list').length > 0){
+            $('.city-list li').each(function(item){
+                $(this).on('click',function(event){
+                    event.preventDefault();
+                    location.href = $(this).find('a').attr('href');
+                });
+            });
+        }
         checkFav(0);
     });
 })(jQuery);

@@ -655,7 +655,7 @@ function archive_title($translate){
  * 获取轮播图片
  */
 function get_slider_img(){
-    if (ua_icalendar_app() && (is_home() || is_front_page())){
+    if (ua_icalendar_app() && (is_home() || is_front_page()) && !(get_query_var('city') || get_query_var('artist'))){
         $query_args = array(
             'tag'=>'featured',
             'post_type'=>'post',
