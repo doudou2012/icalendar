@@ -80,7 +80,7 @@
 
         if ($('.nav-user').length > 0 ){
             $('.nav-user').on('click',function(){
-                location.href = addParameter('favorite&post_type=event');
+                location.href = addParameter(' favorite&post_type=event');
             });
         }
         if ($('.nav-city').length > 0){
