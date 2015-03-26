@@ -667,17 +667,19 @@ function get_slider_img(){
         $html = '';
         if (count($img_posts)){
             $i = 1;
-            $html.='<div id="wowslider-container1"><div class="ws_images"><ul>';
-            $bullets = '<div class="ws_bullets"><div>';
+//            $html.='<div id="wowslider-container1"><div class="ws_images"><ul>';
+//            $bullets = '<div class="ws_bullets"><div>';
+            $html.='<div id="slider">';
             foreach ($img_posts as $img_post) {
                 if ($img_post->post_type == 'post') {
-                    $html .= '<li>' . get_the_post_thumbnail($img_post->ID, 'large' ,array('id'=>'image-'.$i)) . '</li>';
-                    $bullets.= '<a href="#image-'.$i.'" ><span>'.$i.'</span></a>';
+                    $html .=  get_the_post_thumbnail($img_post->ID, 'large' ,array('id'=>'image-'.$i)) ;
+//                    $bullets.= '<a href="#image-'.$i.'" ><span>'.$i.'</span></a>';
                     ++$i;
                 }
             }
-            $bullets.='</div></div>';
-            $html.=('</ul></div>'.$bullets.'</div>');
+//            $bullets.='</div></div>';
+//            $html.=('</ul></div>'.$bullets.'</div>');
+            $html.='</div>';
         }
         return $html;
     }

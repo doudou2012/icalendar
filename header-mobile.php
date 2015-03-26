@@ -19,7 +19,8 @@
         <link rel="stylesheet" href="<?=WP_PLUGIN_URL?>/wxrobot/static/alertifyjs/css/alertify.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?=WP_PLUGIN_URL?>/wxrobot/static/alertifyjs/css/themes/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?=WP_PLUGIN_URL?>/wxrobot/static/css/alert-style.css" rel="stylesheet" />
-        <link rel='stylesheet' id='slider-style-css'  href="<?php echo get_template_directory_uri();?>/js/wowslider/style.css" type='text/css' media='all' />
+<!--        <link rel='stylesheet' id='slider-style-css'  href="--><?php //echo get_template_directory_uri();?><!--/js/wowslider/style.css" type='text/css' media='all' />-->
+        <link rel='stylesheet' id='slider-style-css'  href="<?php echo get_template_directory_uri();?>/css/jquery.excoloSlider.css" type='text/css' media='all' />
     <?php endif;?>
 </head>
 <body <?php body_class(); ?>>

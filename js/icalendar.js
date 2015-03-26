@@ -86,9 +86,6 @@
                 layer_index = $.layer({type:1,title:"城市和艺术家列表",area:['100%','100%'],closeBtn:[1,true],move:false,maxWidth:360,fadeIn:200,shift:'top',page:{dom:'#city-artist'},success:function(layero){
                     $('.xubox_layer').css('top',0);
                 }});
-
-
-
                 $('#city-artist ul a').each(function(item){
                     $(item).off('click');
                     $(item).on('click',function(){
