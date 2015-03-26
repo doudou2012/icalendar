@@ -41,6 +41,6 @@ span.glyphicon{
     margin: 0 20px 24px 20px;
 }
 
-#slider-single img{
+#slider-single img,#slider-home img{
     max-width: 100%;
 }
