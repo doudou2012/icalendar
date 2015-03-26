@@ -63,10 +63,7 @@
     };
     var layer_index;
     $(document).ready(function(){
-        //if ($('.icalendar-slider').length > 0 ){
-        //    $('.flexslider').css("margin","0");
-        //    $('.flexslider').flexslider({"smoothHeight":true,"slideshowSpeed":3000,"controlNav":false,"directionNav":false});
-        //}
+
         if ($('.nav-back').length > 0){
             $('.nav-back').on('click',function(){
                 history.go(-1);
@@ -89,6 +86,9 @@
                 layer_index = $.layer({type:1,title:"城市和艺术家列表",area:['100%','100%'],closeBtn:[1,true],move:false,maxWidth:360,fadeIn:200,shift:'top',page:{dom:'#city-artist'},success:function(layero){
                     $('.xubox_layer').css('top',0);
                 }});
+
+
+
                 $('#city-artist ul a').each(function(item){
                     $(item).off('click');
                     $(item).on('click',function(){
