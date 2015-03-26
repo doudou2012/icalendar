@@ -40,3 +40,7 @@ span.glyphicon{
 .city-list ul{
     margin: 0 20px 24px 20px;
 }
+
+#slider-single img{
+    max-width: 100%;
+}

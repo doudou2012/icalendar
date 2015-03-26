@@ -19,8 +19,7 @@
         <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/layer/layer.min.js'></script>
         <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/icalendar.js'></script>
     <?php endif;?>
-    <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/wowslider/wowslider.js'></script>
-    <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/wowslider/script.js'></script>
+    <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/jquery.excoloSlider.min.js'></script>
     <footer id="colophon" class="site-footer" role="contentinfo">
         <div id="supplementary">
             <div id="footer-sidebar" class="footer-sidebar widget-area" role="complementary">
