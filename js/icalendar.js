@@ -94,6 +94,12 @@
                 });
             });
         }
+        if ($('#slider-home').length > 0){
+            $("#slider-home").excoloSlider();
+        }
+        if ($('#slider-single').length > 0){
+            $("#slider-single").excoloSlider();
+        }
 
         $('a').on('click',function(){
             $('a').removeClass('active');

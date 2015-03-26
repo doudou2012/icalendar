@@ -232,7 +232,7 @@ function twentyfourteen_scripts() {
 	// Load our main stylesheet.
 	wp_enqueue_style( 'twentyfourteen-style', get_stylesheet_uri(), array( 'genericons' ) );
 //	wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . '/css/flexslider.css', array() );
-    wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . '/js/wowslider/style.css', array() );
+    wp_enqueue_style( 'slider-style', get_template_directory_uri() . '/css/jquery.excoloSlider.css', array() );
 	// Load the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style', 'genericons' ), '20131205' );
     wp_enqueue_style( 'bootstrap-style' , 'http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css',array(),'');
@@ -261,8 +261,8 @@ function twentyfourteen_scripts() {
 
 	wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20140616', true );
 //	wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/jquery.flexslider.js');
-    wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/wowslider.js');
-    wp_enqueue_script( 'slider-script',get_template_directory_uri() . '/js/script.js', array('jquery','slider'));
+    wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/jquery.excoloSlider.min.js');
+//    wp_enqueue_script( 'slider-script',get_template_directory_uri() . '/js/script.js', array('jquery','slider'));
 }
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
 
@@ -667,9 +667,7 @@ function get_slider_img(){
         $html = '';
         if (count($img_posts)){
             $i = 1;
-//            $html.='<div id="wowslider-container1"><div class="ws_images"><ul>';
-//            $bullets = '<div class="ws_bullets"><div>';
-            $html.='<div id="slider">';
+            $html.='<div id="slider-home">';
             foreach ($img_posts as $img_post) {
                 if ($img_post->post_type == 'post') {
                     $html .=  get_the_post_thumbnail($img_post->ID, 'large' ,array('id'=>'image-'.$i)) ;
@@ -677,8 +675,6 @@ function get_slider_img(){
                     ++$i;
                 }
             }
-//            $bullets.='</div></div>';
-//            $html.=('</ul></div>'.$bullets.'</div>');
             $html.='</div>';
         }
         return $html;
@@ -832,24 +828,14 @@ function my_action_callback() {
 }
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
 
-function renderSliderImages($images,$hasBullet = false){
+function renderSliderImages($images){
     if (is_string($images))
         $images = explode(' ',$images);
-    $i = 1;
-    $bullets = '<div class="ws_bullets">';
-    $html = '<div id="wowslider-container1"><div class="ws_images"><ul>';
+    $html='<div id="slider-single">';
     foreach ($images as  $value) {
-        $html.= '<li><img src="'.$value.'" alt="image-'.$i.'" title="image-'.$i.'" id="image-id-'.$i.'" /> </li>';
-        $bullets.='<a href="#" title="image-'.$i.'"><span>'.$i.'</span></a>';
-        ++$i;
+        $html.= '<img src="'.$value.'" />';
     }
-    $html.='</ul></div>';
-    $bullets.='</div>';
-
-    if ($hasBullet){
-        $html.=$bullets;
-    }
-    $html.=('<div class="ws_shadow"></div></div>');
+    $html.='</div>';
     return $html;
 }
 
