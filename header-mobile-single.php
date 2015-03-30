@@ -31,7 +31,7 @@
         <header id="masthead" class="site-header" role="banner">
 <!--            <div class="header-main">-->
                 <div class="nav-back"><span class="previous-icon" aria-hidden="true"></span></div>
-                <span class="nav-title">「展览日历」</span>
+                <span class="nav-title">展览日历</span>
                 <div class="nav-share"><span class="share-icon" aria-hidden="true"></span></div>
 <!--            </div>-->
         </header>
