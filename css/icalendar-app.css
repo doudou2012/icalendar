@@ -40,7 +40,37 @@ span.glyphicon{
 .city-list ul{
     margin: 0 20px 24px 20px;
 }
-
+.bullet_list{
+    width: 100%;
+    height: 100%;
+    background-image: url("./bullet_list.png");
+}
+.user-icon{
+    width: 100%;
+    height: 100%;
+    background-image: url("./user.png");
+}
+.previous-icon{
+    width: 100%;
+    height: 100%;
+    background-image: url("./previous.png");
+}
+.share-icon{
+    width: 100%;
+    height: 100%;
+    background-image: url("./share.png");
+}
 #slider-single img,#slider-home img{
     max-width: 100%;
+}
+
+.nav-title{
+    font-size: 17px;
+    color:#fff;
+    position:absolute;
+    line-height: 44px;
+    height: 100%;
+    margin-left: 35%;
+    text-align: center;
+    display: block;
 }
