@@ -32,6 +32,7 @@
  *
  * @since Twenty Fourteen 1.0
  */
+define('INVITE_USER_KEY','invite_users');
 if ( ! isset( $content_width ) ) {
 	$content_width = 474;
 }
@@ -858,3 +859,44 @@ EOF;
 	}
     
 }
+
+/**
+ * 判断是否已经收藏了
+ * @param $pid
+ * @return bool
+ */
+function check_fav($pid){
+    if (!is_user_logged_in()) return false;
+    if (intval($pid) > 0){
+        global $wpdb;
+        $rst = $wpdb->get_row($wpdb->prepare('SELECT post_id FROM wp_favorite WHERE user_id = %d  AND post_id=%d ',get_current_user_id(),$pid));
+        if ($rst && $rst->post_id){
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
+/**
+ * 自定义请求处理函数
+ */
+function customRequstHandler(){
+    $pid = get_query_var('p');
+    if  (isset($_GET['invite'])){//生成邀请页面
+
+    }else if (isset($_GET['accept']) && $_GET['nick']){//添加参加活动的昵称
+        if (intval($pid) > 0){
+            //获取当前的邀请用户列表
+            $invite_users = get_post_meta($pid,INVITE_USER_KEY);
+            if (!$invite_users){
+                $current_user = wp_get_current_user();
+                $invite_users= $current_user->user_login;
+            }
+            if ($_GET['nick']){//如果有昵称，添加
+                $invite_users.= (','.$_GET['nick']);
+            }
+            update_post_meta($pid,INVITE_USER_KEY,$invite_users);
+        }
+    }
+}
+

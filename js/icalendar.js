@@ -10,9 +10,14 @@
         });
     };
     var setDisabled = function(){
-        $('#add-fav').attr("disabled", "disabled");
-        $('#add-fav').css({"pointer-events":"none","cursor":"not-allowed"});
-        $('#add-fav').text('已收藏');
+        if  ($('#add-fav').length > 0){
+            $('#add-fav').off('click').attr('disabled','disabled');
+            var i = $('#add_fav').find('i')[0];
+            $(i).removeClass('glyphicon-heart-empty').addClass('glyphicon-heart');
+        }
+        //$('#add-fav').attr("disabled", "disabled");
+        //$('#add-fav').css({"pointer-events":"none","cursor":"not-allowed"});
+        //$('#add-fav').text('已收藏');
     };
     var showloginForm = function(){
         var sign = new Sign({login_success:function(){window.location.reload()}});
@@ -64,6 +69,12 @@
     var layer_index;
     $(document).ready(function(){
 
+        if ($('#add_fav').length > 0){
+            pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
+            if (pid > 0){
+                addFavorite(pid);
+            }
+        }
         if ($('.nav-back').length > 0){
             $('.nav-back').on('click',function(){
                 history.go(-1);
@@ -113,6 +124,7 @@
         //        });
         //    });
         //}
-        checkFav(0);
+        //checkFav(0);
+
     });
 })(jQuery);

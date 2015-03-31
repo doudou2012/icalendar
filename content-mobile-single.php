@@ -10,6 +10,7 @@
  * @since Twenty Fourteen 1.0
  */
 //$categories = get_terms(array('name'=>'city'));
+$isFav = check_fav(the_ID());
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -28,9 +29,9 @@
 			endif;
 		?>
 	</header><!-- .entry-header -->
-    <?php if (ua_icalendar_app()):?>
-        <p ><button type="button" id="add-fav" class="btn btn-link pull-right">收藏</button></p>
-    <?php endif;?>
+<!--    --><?php //if (ua_icalendar_app()):?>
+<!--        <p ><button type="button" id="add-fav" class="btn btn-link pull-right">收藏</button></p>-->
+<!--    --><?php //endif;?>
     <?php 
     $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
     if ($str) {
@@ -43,6 +44,12 @@
 
     ?>
 	<div class="entry-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6"> <button class="btn btn-primary " <?= $isFav ? 'id="add_fav" disabled="disabled" ':''?> ><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i> 感兴趣</button></div>
+                <div class="col-xs-6"><button  class="btn btn-primary" id="invite-friends"><i class="glyphicon glyphicon-share-alt"></i> 邀请好友</button></div>
+            </div>
+        </div>
         <h2>展览信息</h2>
         <table class="table-show">
             <tbody>
