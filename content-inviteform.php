@@ -7,7 +7,7 @@
  * Time: 下午3:08
  */
 my_get_header();
-$pid = get_query_var('p');
+$pid = $_GET=['p'];
 updateJoinUserList($pid);
 ?>
 <div class="container">

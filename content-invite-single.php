@@ -10,7 +10,7 @@
  * @since Twenty Fourteen 1.0
  */
 //$categories = get_terms(array('name'=>'city'));
-$pid = get_query_var('p');
+$pid = $_GET['p'];
 $post = get_post($pid);
 $joins = get_join_user($pid);
 ?>
