@@ -124,14 +124,14 @@
         if ($('#invite-friends').length > 0){
             $('#invite-friends').on('click',function(){
                 pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
-                document.location.href = baseUrl + '?invite&form&p='+pid;
+                document.location.href = baseUrl + '?invite&form&pid='+pid;
             });
         }
 
         if ($('#send_invite').length > 0){
             $('#send_invite').on('click',function(){
                 var pid = parseInt($('#p_id').val());
-                var share_url = baseUrl + '?invite&info&p='+pid;
+                var share_url = baseUrl + '?invite&info&pid='+pid;
                 shared('',share_url);
             });
             $('#cancel_invite').on('click',function(){

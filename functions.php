@@ -899,7 +899,7 @@ function get_join_user($pid){
 add_action('wp_loaded','customRequstHandler',11);
 function customRequstHandler(){
     if (isset($_GET['invite'])){
-        $pid = get_query_var('p');
+        $pid = $_GET['pid'];
         if (isset($_GET['accept'])){//添加参加活动的昵称
             $update  = updateJoinUserList($pid);
             if ($update){
