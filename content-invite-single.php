@@ -11,6 +11,7 @@
  */
 //$categories = get_terms(array('name'=>'city'));
 $pid = $_GET['pid'];
+$date = urldecode($_REQUEST['date']);
 $post = get_post($pid);
 $joins = get_join_user($pid);
 ?>
@@ -18,7 +19,7 @@ $joins = get_join_user($pid);
 	<header class="entry-header">
         <h1 class="entry-title"><?php echo '我想去'.types_render_field('place','').'的'.$post->post_title.'，你也要一起来吗？'; ?></h1>
         <div>
-            <span class="time-span"></span>
+            <span class="time-span"><?=$date?></span>
             <span class="glyphicon glyphicon-user"><?=$post->post_author?></span>
         </div>
 	</header><!-- .entry-header -->
