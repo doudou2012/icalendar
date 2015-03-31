@@ -11,7 +11,7 @@
  */
 //$categories = get_terms(array('name'=>'city'));
 $pid = $_GET['pid'];
-$date = urldecode($_REQUEST['date']);
+$date = date('Y-m-d H:s',strtotime(urldecode($_REQUEST['date'])));
 $post = get_post($pid);
 $joins = get_join_user($pid);
 ?>
