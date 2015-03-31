@@ -14,7 +14,7 @@ updateJoinUserList($pid);
     <h1>邀请朋友</h1>
     <p>选择时间</p>
     <input class="form-control" type="datetime-local" name="date"/>
-    <input type="hidden" name="pid" value="<?=$pid?>" >
+    <input type="hidden" name="pid" id="p_id" value="<?=$pid?>" >
     <button class="btn btn-primary btn-block" id="send_invite">写好了，发出去</button>
     <button class="btn btn-link " id="cancel_invite">还是算了</button>
 </div>

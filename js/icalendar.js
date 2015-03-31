@@ -130,8 +130,8 @@
 
         if ($('#send_invite').length > 0){
             $('#send_invite').on('click',function(){
-                var pid = parseInt($('input[name="pid"]')[0].val());
-                var share_url = baseUrl + '?invite&pid='+pid+'&info' ;
+                var pid = parseInt($('#p_id').val());
+                var share_url = baseUrl + '?invite&info&pid='+pid;
                 shared('',share_url);
             });
             $('#cancel_invite').on('click',function(){
