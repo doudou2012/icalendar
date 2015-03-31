@@ -144,10 +144,11 @@
                 var pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
                 layer.prompt({title:"称呼",length:20},function(val, index, elem){
                     $.post(baseUrl+'?invite&accept',{pid:pid},function(data){
-                        if (data.success){
-                            location.href= baseUrl+'?invite&info&pid'+pid;
-                        }
                         $.layer.closeAll();
+                        if (data.success){
+                            location.reload();
+                            //location.href= baseUrl+'?invite&info&pid'+pid;
+                        }
                     });
                 });
             });

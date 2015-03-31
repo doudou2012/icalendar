@@ -888,7 +888,7 @@ function check_fav($pid){
 
 function get_join_user($pid){
     if (intval($pid) > 0){
-        $join_users = get_post_meta($pid,INVITE_USER_KEY);
+        $join_users = get_post_meta($pid,INVITE_USER_KEY,true);
         return  explode(',',$join_users);
     }
     return array();
