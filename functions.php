@@ -918,12 +918,12 @@ function updateJoinUserList($pid){
         $join_users = get_post_meta($pid,INVITE_USER_KEY);
         //获取当前的邀请用户列表
         if (!$join_users){
-            $join_users=  array($current_user->user_login);
+            $join_users=  $current_user->user_login;
         }
         if ($_GET['nick']){
             $join_arr = array_diff(explode(',',$join_users),array($_GET['nick']));
             array_push($join_arr,$_GET['nick']);
-            $join_users.= implode(',',$join_arr);
+            $join_users = implode(',',$join_arr);
         }
         return update_post_meta($pid,INVITE_USER_KEY,$join_users);
     }

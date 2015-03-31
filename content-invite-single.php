@@ -14,13 +14,14 @@ $pid = $_GET['pid'];
 $date = date('Y-m-d H:s',strtotime(urldecode($_REQUEST['date'])));
 $post = get_post($pid);
 $joins = get_join_user($pid);
+$current_user = wp_get_current_user();
 ?>
 <article id="post-<?=$post->ID?>" <?php post_class(); ?>>
 	<header class="entry-header">
         <h1 class="entry-title"><?php echo '我想去'.types_render_field('place','').'的'.$post->post_title.'，你也要一起来吗？'; ?></h1>
         <div>
             <span class="time-span"><?=$date?></span>
-            <span class="glyphicon glyphicon-user"><?=$post->post_author?></span>
+            <span class="glyphicon glyphicon-user"><?=$current_user->login?></span>
         </div>
 	</header><!-- .entry-header -->
     <?php 
