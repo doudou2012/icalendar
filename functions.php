@@ -632,6 +632,14 @@ function my_custom_template($single)
     if (isset($_GET['city-list']) || isset($_GET['art-list'])) {
         $single = TEMPLATEPATH . '/content-city-list.php';
     }
+    else if (isset($_GET['invite'])){
+        if (isset($_GET['form'])){
+            $single = TEMPLATEPATH . '/content-inviteform.php';
+        }
+        else if (isset($_GET['info'])){
+            $single = TEMPLATEPATH . '/content-invite-single.php';
+        }
+    }
     return $single;
 }
 if (ua_icalendar_app()){
@@ -877,26 +885,48 @@ function check_fav($pid){
     }
     return false;
 }
+
+function get_join_user($pid){
+    if (intval($pid) > 0){
+        $join_users = get_post_meta($pid,INVITE_USER_KEY);
+        return  explode(',',$join_users);
+    }
+    return array();
+}
 /**
  * 自定义请求处理函数
  */
+add_action('wp_loaded','customRequstHandler',11);
 function customRequstHandler(){
-    $pid = get_query_var('p');
-    if  (isset($_GET['invite'])){//生成邀请页面
-
-    }else if (isset($_GET['accept']) && $_GET['nick']){//添加参加活动的昵称
-        if (intval($pid) > 0){
-            //获取当前的邀请用户列表
-            $invite_users = get_post_meta($pid,INVITE_USER_KEY);
-            if (!$invite_users){
-                $current_user = wp_get_current_user();
-                $invite_users= $current_user->user_login;
+    if (isset($_GET['invite'])){
+        $pid = get_query_var('p');
+        if (isset($_GET['accept'])){//添加参加活动的昵称
+            $update  = updateJoinUserList($pid);
+            if ($update){
+                echo json_encode(array('success'=>true,data=>$pid));
+            }else{
+                echo json_encode(array('success'=>false,data=>0));
             }
-            if ($_GET['nick']){//如果有昵称，添加
-                $invite_users.= (','.$_GET['nick']);
-            }
-            update_post_meta($pid,INVITE_USER_KEY,$invite_users);
+            exit;
         }
     }
+}
+
+function updateJoinUserList($pid){
+    if (intval($pid) > 0){
+        $current_user = wp_get_current_user();
+        $join_users = get_post_meta($pid,INVITE_USER_KEY);
+        //获取当前的邀请用户列表
+        if (!$join_users){
+            $join_users=  array($current_user->user_login);
+        }
+        if ($_GET['nick']){
+            $join_arr = array_diff(explode(',',$join_users),array($_GET['nick']));
+            array_push($join_arr,$_GET['nick']);
+            $join_users.= implode(',',$join_arr);
+        }
+        return update_post_meta($pid,INVITE_USER_KEY,$join_users);
+    }
+    return false;
 }
 

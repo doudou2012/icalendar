@@ -10,27 +10,18 @@
  * @since Twenty Fourteen 1.0
  */
 //$categories = get_terms(array('name'=>'city'));
-$isFav = check_fav(get_the_ID());
+$pid = get_query_var('p');
+$post = get_post($pid);
+$joins = get_join_user($pid);
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?=$post->ID?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) && twentyfourteen_categorized_blog() ) : ?>
-		<div class="entry-meta">
-			<span class="cat-links"><?php echo get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'twentyfourteen' ) ); ?></span>
-		</div>
-		<?php
-			endif;
-
-			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
-				the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
-			endif;
-		?>
+        <h1 class="entry-title"><?php echo '我想去'.types_render_field('place','').'的'.$post->post_title.'，你也要一起来吗？'; ?></h1>
+        <div>
+            <span class="time-span"></span>
+            <span class="glyphicon glyphicon-user"><?=$post->post_author?></span>
+        </div>
 	</header><!-- .entry-header -->
-    <?php if (!ua_icalendar_app()):?>
-        <p ><button type="button" id="add_fav" class="btn btn-link pull-right"><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i>收藏</button></p>
-    <?php endif;?>
     <?php 
     $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
     if ($str) {
@@ -43,14 +34,6 @@ $isFav = check_fav(get_the_ID());
 
     ?>
 	<div class="entry-content">
-        <?php if (ua_icalendar_app()):?>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-6"> <button class="btn btn-primary " <?= $isFav ? 'id="add_fav" disabled="disabled" ':''?> ><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i> 感兴趣</button></div>
-                <div class="col-xs-6"><button  class="btn btn-primary" id="invite-friends"><i class="glyphicon glyphicon-share-alt"></i> 邀请好友</button></div>
-            </div>
-        </div>
-        <?php endif;?>
         <h2>展览信息</h2>
         <table class="table-show">
             <tbody>
@@ -143,3 +126,21 @@ $isFav = check_fav(get_the_ID());
 
 	</div> <!-- .entry-content -->
 </article><!-- #post-## -->
+<div>
+    <span>查看展览详情</span>
+    <span class="glyphicon glyphicon-menu-down"></span>
+    <button class="btn btn-primary btn-block" id="accept-invite">好！</button>
+</div>
+
+<div class="footer">
+    <hr />
+    <p>还有谁去......</p>
+    <ul class="list-inline">
+        <?php if ($joins && count($joins) > 0):?>
+            <?php foreach($joins as $row):?>
+            <li><span><?=$row?></span></li>
+            <?php endforeach;?>
+        <?php endif;?>
+    </ul>
+</div>
+

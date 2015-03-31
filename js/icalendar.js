@@ -75,6 +75,10 @@
                 addFavorite(pid);
             }
         }
+        if ($('#invite-friends').length > 0){
+            //邀请好友
+
+        }
         if ($('.nav-back').length > 0){
             $('.nav-back').on('click',function(){
                 history.go(-1);
@@ -116,15 +120,36 @@
             $('a').removeClass('active');
             $(this).addClass('active');
         });
-        //if ($('.city-list').length > 0){
-        //    $('.city-list li').each(function(item){
-        //        $(this).on('click',function(event){
-        //            event.preventDefault();
-        //            location.href = $(this).find('a').attr('href');
-        //        });
-        //    });
-        //}
-        //checkFav(0);
 
+        if ($('#invite-friends').length > 0){
+            $('#invite-friends').on('click',function(){
+                pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
+                document.location.href = baseUrl + '?invite&form&p='+pid;
+            });
+        }
+
+        if ($('#send_invite').length > 0){
+            $('#send_invite').on('click',function(){
+                var pid = parseInt($('input[name="pid"]')[0].val());
+                var share_url = baseUrl + '?invite&pid='+pid+'&info' ;
+                shared('',share_url);
+            });
+            $('#cancel_invite').on('click',function(){
+                history.go(-1);
+            });
+        }
+        if ($('#accept-invite').length > 0){
+            $('#accept-invite').on(function(){
+                var pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
+                layer.prompt({title:"称呼",length:20},function(val, index, elem){
+                    $.post(baseUrl+'?invite&accept',{pid:pid},function(data){
+                        if (data.success){
+                            location.href= baseUrl+'?invite&info&pid'+pid;
+                        }
+                        $.layer.closeAll();
+                    });
+                });
+            });
+        }
     });
 })(jQuery);
