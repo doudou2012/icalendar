@@ -10,7 +10,7 @@
  * @since Twenty Fourteen 1.0
  */
 //$categories = get_terms(array('name'=>'city'));
-$isFav = check_fav(the_ID());
+$isFav = check_fav(get_the_ID());
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
