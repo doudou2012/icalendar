@@ -96,4 +96,10 @@ span.glyphicon{
     .masthead-fixed .site-header {
         box-shadow: 0 1px 1px rgba(0,0,0,0.3);
     }
+    .list-view .site-content .entry-title {
+        font-size: 20px;
+    }
+    .list-view .site-content .entry-meta {
+        font-size: 15px;
+    }
 }
