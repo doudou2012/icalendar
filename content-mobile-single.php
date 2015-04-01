@@ -31,7 +31,7 @@ $isFav = check_fav(get_the_ID());
     <?php if (!ua_icalendar_app()):?>
         <p ><button type="button" id="add_fav" class="btn btn-link pull-right"><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i>收藏</button></p>
     <?php endif;?>
-    <?php 
+    <?php
     $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
     if ($str) {
         $images = explode(' ',$str);
@@ -56,7 +56,7 @@ $isFav = check_fav(get_the_ID());
             <tbody>
             <tr>
                 <th>展览时间</th>
-                <td><?php   echo types_render_field('start-time',array('output'=>'normal')), '&nbsp;  -   &nbsp;', types_render_field('end-time',array('output'=>'normal')); ?></td>
+                <td><?php   echo types_render_field('start-time',array('output'=>'normal')), ' 到 ', types_render_field('end-time',array('output'=>'normal')); ?></td>
             </tr>
             <?php
                 $place= types_render_field('place','');
