@@ -57,13 +57,25 @@ span.glyphicon{
     max-width: 100%;
 }
 
-.nav-title{
-    font-size: 17px;
-    color:#fff;
-    position:absolute;
-    line-height: 44px;
-    height: 100%;
-    margin-left: 35%;
-    text-align: center;
-    display: block;
+.nav-title {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 44px;
+  width: 100%;
+  margin: 0 auto;
+  position: absolute;
+  display: inline-block;
+}
+
+.nav-fly-in {
+    -webkit-animation: fly-in 1s;
+    -o-animation: fly-in 1s;
+    animation: fly-in 1s;
+}
+
+@keyframes fly-in {
+    from {top: -44px;}
+    to {top: 0px;}
 }
