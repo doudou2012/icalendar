@@ -28,6 +28,9 @@ $current_user = wp_get_current_user();
         <link rel="stylesheet" href="<?=WP_PLUGIN_URL?>/wxrobot/static/alertifyjs/css/alertify.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?=WP_PLUGIN_URL?>/wxrobot/static/alertifyjs/css/themes/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?=WP_PLUGIN_URL?>/wxrobot/static/css/alert-style.css" rel="stylesheet" />
+    <script type="text/javascript">
+//        layer.use('extend/layer.ext.js');
+    </script>
 </head>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
@@ -169,6 +172,7 @@ $current_user = wp_get_current_user();
 <script type="text/javascript" src="<?=WP_PLUGIN_URL?>/wxrobot/account/static/sign.js"></script>
 <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/webridge.js'></script>
 <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/layer/layer.min.js'></script>
+<script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/layer/extend/layer.ext.js'></script>
 <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/icalendar.js'></script>
 </body>
 </html>
