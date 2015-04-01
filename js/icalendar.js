@@ -10,8 +10,8 @@
         });
     };
     var setDisabled = function(){
-        if  ($('#add-fav').length > 0){
-            $('#add-fav').off('click').attr('disabled','disabled');
+        if  ($('#add_fav').length > 0){
+            $('#add_fav').off('click').attr('disabled','disabled');
             var i = $('#add_fav').find('i')[0];
             $(i).removeClass('glyphicon-heart-empty').addClass('glyphicon-heart');
         }
@@ -146,7 +146,6 @@
                 layer.prompt({title:"称呼",length:20},function(val, index, elem){
                     var reqUrl = baseUrl+'?invite&accept';
                     $.getJSON(reqUrl,{pid:pid,nick:encodeURIComponent(val)},function(data){
-                        //$.layer.closeAll();
                         if (data.success){
                             location.reload();
                             //location.href= baseUrl+'?invite&info&pid'+pid;
