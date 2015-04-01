@@ -103,3 +103,41 @@ span.glyphicon{
         font-size: 15px;
     }
 }
+
+/* Menu */
+  .cityArtistMenuBg {
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 44px;
+  left: 0;
+  z-index: 1999;
+  width: 100vw;
+  height: 100vh;
+}
+.cityArtistMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  z-index: 2000;
+  background-color: #222;
+  color: white;
+  padding: 0 20px;
+}
+.cityArtistMenu h3 {
+  font-size: 18px;
+  font-weight: 100;
+}
+.cityArtistMenu ul {
+  list-style: none;
+  padding: 0;
+}
+.cityArtistMenu li {
+  line-height: 35px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.cityArtistMenu a {
+  color: white;
+  text-decoration: none;
+}
