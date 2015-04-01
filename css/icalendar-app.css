@@ -85,6 +85,9 @@ span.glyphicon{
 }
 
 @media screen and (max-width: 414px) {
+    .list-view .content-area {
+        padding: 0;
+    }
     .list-view .site-content .hentry {
         padding: 0;
     }
