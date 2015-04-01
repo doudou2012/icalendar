@@ -28,6 +28,9 @@ span.glyphicon{
     padding-top: 6px;
     display: block;
 }
+.nav-back,.nav-share,.nav-city,.nav-user:hover{
+    background-color:black;
+}
 .nav-back,.nav-city{
     float: left;
 }
@@ -57,13 +60,25 @@ span.glyphicon{
     max-width: 100%;
 }
 
-.nav-title{
-    font-size: 17px;
-    color:#fff;
-    position:absolute;
-    line-height: 44px;
-    height: 100%;
-    margin-left: 35%;
-    text-align: center;
-    display: block;
+.nav-title {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 44px;
+  width: 50%;
+  margin: 0 25%;
+  position: absolute;
+  display: inline-block;
+}
+
+.nav-fly-in {
+    top: -44px;
+    -webkit-animation-name: fly-in;
+    -webkit-animation-duration: 1s;
+}
+
+@keyframes fly-in {
+    0% {top: -44px;}
+    100% {top: 0px;}
 }
