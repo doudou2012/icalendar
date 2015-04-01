@@ -73,6 +73,9 @@ span.glyphicon{
     -webkit-animation: fly-in 1s;
     -o-animation: fly-in 1s;
     animation: fly-in 1s;
+    -webkit-animation-delay: 2s;
+    -o-animation-delay: 2s;
+    animation-delay: 2s;
 }
 
 @keyframes fly-in {
