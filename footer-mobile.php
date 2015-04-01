@@ -19,7 +19,7 @@
         <script type="text/javascript" src="<?=WP_PLUGIN_URL?>/wxrobot/static/alertifyjs/alertify.min.js"></script>
         <script type="text/javascript" src="<?=WP_PLUGIN_URL?>/wxrobot/account/static/sign.js"></script>
         <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/webridge.js'></script>
-        <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/layer/layer.min.js'></script>
+        <!-- <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/layer/layer.min.js'></script> -->
         <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/icalendar.js'></script>
         <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/jquery.excoloSlider.min.js'></script>
 <!--        <script type='text/javascript' src='--><?php //echo get_template_directory_uri();?><!--/js/wowslider/wowslider.js'></script>-->
@@ -67,6 +67,20 @@ if (ua_icalendar_app()){
     </ul>
   </div>
 </div>
+<script type="text/javascript">
+    function showHideCityMenu () {
+        var cityMenu = document.getElementsByClassName('cityArtistMenuBg')[0];
+        if (cityMenu.classList.toString().indexOf('hidden') == -1) {
+            cityMenu.classList.add('hidden');
+        } else {
+            cityMenu.classList.remove('hidden');
+        }
+    }
+    var menuToggle = document.getElementsByClassName('nav-city');
+    for (var i = menuToggle.length - 1; i >= 0; i--) {
+        menuToggle[i].addEventListener('click', showHideCityMenu);
+    };
+</script>
 <?php }
 ?>
 </body>
