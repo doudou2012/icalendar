@@ -82,6 +82,8 @@ if (ua_icalendar_app()){
     for (var i = menuToggle.length - 1; i >= 0; i--) {
         menuToggle[i].addEventListener('click', showHideCityMenu);
     };
+    var menuBg = document.getElementsByClassName('cityArtistMenuBg')[0];
+    menuBg.addEventListener('click', showHideCityMenu);
 </script>
 <?php }
 ?>
