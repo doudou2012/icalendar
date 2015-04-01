@@ -21,6 +21,7 @@ span.glyphicon{
 }
 .nav-back,.nav-share,.nav-city,.nav-user{
     background-color:#ff0000;
+    border-radius: 4px;
     width: 44px;
     height: 44px;
     cursor:pointer;
