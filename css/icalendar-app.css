@@ -102,10 +102,7 @@ span.glyphicon{
     .list-view .site-content .entry-meta {
         font-size: 15px;
     }
-}
-
-/* Menu */
-.cityArtistMenuBg {
+    .cityArtistMenuBg {
   background-color: rgba(0,0,0,0.5);
   position: absolute;
   top: 44px;
@@ -141,3 +138,7 @@ span.glyphicon{
   color: white;
   text-decoration: none;
 }
+
+}
+
+/* Menu */

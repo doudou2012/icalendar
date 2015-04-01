@@ -40,36 +40,6 @@
 	$(document.body).css({"overflow-x":"hidden","overflow-y":"hidden" });
  });
  </script>
-<!--
-<?php
-if (ua_icalendar_app()){
-    $cities = get_terms(array('name'=>'city'),array('order'=>'DESC','orderby'=>'count','number'=>6));
-    $artist = get_terms(array('name'=>'artist'),array('order'=>'DESC','orderby'=>'count','number'=>6));
-    ?>
-    <div class="jumbotron hidden" id="city-artist" >
-        <h3>城市</h3>
-        <ul class="list-inline">
-            <?php if (count($cities) > 0):?>
-                <?php foreach ($cities as $city):?>
-                    <li><a href="<?=get_term_link($city)?>"><?=$city->name?></a></li>
-                <?php endforeach;?>
-            <?php endif;?>
-            <li><a href="<?=home_url().'?city-list'?>" >更多»</a></li>
-        </ul>
-        <hr />
-        <h3>艺术家</h3>
-        <ul class="list-inline">
-            <?php if (count($artist) > 0):?>
-                <?php foreach ($artist as $art):?>
-                    <li><a href="<?=get_term_link($art)?>"><?=$art->name?></a></li>
-                <?php endforeach;?>
-            <?php endif;?>
-            <li><a href="<?=home_url().'?art-list'?>" >更多»</a></li>
-        </ul>
-    </div>
-<?php }
-?>
--->
 <?php
 if (ua_icalendar_app()){
     $cities = get_terms(array('name'=>'city'),array('order'=>'DESC','orderby'=>'count','number'=>6));
