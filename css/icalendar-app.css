@@ -76,7 +76,7 @@ span.glyphicon{
 .nav-fly-in {
     top: -44px;
     -webkit-animation-name: fly-in;
-    -webkit-animation-duration: 1s;
+    -webkit-animation-duration: 0.5s;
 }
 
 @keyframes fly-in {
@@ -84,17 +84,11 @@ span.glyphicon{
     100% {top: 0px;}
 }
 
-article {
-    opacity: 1;
-    -webkit-animation-name: fadeIn;
-    -webkit-animation-duration: 1s;
-}
-
-@keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-}
-
-.main-content {
-    overflow: scroll;
+@media screen and (max-width: 414px) {
+    .list-view .site-content .hentry {
+        padding: 0;
+    }
+    .list-view .site-content .entry-header {
+        padding: 10px;
+    }
 }

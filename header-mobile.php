@@ -26,14 +26,13 @@
 <div id="page" class="hfeed site">
     <?php if (ua_icalendar_app() && !isset($_GET['invite'])):?>
     <header id="masthead" class="site-header nav-fly-in" role="banner">
-        <?php if (is_home() && !(isset($_GET['city-list']) || isset($_GET['art-list']))) :?>
         <h1 class="nav-title">展览日历</h1>
-        <div class="nav-city"><span class="bullet_list" aria-hidden="true"></span></div>
-        <div class="nav-user"><span class="user-icon" aria-hidden="true"></span></div>
+        <?php if (is_home() && !(isset($_GET['city-list']) || isset($_GET['art-list']))) :?>
+            <div class="nav-city"><span class="bullet_list" aria-hidden="true"></span></div>
+            <div class="nav-user"><span class="user-icon" aria-hidden="true"></span></div>
         <?php else:?>
-            <h1 class="nav-title">展览日历</h1>
             <div class="nav-back"><span class="previous-icon" aria-hidden="true"></span></div>
-            <?php endif;?>
+        <?php endif;?>
     </header>
         <!--<?php echo get_slider_img();?>-->
     <?php else:?>
