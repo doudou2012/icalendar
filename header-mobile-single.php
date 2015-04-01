@@ -28,10 +28,10 @@
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
     <?php if (ua_icalendar_app() && is_single()):?>
-        <header id="masthead" class="site-header" role="banner">
+        <header id="masthead" class="site-header nav-fly-in" role="banner">
 <!--            <div class="header-main">-->
+                <h1 class="nav-title">展览日历</h1>
                 <div class="nav-back"><span class="previous-icon" aria-hidden="true"></span></div>
-                <span class="nav-title">展览日历</span>
                 <div class="nav-share"><span class="share-icon" aria-hidden="true"></span></div>
 <!--            </div>-->
         </header>
