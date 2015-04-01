@@ -13,7 +13,7 @@
  * @subpackage iCalendar
  * @since iCalender 1.0
  */
-get_slider_img();
+// get_slider_img();
 my_get_header()?>
 
 <div id="main-content" class="main-content">
