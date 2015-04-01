@@ -82,3 +82,14 @@ span.glyphicon{
     0% {top: -44px;}
     100% {top: 0px;}
 }
+
+article {
+    opacity: 0;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
