@@ -45,7 +45,7 @@ if (ua_icalendar_app()){
     $cities = get_terms(array('name'=>'city'),array('order'=>'DESC','orderby'=>'count','number'=>6));
     $artist = get_terms(array('name'=>'artist'),array('order'=>'DESC','orderby'=>'count','number'=>6));
     ?>
-<div class="cityArtistMenuBg">
+<div class="cityArtistMenuBg hidden">
   <div class="cityArtistMenu">
     <h3>城市</h3>
     <ul>
