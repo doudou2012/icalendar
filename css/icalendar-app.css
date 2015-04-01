@@ -73,17 +73,6 @@ span.glyphicon{
   display: inline-block;
 }
 
-.nav-fly-in {
-    top: -44px;
-    -webkit-animation-name: fly-in;
-    -webkit-animation-duration: 0.5s;
-}
-
-@keyframes fly-in {
-    0% {top: -44px;}
-    100% {top: 0px;}
-}
-
 @media screen and (max-width: 414px) {
     .list-view .content-area {
         padding: 0;
@@ -98,5 +87,10 @@ span.glyphicon{
         padding: 20px;
         margin: 0;
         border: none;
+    }
+    .page-title {
+        font-size: 24px;
+        font-weight: 100;
+        text-align: center;
     }
 }
