@@ -35,7 +35,7 @@
             <div class="nav-back"><span class="previous-icon" aria-hidden="true"></span></div>
             <?php endif;?>
     </header>
-        <?php echo get_slider_img();?>
+        <!--<?php echo get_slider_img();?>-->
     <?php else:?>
     <header id="masthead" class="site-header" role="banner">
         <div class="header-main">
