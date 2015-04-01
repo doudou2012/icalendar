@@ -623,7 +623,7 @@ add_filter('posts_distinct', 'search_distinct');
 add_filter( 'posts_orderby','queryOrderby');
 
 function search_distinct() {
-    return "DISTINCT"; 
+    return "DISTINCT";
 }
 
 add_filter('template_include', 'my_custom_template');
@@ -651,7 +651,7 @@ function archive_title($translate){
         if (get_query_var('s')){
             return  get_query_var('s');
         }else if (isset($_GET['favorite'])){
-            return '我的收藏夹';
+            return '感兴趣的展览';
         }else if ($wp_query->query_vars['taxonomy']){
             $value    = get_query_var($wp_query->query_vars['taxonomy']);
             $term = get_term_by('slug',$value,$wp_query->query_vars['taxonomy']);
@@ -692,7 +692,7 @@ function get_slider_img(){
 }
 /**
  * 查询置顶贴
- */ 
+ */
 add_filter( 'the_posts', 'sticky_post_top' );
 function sticky_post_top( $posts ) {
 	$page = get_query_var('paged');
@@ -756,7 +756,7 @@ function event_permalink($post_link, $id = 0, $leavename) {
     return $newlink;
 }
 /**
- * 设置样式 
+ * 设置样式
  */
 
 function set_sticky_class($classes) {
@@ -865,7 +865,7 @@ function flex_slider(){
 	</script>
 EOF;
 	}
-    
+
 }
 
 /**
