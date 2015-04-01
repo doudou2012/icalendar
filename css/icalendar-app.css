@@ -29,7 +29,7 @@ span.glyphicon{
     display: block;
 }
 .nav-back:hover,.nav-share:hover,.nav-city:hover,.nav-user:hover{
-    background-color:black;
+    background-color:#c90000;
 }
 .nav-back,.nav-city{
     float: left;
