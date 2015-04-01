@@ -77,6 +77,6 @@ span.glyphicon{
 }
 
 @keyframes fly-in {
-    from {top: -44px;}
-    to {top: 0px;}
+    0% {top: -44px;}
+    100% {top: 0px;}
 }
