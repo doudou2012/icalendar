@@ -28,7 +28,7 @@ span.glyphicon{
     padding-top: 6px;
     display: block;
 }
-.nav-back,.nav-share,.nav-city,.nav-user:hover{
+.nav-back:hover,.nav-share:hover,.nav-city:hover,.nav-user:hover{
     background-color:black;
 }
 .nav-back,.nav-city{
