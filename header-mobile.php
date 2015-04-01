@@ -28,7 +28,7 @@
     <?php if (ua_icalendar_app()):?>
     <header id="masthead" class="site-header nav-fly-in" role="banner">
         <?php if (is_home() && !(isset($_GET['city-list']) || isset($_GET['art-list']))) :?>
-        <h1 class="nav-title">展览日历</h1>
+        <span class="nav-title">展览日历</span>
         <div class="nav-city"><span class="bullet_list" aria-hidden="true"></span></div>
         <div class="nav-user"><span class="user-icon" aria-hidden="true"></span></div>
         <?php else:?>
