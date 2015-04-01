@@ -665,7 +665,7 @@ function archive_title($translate){
  */
 function get_slider_img(){
     if (ua_icalendar_app() && (is_home() || is_front_page())){
-        if (isset($_GET['city-list']) || isset($_GET['art-list'])) return '';
+        if (isset($_GET['city-list']) || isset($_GET['art-list']) || isset($_GET['invite'])) return '';
         $query_args = array(
             'tag'=>'featured',
             'post_type'=>'post',
@@ -902,6 +902,7 @@ function customRequstHandler(){
         $pid = $_GET['pid'];
         if (isset($_GET['accept'])){//添加参加活动的昵称
             $update  = updateJoinUserList($pid);
+            header('Content-type: application/json');
             if ($update){
                 echo json_encode(array('success'=>true,data=>$pid));
             }else{
@@ -915,15 +916,21 @@ function customRequstHandler(){
 function updateJoinUserList($pid){
     if (intval($pid) > 0){
         $current_user = wp_get_current_user();
-        $join_users = get_post_meta($pid,INVITE_USER_KEY);
+        $join_users = get_post_meta($pid,INVITE_USER_KEY,true);
         //获取当前的邀请用户列表
         if (!$join_users){
             $join_users=  $current_user->user_login;
         }
         if ($_REQUEST['nick']){
-            $join_arr = array_diff(explode(',',$join_users),array($_REQUEST['nick']));
-            array_push($join_arr,$_REQUEST['nick']);
-            $join_users = implode(',',$join_arr);
+            $nick = urldecode($_REQUEST['nick']);
+            if (!$join_users){
+                $join_users = $nick;
+            }else{
+                $join_arr = array_diff(explode(',',$join_users),array($nick));
+                array_push($join_arr,$nick);
+                $join_users = implode(',',$join_arr);
+            }
+
         }
         return update_post_meta($pid,INVITE_USER_KEY,$join_users);
     }

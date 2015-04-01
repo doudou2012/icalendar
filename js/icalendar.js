@@ -144,7 +144,7 @@
                 var pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
                 layer.prompt({title:"称呼",length:20},function(val, index, elem){
                     var reqUrl = baseUrl+'?invite&accept';
-                    $.post(reqUrl,{pid:pid,nick:val},function(data){
+                    $.getJSON(reqUrl,{pid:pid,nick:encodeURIComponent(val)},function(data){
                         //$.layer.closeAll();
                         if (data.success){
                             location.reload();

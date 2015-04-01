@@ -46,7 +46,7 @@ $isFav = check_fav(get_the_ID());
         <?php if (ua_icalendar_app()):?>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-6"> <button class="btn btn-primary " <?= $isFav ? 'id="add_fav" disabled="disabled" ':''?> ><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i> 感兴趣</button></div>
+                <div class="col-xs-6"> <button class="btn btn-primary " <?= $isFav ? ' disabled="disabled" ':'id="add_fav"'?> ><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i> 感兴趣</button></div>
                 <div class="col-xs-6"><button  class="btn btn-primary" id="invite-friends"><i class="glyphicon glyphicon-share-alt"></i> 邀请好友</button></div>
             </div>
         </div>
