@@ -31,8 +31,8 @@
         <div class="nav-city"><span class="bullet_list" aria-hidden="true"></span></div>
         <div class="nav-user"><span class="user-icon" aria-hidden="true"></span></div>
         <?php else:?>
+            <h1 class="nav-title">展览日历</h1>
             <div class="nav-back"><span class="previous-icon" aria-hidden="true"></span></div>
-            <span class="nav-title">展览日历</span>
             <?php endif;?>
     </header>
         <?php echo get_slider_img();?>
