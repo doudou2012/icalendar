@@ -68,12 +68,13 @@
     };
     var layer_index;
     $(document).ready(function(){
-
         if ($('#add_fav').length > 0){
-            pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
-            if (pid > 0){
-                addFavorite(pid);
-            }
+            $('#add_fav').on('click',function(){
+                pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
+                if (pid > 0){
+                    addFavorite(pid);
+                }
+            });
         }
         if ($('#invite-friends').length > 0){
             //邀请好友
