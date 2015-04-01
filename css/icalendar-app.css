@@ -28,6 +28,9 @@ span.glyphicon{
     padding-top: 6px;
     display: block;
 }
+.nav-back,.nav-share,.nav-city,.nav-user :focus{
+    background-color:black;
+}
 .nav-back,.nav-city{
     float: left;
 }
