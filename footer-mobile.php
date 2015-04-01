@@ -72,8 +72,10 @@ if (ua_icalendar_app()){
         var cityMenu = document.getElementsByClassName('cityArtistMenuBg')[0];
         if (cityMenu.classList.toString().indexOf('hidden') == -1) {
             cityMenu.classList.add('hidden');
+            document.body.style.overflow = "hidden";
         } else {
             cityMenu.classList.remove('hidden');
+            document.body.style.overflow = "scroll";
         }
     }
     var menuToggle = document.getElementsByClassName('nav-city');
