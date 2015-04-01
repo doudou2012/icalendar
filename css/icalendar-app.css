@@ -83,7 +83,7 @@ span.glyphicon{
     100% {top: 0px;}
 }
 
-.articleFadeIn {
+article {
     opacity: 1;
     -webkit-animation-name: fadeIn;
     -webkit-animation-duration: 1s;
