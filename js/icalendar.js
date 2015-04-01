@@ -15,9 +15,6 @@
             var i = $('#add_fav').find('i')[0];
             $(i).removeClass('glyphicon-heart-empty').addClass('glyphicon-heart');
         }
-        //$('#add-fav').attr("disabled", "disabled");
-        //$('#add-fav').css({"pointer-events":"none","cursor":"not-allowed"});
-        //$('#add-fav').text('已收藏');
     };
     var showloginForm = function(){
         var sign = new Sign({login_success:function(){window.location.reload()}});
@@ -152,6 +149,12 @@
                         }
                     });
                 });
+            });
+        }
+
+        if ($('#show_detail').length > 0){
+            $('#show_detail').on('click',function(){
+                $('.entry-content').toggle(400,'linear');
             });
         }
     });

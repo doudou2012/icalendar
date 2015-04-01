@@ -148,7 +148,7 @@ $current_user = wp_get_current_user();
 	</div> <!-- .entry-content -->
 </article><!-- #post-## -->
 <div>
-    <span>查看展览详情</span>
+    <span id="show_detail">查看展览详情</span>
     <span class="glyphicon glyphicon-menu-down"></span>
     <button class="btn btn-primary btn-block" id="accept-invite">好！</button>
 </div>
