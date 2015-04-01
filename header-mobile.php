@@ -15,12 +15,11 @@
     <link rel='stylesheet' id='twentyfourteen-style-css'  href='<?php echo get_template_directory_uri();?>/style-mobile.css' />
     <?php if (ua_icalendar_app()):?>
         <link href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/icalendar-app.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?=WP_PLUGIN_URL?>/wxrobot/static/alertifyjs/css/alertify.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?=WP_PLUGIN_URL?>/wxrobot/static/alertifyjs/css/themes/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?=WP_PLUGIN_URL?>/wxrobot/static/css/alert-style.css" rel="stylesheet" />
-<!--        <link rel='stylesheet' id='slider-style-css'  href="--><?php //echo get_template_directory_uri();?><!--/js/wowslider/style.css" type='text/css' media='all' />-->
         <link rel='stylesheet' id='slider-style-css'  href="<?php echo get_template_directory_uri();?>/css/jquery.excoloSlider.css" type='text/css' media='all' />
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/icalendar-app.css" rel="stylesheet" />
     <?php endif;?>
 </head>
 <body <?php body_class(); ?>>
@@ -28,7 +27,7 @@
     <?php if (ua_icalendar_app()):?>
     <header id="masthead" class="site-header nav-fly-in" role="banner">
         <?php if (is_home() && !(isset($_GET['city-list']) || isset($_GET['art-list']))) :?>
-        <span class="nav-title">展览日历</span>
+        <h1 class="nav-title">展览日历</h1>
         <div class="nav-city"><span class="bullet_list" aria-hidden="true"></span></div>
         <div class="nav-user"><span class="user-icon" aria-hidden="true"></span></div>
         <?php else:?>
