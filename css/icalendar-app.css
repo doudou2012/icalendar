@@ -94,4 +94,9 @@ span.glyphicon{
     .list-view .site-content .entry-header {
         padding: 10px;
     }
+    .page-header {
+        padding: 20px;
+        margin: 0;
+        border: none;
+    }
 }
