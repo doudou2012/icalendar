@@ -25,7 +25,7 @@
 </head>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-    <?php if (ua_icalendar_app()):?>
+    <?php if (ua_icalendar_app() && !isset($_GET['invite'])):?>
     <header id="masthead" class="site-header" role="banner">
         <?php if (is_home() && !(isset($_GET['city-list']) || isset($_GET['art-list']))) :?>
         <div class="nav-city"><span class="bullet_list" aria-hidden="true"></span></div>
