@@ -63,8 +63,8 @@ span.glyphicon{
   font-weight: 600;
   text-align: center;
   line-height: 44px;
-  width: 100%;
-  margin: 0 auto;
+  width: 50%;
+  margin: 0 25%;
   position: absolute;
   display: inline-block;
 }
