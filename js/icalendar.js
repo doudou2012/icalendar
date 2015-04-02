@@ -29,7 +29,7 @@
         var url = baseUrl + '?favorite&add';
         $.getJSON(url, {postid: pid}, function (data) {
             if (data.success) {
-                changeStatus();
+                changeStatus(data.data);
             } else if (data.error.code == 'not_login') {
                 showloginForm();
             } else {
