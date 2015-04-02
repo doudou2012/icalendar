@@ -9,11 +9,15 @@
             console.log(result);
         });
     };
-    var setDisabled = function(){
+    var changeStatus = function(op){
         if  ($('#add_fav').length > 0){
-            $('#add_fav').off('click').attr('disabled','disabled');
-            var i = $('#add_fav').find('i')[0];
-            $(i).removeClass('glyphicon-heart-empty').addClass('glyphicon-heart');
+            var i = $('#add_fav').find('i')[0],
+                del_class='glyphicon-heart',add_class='glyphicon-heart-empty';
+            if  (op == 1) {
+                del_class = 'glyphicon-heart-empty';
+                add_class = 'glyphicon-heart';
+            }
+            $(i).removeClass(del_class).addClass(add_class);
         }
     };
     var showloginForm = function(){
@@ -25,38 +29,17 @@
         var url = baseUrl + '?favorite&add';
         $.getJSON(url, {postid: pid}, function (data) {
             if (data.success) {
-                setDisabled();
+                changeStatus();
             } else if (data.error.code == 'not_login') {
                 showloginForm();
             } else {
-                alertify.alert('收藏失败:' + data.error.msg).set('basic', true);
+                alertify.alert('操作失败:' + data.error.msg).set('basic', true);
                 setTimeout(function () {
                     alertify.close();
                 }, 3000);
             }
         });
 
-    };
-    /*检查是否已经收藏*/
-    var checkFav = function(pid){
-        if ($('#add-fav').length > 0){
-            if (!pid || parseInt(pid) <=0) {
-                pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
-            }
-            if (pid > 0 ){
-                $.getJSON(baseUrl+'?favorite&check_fav',{postid:pid},function(data){
-                    if (data.success){
-                        setDisabled();
-                    }else{
-                        $('#add-fav').on('click', function () {
-                            addFavorite(pid);
-                        });
-                    }
-                });
-            }
-        }else{
-            return false;
-        }
     };
     var addParameter = function (param){
         _url = location.href;

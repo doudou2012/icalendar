@@ -837,14 +837,15 @@ function my_action_callback() {
 }
 add_action( 'wp_ajax_my_action', 'my_action_callback' );
 
-function renderSliderImages($images){
+function renderSliderImages($images)
+{
     if (is_string($images))
-        $images = explode(' ',$images);
-    $html='<div id="slider-single">';
-    foreach ($images as  $value) {
-        $html.= '<img src="'.$value.'" />';
+        $images = explode(' ', $images);
+    $html = '<div id="slider-single">';
+    foreach ($images as $value) {
+        $html .= '<img src="' . $value . '" />';
     }
-    $html.='</div>';
+    $html .= '</div>';
     return $html;
 }
 
@@ -866,6 +867,15 @@ function flex_slider(){
 EOF;
 	}
 
+}
+
+function app_set_page_size($query){
+    if (!is_admin() && $query->is_main_query()){
+        $query->set('posts_per_page', 40);
+    }
+}
+if (ua_icalendar_app()){
+    add_action( 'pre_get_posts', 'app_set_page_size' );
 }
 
 /**
@@ -893,6 +903,34 @@ function get_join_user($pid){
     }
     return array();
 }
+
+function the_join_list($pid,$isOwn = false){
+    $post = get_post($pid);
+    $joins = get_join_user($pid);
+    if ($joins){
+        $str = '<div class="footer"> <hr />';
+        if ($isOwn){
+            if (!is_user_logged_in()) return false;
+            $current_user = wp_get_current_user();
+            $userName = $current_user->display_name ? $current_user->display_name : $current_user->user_login;
+            if ( !in_array($userName,$joins) || (count($joins) == 1 && $userName == $joins[0])){
+                return false;
+            }
+            $str .= '<span>时间:'.types_render_field('start-time',array('output'=>'normal')).'</span><span>还有谁去......</span>';
+        }
+        else{
+            $str.='<span>还有谁去......</span>';
+        }
+        $str.='<ul class="list-inline" >';
+        foreach ($joins as $v){
+            $str.='<li><span>'.$v.'</span></li>';
+        }
+        $str.='</ul></div>';
+        return $str;
+    }
+    return false;
+}
+
 /**
  * 自定义请求处理函数
  */
@@ -919,7 +957,7 @@ function updateJoinUserList($pid){
         $join_users = get_post_meta($pid,INVITE_USER_KEY,true);
         //获取当前的邀请用户列表
         if (!$join_users){
-            $join_users=  $current_user->user_login;
+            $join_users= $current_user->display_name ? $current_user->display_name : $current_user->user_login;
         }
         if ($_REQUEST['nick']){
             $nick = urldecode($_REQUEST['nick']);
