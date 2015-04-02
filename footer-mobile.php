@@ -71,14 +71,18 @@ if (ua_icalendar_app()){
         var cityMenu = document.getElementsByClassName('cityArtistMenuBg')[0];
         if (cityMenu.classList.toString().indexOf('hidden') == -1) {
             cityMenu.classList.add('hidden');
+            document.body.style.overflow = "hidden";
         } else {
             cityMenu.classList.remove('hidden');
+            document.body.style.overflow = "scroll";
         }
     }
     var menuToggle = document.getElementsByClassName('nav-city');
     for (var i = menuToggle.length - 1; i >= 0; i--) {
         menuToggle[i].addEventListener('click', showHideCityMenu);
     };
+    var menuBg = document.getElementsByClassName('cityArtistMenuBg')[0];
+    menuBg.addEventListener('click', showHideCityMenu);
 </script>
 <?php }
 ?>
