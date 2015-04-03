@@ -1,6 +1,6 @@
 body {
     font-family: Helvetica, "Hiragino Sans GB", Arial, sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     padding: 0;
     margin: 0;
     background-color: #F6F5F2;
@@ -18,14 +18,14 @@ article {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 100;
     line-height: 1.2em;
     margin-bottom: 20px;
 }
 
 h2 {
-    font-size: 1.4em;
+    font-size: 1.3em;
     line-height: 1em;
     padding: 10px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -66,7 +66,10 @@ span.artist {
 }
 
 p {
-    line-height: 1.6em;
+    font-size: 1em;
+    font-weight: 100;
+    color: #333;
+    margin-bottom: 1em;
 }
 
 a {
