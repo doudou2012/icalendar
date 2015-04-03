@@ -583,6 +583,7 @@ function custom_field_search($search){
 function custom_search_where($where) { // put the custom fields into an array
     global $wpdb;
     if (is_admin()) return $where;
+    if (isset($_GET['json'])) return $where;
     $s = get_query_var('s');
     if (trim($s)){
     	$where = " AND ($wpdb->posts.post_status = 'publish') ";
@@ -875,7 +876,7 @@ function app_set_page_size($query){
     }
 }
 if (ua_icalendar_app()){
-    add_action( 'pre_get_posts', 'app_set_page_size' );
+//    add_action( 'pre_get_posts', 'app_set_page_size' );
 }
 
 /**
