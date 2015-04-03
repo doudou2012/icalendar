@@ -20,8 +20,6 @@
         <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/icalendar.js'></script>
     <?php endif;?>
     <script type='text/javascript' src='<?php echo get_template_directory_uri();?>/js/jquery.excoloSlider.min.js'></script>
-    <footer id="colophon" class="site-footer" role="contentinfo">
-    </footer>
 <?php endif;?>
     </div><!-- #page -->
 </body>
