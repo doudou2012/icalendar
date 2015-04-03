@@ -104,7 +104,7 @@ span.glyphicon{
     }
     .cityArtistMenuBg {
       background-color: rgba(0,0,0,0.5);
-      position: absolute;
+      position: fixed;
       top: 44px;
       left: 0;
       z-index: 1999;
