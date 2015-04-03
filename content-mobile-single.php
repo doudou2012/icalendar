@@ -118,7 +118,7 @@ $isFav = check_fav(get_the_ID());
             <tr>
                 <th>网址</th>
                 <td><?php
-                    echo  types_render_field('url',array('output'=>'html'));
+                    echo types_render_field('url',array('output'=>'html'));
                     ?>
                 </td>
             </tr>
