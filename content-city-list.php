@@ -17,7 +17,7 @@ my_get_header();
 <!--<div id="main-content" class="main-content">-->
 <div class="city-list">
     <?php if (count($list) > 0): ?>
-        <div class="list-group">
+        <div class="list-group btn-not-rounded">
             <?php foreach ($list as $item):?>
             <a href="<?=get_term_link($item)?>" class="list-group-item">
                 <?=$item->name?>
