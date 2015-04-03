@@ -148,3 +148,7 @@ span.glyphicon{
 .btn-container {
     margin-top: 20px;
 }
+
+.show-content > p {
+    font-size: 17px;
+}
