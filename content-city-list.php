@@ -19,7 +19,7 @@ my_get_header();
     <?php if (count($list) > 0): ?>
         <div class="list-group">
             <?php foreach ($list as $item):?>
-            <a href="<?=get_term_link($item)?>" class="list-group-item btn-not-rounded" style="line-height: 44px;">
+            <a href="<?=get_term_link($item)?>" class="list-group-item btn-not-rounded">
                 <?=$item->name?>
                 <span class="badge"><?=$item->count?></span>
             </a>
