@@ -18,7 +18,7 @@ get_template_part('header','app');
         <div class="container">
             <h1 class="page-title">邀请朋友</h1>
             <p>选择时间</p>
-            <input class="form-control" type="datetime-local" name="date"/>
+            <input id="datepicker" class="form-control" type="datetime-local" name="date"/>
             <input type="hidden" name="pid" id="p_id" value="<?=$pid?>" >
             <button class="btn btn-primary btn-block" id="send_invite">发给朋友</button>
             <button class="btn btn-link" id="cancel_invite">还是算了</button>
