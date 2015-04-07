@@ -29,6 +29,7 @@
         <div id="page" class="hfeed site">
             <?php if (ua_icalendar_app() && is_single()):?>
                 <header id="masthead" class="site-header nav-fly-in" role="banner">
+                    <h1 class="nav-title">展览日历</h1>
                     <div class="nav-back"><span class="previous-icon" aria-hidden="true"></span></div>
                     <div class="nav-share"><span class="share-icon" aria-hidden="true"></span></div>
                 </header>
