@@ -680,7 +680,7 @@ function get_slider_img(){
             $html.='<div id="slider-home">';
             foreach ($img_posts as $img_post) {
                 if ($img_post->post_type == 'post') {
-                    $html .=  get_the_post_thumbnail($img_post->ID, 'large' ,array('id'=>'image-'.$i)) ;
+                    $html .= ( '<a href="'.get_permalink($img_post).'" >' . get_the_post_thumbnail($img_post->ID, 'large' ,array('id'=>'image-'.$i)).'</a>') ;
 //                    $bullets.= '<a href="#image-'.$i.'" ><span>'.$i.'</span></a>';
                     ++$i;
                 }
