@@ -1,10 +1,11 @@
 /**
  * Created by user on 15/3/17.
+ * scroll http://excolo.github.io/Excolo-Slider/
  */
 (function($){
     var baseUrl = window.location.pathname;
     var shared = function(content,url,img){
-        var param = {"url":url};
+        var param = {"title":content,"url":url};
         webridge.jsToNative('shared',param,function(result,error){
             console.log(result);
         });
@@ -96,7 +97,7 @@
         }
         if ($('.nav-share').length > 0){
             $('.nav-share').on('click',function(){
-                shared($(document).find('title').text(),location.href,'');
+                shared($('h1.entry-title').text(),location.href,'');
             });
         }
 
