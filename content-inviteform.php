@@ -9,6 +9,7 @@
 $pid = $_GET['pid'];
 updateJoinUserList($pid);
 $post=get_post($pid);
+$defaultDate = date('Y-m-dTH:i:s.000Z',strtotime(types_render_field('start-time',array('output'=>'normal'))));
 get_template_part('header','app');
 ?>
     <header id="masthead" class="site-header nav-fly-in" role="banner">
@@ -19,16 +20,10 @@ get_template_part('header','app');
         <div class="container">
             <h1 class="page-title">邀请朋友</h1>
             <p>选择时间</p>
-            <input id="datepicker" class="form-control" type="datetime-local" value="<?=types_render_field('start-time',array('output'=>'normal'))?>" name="date"/>
+            <input id="datepicker" class="form-control" type="datetime-local" value="<?=$defaultDate?>" name="date"/>
             <input type="hidden" name="pid" id="p_id" value="<?=$pid?>" >
             <button class="btn btn-primary btn-block" id="send_invite">发给朋友</button>
             <button class="btn btn-link" id="cancel_invite">还是算了</button>
         </div>
     </div>
-    <script type="text/javascript">
-    document.onload = function () {
-        var date = new Date();
-        document.getElementById('datepicker').setAttribute('value', date.toJSON());
-    } ();
-    </script>
 <?php get_template_part('footer','app');?>

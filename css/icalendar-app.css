@@ -152,3 +152,7 @@ span.glyphicon{
 .show-content > p {
     font-size: 17px;
 }
+input#datepicker.form-control{
+    width: 100%;
+    margin-bottom: 20px;
+}
