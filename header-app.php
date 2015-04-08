@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="<?=home_url().'/manifest.php'?>">
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
