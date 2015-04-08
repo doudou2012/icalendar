@@ -6,6 +6,7 @@
  * Date: 15/3/31
  * Time: 下午3:08
  */
+date_default_timezone_set('Asia/Shanghai');
 $pid = $_GET['pid'];
 updateJoinUserList($pid);
 $post=get_post($pid);
