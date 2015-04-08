@@ -142,9 +142,10 @@
         if ($('#send_invite').length > 0){
             $('#send_invite').on('click',function(){
                 var pid = parseInt($('#p_id').val()),
-                    date = encodeURIComponent($('input[name="date"]').val());
+                    date = encodeURIComponent($('input[name="date"]').val()),
+                    title = $('#post_title').val();
                 var share_url = location.protocol+'//'+location.host + baseUrl + '?invite&info&pid='+pid+'&date='+date;
-                shared('',share_url);
+                shared(title,share_url);
             });
             $('#cancel_invite').on('click',function(){
                 history.go(-1);
