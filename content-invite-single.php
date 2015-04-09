@@ -26,7 +26,7 @@ get_template_part('header','app');
             <span class="user-name-span"><?=$current_user->user_login?></span>
         </div>
 	</header><!-- .entry-header -->
-    <div class="entry-content">
+    <div class="entry-content" id="eventDetail">
         <?php
         $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
         if ($str) {
@@ -134,6 +134,17 @@ get_template_part('header','app');
     <span class="glyphicon glyphicon-menu-down"></span>
     <button class="btn btn-primary btn-block" id="accept-invite">好！</button>
 </div>
+<script type="text/javascript">
+    var detailBtn = document.getElementById('show_detail');
+    detailBtn.onClick = function() {
+        eventDetail = document.getElementById('eventDetail');
+        if (eventDetail.style.display === 'hidden') {
+            eventDetail.style.display = 'block';
+        } else{
+            eventDetail.style.display = 'none';
+        };
+    };
+</script>
 <?php
 echo the_join_list($post->ID,false);
 get_template_part('footer','app');
