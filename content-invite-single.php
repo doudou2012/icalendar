@@ -23,6 +23,7 @@ get_template_part('header','app');
         <div>
             <span class="time-span"><?=$date?></span>
             <span class="glyphicon glyphicon-user"><?=$current_user->login?></span>
+            <span class="user-name-span"><?=$current_user->user_login?></span>
         </div>
 	</header><!-- .entry-header -->
     <?php 

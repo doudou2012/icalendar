@@ -170,8 +170,16 @@
             $('#show_detail').on('click',function(){
                 $('.entry-content').toggle(400,'linear');
             });
+            /**
+             * 切换箭头方向
+             */
+            var _arrow = $('#show_detail').parent().find('span:last-child');//找到箭头的span
+            if ($(_arrow).hasClass('glyphicon-menu-down')){
+                $(_arrow).removeClass('glyphicon-menu-down').addClass('glyphicon-menu-up');
+            }else{
+                $(_arrow).removeClass('glyphicon-menu-up').addClass('glyphicon-menu-down');
+            }
         }
-
         /**
          * scroll list
          */
