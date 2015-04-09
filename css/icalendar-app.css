@@ -156,3 +156,8 @@ input#datepicker.form-control{
     width: 100%;
     margin-bottom: 20px;
 }
+
+.color-red {
+    background-color: red;
+    color: white;
+}
