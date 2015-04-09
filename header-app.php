@@ -17,4 +17,4 @@
 </head>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-    <div id="main" class="site-main nav-margin-top">
+    <div id="main" class="site-main<?php if (ua_icalendar_app()) echo ' nav-margin-top'; ?>">
