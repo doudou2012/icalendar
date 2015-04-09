@@ -19,14 +19,18 @@ get_template_part('header','app');
 ?>
 <article id="post-<?=$post->ID?>" <?php post_class(); ?>>
     <header class="entry-header">
-        <h1 class="entry-title"><?php echo '我想去'.types_render_field('place','').'的'.$post->post_title.'，你也要一起来吗？'; ?></h1>
+        <h1 class="entry-title">
+            <?php echo '我想去看在「'.types_render_field('place','').'」举办的「'.$post->post_title.'」展览，你想一起来吗？'; ?>
+        </h1>
         <div>
-            <span class="time-span"><?=$date?></span>
-            <span class="glyphicon glyphicon-user"><?=$current_user->login?></span>
-            <span class="user-name-span"><?=$current_user->user_login?></span>
+            <p>
+                <span class="time-span"><?=$date?></span>
+                <span class="glyphicon glyphicon-user"><?=$current_user->login?></span>
+                <span class="user-name-span"><?=$current_user->user_login?></span>
+            </p>
         </div>
         </header><!-- .entry-header -->
-        <div class="entry-content" style="display:none;">
+        <div class="entry-content" style="display:hidden;">
             <?php
             $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
             if ($str) {
