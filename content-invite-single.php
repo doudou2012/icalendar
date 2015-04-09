@@ -26,7 +26,7 @@ get_template_part('header','app');
             <span class="user-name-span"><?=$current_user->user_login?></span>
         </div>
 	</header><!-- .entry-header -->
-    <div class="entry-content">
+    <div class="entry-content" style="display:none;">
         <?php
         $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
         if ($str) {
