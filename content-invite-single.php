@@ -130,7 +130,7 @@ get_template_part('header','app');
             </article><!-- #post-## -->
             <div class="container">
                 <p id="show_detail">点击查看展览详情 <span class="glyphicon glyphicon-menu-down"></span></p>
-                <button class="btn btn-primary btn-block" id="accept-invite">好！</button>
+                <button class="btn btn-lg color-red btn-not-rounded btn-block" id="accept-invite">报名</button>
             </div>
             <?php
             echo the_join_list($post->ID,false);
