@@ -128,7 +128,7 @@ get_template_part('header','app');
             </div>
             </div> <!-- .entry-content -->
             </article><!-- #post-## -->
-            <div>
+            <div class="container">
                 <p id="show_detail">点击查看展览详情 <span class="glyphicon glyphicon-menu-down"></span></p>
                 <button class="btn btn-primary btn-block" id="accept-invite">好！</button>
             </div>
