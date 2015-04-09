@@ -187,7 +187,7 @@ input#datepicker.form-control{
 .invite-form-card .date-picker {
     width: 100%;
     height: 50px;
-    margin: 20px auto;
+    margin: 0 auto 20px;
 }
 
 .invite-form-card .btn.btn-link {

@@ -19,7 +19,7 @@ get_template_part('header','app');
     <div id="main" class="site-main nav-margin-top">
         <div class="container">
             <div class="invite-form-card">
-                <h3>何时出发？</h3>
+                <p class="text-center">何时出发？</p>
                 <input id="datepicker" class="date-picker" type="datetime-local" value="<?=date('Y-m-d\TH:i')?>" name="date"/>
                 <input type="hidden" name="pid" id="p_id" value="<?=$pid?>" >
                 <input type="hidden" name="title" id="post_title" value="<?=$post->post_title?>" >
