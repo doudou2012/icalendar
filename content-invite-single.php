@@ -30,7 +30,7 @@ get_template_part('header','app');
             <button class="btn btn-default btn-sm" id="detailTrigger" onclick="showHideEventDetail()">展览详情 <span class="caret"></span></button>
         </div>
         </header><!-- .entry-header -->
-        <div class="entry-content" id="eventDetail" style="display:hidden;">
+        <div class="entry-content hidden" id="eventDetail">
             <?php twentyfourteen_post_thumbnail(); ?>
             <h2>展览信息</h2>
             <table class="table-show">
