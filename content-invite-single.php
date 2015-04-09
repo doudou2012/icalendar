@@ -17,6 +17,8 @@ $joins = get_join_user($pid);
 $current_user = wp_get_current_user();
 get_template_part('header','app');
 ?>
+<h1 class="page-title">活动邀请</h1>
+<hr>
 <article id="post-<?=$post->ID?>" <?php post_class(); ?>>
     <header class="entry-header">
         <h1 class="entry-title" style="font-weight: 300; font-size: 20px;">
