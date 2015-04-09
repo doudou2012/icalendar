@@ -71,12 +71,12 @@ if (ua_icalendar_app()){
         var cityMenu = document.getElementsByClassName('cityArtistMenuBg')[0];
         if (cityMenu.classList.toString().indexOf('hidden') == -1) {
             cityMenu.classList.add('hidden');
-            document.body.style.overflow = 'hidden';
-            document.body.style.height = window.innerHeight.toString() + 'px';
-        } else {
-            cityMenu.classList.remove('hidden');
             document.body.style.overflow = 'scroll';
             document.body.style.height = 'auto';
+        } else {
+            cityMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            document.body.style.height = window.innerHeight.toString() + 'px';
         }
     }
     var menuToggle = document.getElementsByClassName('nav-city');
