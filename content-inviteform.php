@@ -19,12 +19,14 @@ get_template_part('header','app');
     <div id="main" class="site-main nav-margin-top">
         <div class="container">
             <h1 class="page-title">邀请朋友</h1>
-            <p>选择时间</p>
-            <input id="datepicker" class="form-control" type="datetime-local" value="<?=date('Y-m-d\TH:i')?>" name="date"/>
-            <input type="hidden" name="pid" id="p_id" value="<?=$pid?>" >
-            <input type="hidden" name="title" id="post_title" value="<?=$post->post_title?>" >
-            <button class="btn btn-primary btn-block" id="send_invite">发给朋友</button>
-            <button class="btn btn-link" id="cancel_invite">还是算了</button>
+            <div class="invite-form-card">
+                <h3>选择时间</h3>
+                <input id="datepicker" class="date-picker" type="datetime-local" value="<?=date('Y-m-d\TH:i')?>" name="date"/>
+                <input type="hidden" name="pid" id="p_id" value="<?=$pid?>" >
+                <input type="hidden" name="title" id="post_title" value="<?=$post->post_title?>" >
+                <button class="btn btn-lg btn-not-rounded color-red" id="send_invite">发给朋友</button>
+                <button class="btn btn-link" id="cancel_invite">还是算了</button>
+            </div>
         </div>
     </div>
 <?php get_template_part('footer','app');?>
