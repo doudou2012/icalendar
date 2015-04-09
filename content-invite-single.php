@@ -32,15 +32,7 @@ get_template_part('header','app');
         </div>
         </header><!-- .entry-header -->
         <div class="entry-content" style="display:hidden;">
-            <?php
-            $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
-            if ($str) {
-            $images = explode(' ',$str);
-            echo renderSliderImages($images);
-            } else {
-            twentyfourteen_post_thumbnail();
-            }
-            ?>
+            <?php twentyfourteen_post_thumbnail(); ?>
             <h2>展览信息</h2>
             <table class="table-show">
                 <tbody>
