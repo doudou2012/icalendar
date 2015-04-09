@@ -126,7 +126,7 @@ get_template_part('header','app');
                 triggerNode.lastChild.classList.remove('rotate-180');
             } else {
                 targetNode.classList.remove('hidden')
-                triggerNode.textContent = '点击折叠';
+                triggerNode.textContent = '点击折叠  <span class="caret"></span>';
                 triggerNode.lastChild.classList.add('rotate-180');
             }
         }
