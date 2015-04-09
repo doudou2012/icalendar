@@ -147,7 +147,8 @@ span.glyphicon{
 }
 
 .btn-half-width {
-    width: 45vw;
+    width: 40vw;
+    margin: auto 2vw;
 }
 
 .btn-container {

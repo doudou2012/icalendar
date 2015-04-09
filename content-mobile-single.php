@@ -46,7 +46,7 @@ $isFav = check_fav(get_the_ID());
         <?php if (ua_icalendar_app()):?>
         <div class="btn-container">
             <button class="btn btn-lg btn-info btn-not-rounded btn-half-width color-red" id="add_fav" ><i class="glyphicon <?= $isFav ? 'glyphicon-heart' : 'glyphicon-heart-empty' ?>"></i> 想去</button>
-            <button class="btn btn-lg btn-info btn-not-rounded btn-half-width color-red" id="invite-friends"><i class="glyphicon glyphicon-share-alt"></i> 邀请好友</button>
+            <button class="btn btn-lg btn-info btn-not-rounded btn-half-width color-red pull-right" id="invite-friends"><i class="glyphicon glyphicon-share-alt"></i> 邀请好友</button>
         </div>
         </div>
         <?php endif;?>
