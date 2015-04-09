@@ -141,9 +141,9 @@ get_template_part('header','app');
         if (eventDetail.style.display === 'hidden') {
             eventDetail.style.display = 'block';
         } else{
-            eventDetail.style.display = 'none';
+            eventDetail.style.display = 'hidden';
         };
-    };
+    } ();
 </script>
 <?php
 echo the_join_list($post->ID,false);
