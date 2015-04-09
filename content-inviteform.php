@@ -13,19 +13,18 @@ $post=get_post($pid);
 get_template_part('header','app');
 ?>
     <header id="masthead" class="site-header nav-fly-in" role="banner">
-        <h1 class="nav-title">约人同往</h1>
+        <h1 class="nav-title">邀请朋友看展</h1>
         <div class="nav-back"><span class="previous-icon" aria-hidden="true"></span></div>
     </header>
     <div id="main" class="site-main nav-margin-top">
         <div class="container">
-            <h1 class="page-title">邀请朋友</h1>
             <div class="invite-form-card">
-                <h3>选择时间</h3>
+                <h3>何时出发？</h3>
                 <input id="datepicker" class="date-picker" type="datetime-local" value="<?=date('Y-m-d\TH:i')?>" name="date"/>
                 <input type="hidden" name="pid" id="p_id" value="<?=$pid?>" >
                 <input type="hidden" name="title" id="post_title" value="<?=$post->post_title?>" >
                 <button class="btn btn-lg btn-not-rounded color-red" id="send_invite">发给朋友</button>
-                <button class="btn btn-link" id="cancel_invite">还是算了</button>
+                <button class="btn btn-link" id="cancel_invite">取消</button>
             </div>
         </div>
     </div>
