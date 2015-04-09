@@ -206,3 +206,8 @@ button#detailTrigger.btn.btn-default.btn-sm > span {
 .rotate-180 {
     -webkit-transform: rotate(180deg);
 }
+
+.all-sorts-of-meta {
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}

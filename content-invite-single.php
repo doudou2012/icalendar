@@ -27,7 +27,7 @@ get_template_part('header','app');
                 <li>时间：<?=$date?></li>
                 <li>邀请人：<span class="glyphicon glyphicon-user" style=color:gray><?=$current_user->login?></span> <?=$current_user->user_login?></li>
             </ul>
-            <button class="btn btn-default btn-sm" id="detailTrigger" onclick="showHideEventDetail()">展览详情 <span class="caret"></span></button>
+            <button class="btn btn-info btn-not-rounded btn-sm" id="detailTrigger" onclick="showHideEventDetail()">展览详情 <span class="caret"></span></button>
         </div>
         </header><!-- .entry-header -->
         <div class="entry-content hidden" id="eventDetail">
