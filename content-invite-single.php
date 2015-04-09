@@ -118,7 +118,9 @@ get_template_part('header','app');
     get_template_part('footer','app');
     ?>
     <script type="text/javascript">
-        function showHideEventDetail (triggerNode, targetNode) {
+        function showHideEventDetail () {
+            var triggerNode = document.getElementById('detailTrigger');
+            var targetNode = document.getElementById('eventDetail');
             if ( targetNode.classList.toString().indexOf('hidden') == -1 ) {
                 targetNode.classList.add('hidden');
                 triggerNode.lastChild.classList.remove('rotate-180');
@@ -128,7 +130,5 @@ get_template_part('header','app');
                 triggerNode.lastChild.classList.add('rotate-180');
             }
         }
-        var detailTrigger = document.getElementById('detailTrigger');
-        var eventDetail = document.getElementById('eventDetail');
         detailTrigger.onclick = showHideEventDetail(detailTrigger, eventDetail);
     </script>
