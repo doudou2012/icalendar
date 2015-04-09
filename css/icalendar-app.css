@@ -199,7 +199,7 @@ input#datepicker.form-control{
 
 }
 
-button#detailTrigger.btn.btn-default.btn-sm {
+button#detailTrigger.btn.btn-default.btn-sm > span {
     -webkit-transition: all 0.3s linear;
 }
 
