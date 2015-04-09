@@ -24,7 +24,7 @@ get_template_part('header','app');
         </h1>
         <div class="all-sorts-of-meta">
             <p><span class="time-span"><?=$date?></span> 邀请人：<span class="glyphicon glyphicon-user" style=color:gray><?=$current_user->login?></span> <span class="user-name-span"><?=$current_user->user_login?></span></p>
-            <button class="btn btn-default btn-sm" id="detailTrigger" onclick="showHideEventDetail()">点击查看展览详情 <span class="caret"></span></button>
+            <button class="btn btn-default btn-sm" id="detailTrigger" onclick="showHideEventDetail()">展览详情 <span class="caret"></span></button>
         </div>
         </header><!-- .entry-header -->
         <div class="entry-content" id="eventDetail" style="display:hidden;">
@@ -126,7 +126,6 @@ get_template_part('header','app');
                 triggerNode.lastChild.classList.remove('rotate-180');
             } else {
                 targetNode.classList.remove('hidden')
-                triggerNode.textContent = '点击折叠  <span class="caret"></span>';
                 triggerNode.lastChild.classList.add('rotate-180');
             }
         }
