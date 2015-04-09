@@ -136,7 +136,7 @@ get_template_part('header','app');
 </div>
 <script type="text/javascript">
     var detailBtn = document.getElementById('show_detail');
-    detailBtn.onClick = function() {
+    detailBtn.onclick = function() {
         eventDetail = document.getElementById('eventDetail');
         if (eventDetail.style.display === 'hidden') {
             eventDetail.style.display = 'block';
