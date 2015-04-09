@@ -194,13 +194,10 @@ input#datepicker.form-control{
     margin: 20px auto;
     display: block;
 }
-.entry-header span.glyphicon.glyphicon-user
-{
 
-}
-
-button#detailTrigger.btn.btn-default.btn-sm > span {
-    -webkit-transition: all 0.3s linear;
+button#detailTrigger.btn.btn-link.btn-not-rounded.btn-sm > span {
+    -webkit-transition: all 0.15s linear;
+    text-decoration: none;
 }
 
 .rotate-180 {
@@ -210,4 +207,18 @@ button#detailTrigger.btn.btn-default.btn-sm > span {
 .all-sorts-of-meta {
     margin-bottom: 10px;
     border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+#accept-invite {
+    margin-bottom: 90px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 -1px 2px rgba(0,0,0,0.2);
+    max-height: 84px;
 }
