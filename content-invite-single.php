@@ -25,9 +25,10 @@ get_template_part('header','app');
         <div>
             <p>
                 <span class="time-span"><?=$date?></span>
-                <span class="glyphicon glyphicon-user"><?=$current_user->login?></span>
+                <span class="glyphicon glyphicon-user" style=color:gray><?=$current_user->login?></span>
                 <span class="user-name-span"><?=$current_user->user_login?></span>
             </p>
+            <p id="show_detail">点击查看展览详情 <span class="glyphicon glyphicon-menu-down" style="color:gray"></span></p>
         </div>
         </header><!-- .entry-header -->
         <div class="entry-content" style="display:hidden;">
@@ -133,8 +134,7 @@ get_template_part('header','app');
             </div> <!-- .entry-content -->
             </article><!-- #post-## -->
             <div class="container">
-                <p id="show_detail">点击查看展览详情 <span class="glyphicon glyphicon-menu-down"></span></p>
-                <button class="btn btn-lg color-red btn-not-rounded btn-block" id="accept-invite">报名</button>
+                <button class="btn btn-lg color-red btn-not-rounded btn-block" id="accept-invite">报名参与</button>
             </div>
             <?php
             echo the_join_list($post->ID,false);
