@@ -146,6 +146,10 @@ span.glyphicon{
     width: 100%;
 }
 
+.btn-half-width:hover {
+    color: white;
+}
+
 .btn-half-width {
     width: 45vw;
 }
