@@ -144,7 +144,7 @@ get_template_part('header','app');
         }
     };
     var detailBtn = document.getElementById('show_detail');
-    detailBtn.addEventListener('click', 'showHideEventDetail');
+    detailBtn.onclick = showHideEventDetail;
 </script>
 <?php
 echo the_join_list($post->ID,false);
