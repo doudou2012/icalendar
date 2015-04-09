@@ -142,9 +142,14 @@ span.glyphicon{
 }
 
 .btn-not-rounded {
-    border-radius: 0;
+    border-radius: 2px;
     width: 100%;
 }
+
+.btn-half-width {
+    width: 45vw;
+}
+
 .btn-container {
     margin-top: 20px;
 }
