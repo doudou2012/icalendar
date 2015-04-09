@@ -19,19 +19,19 @@ get_template_part('header','app');
 ?>
 <article id="post-<?=$post->ID?>" <?php post_class(); ?>>
     <header class="entry-header">
-        <h1 class="entry-title">
-            <?php echo '我想去看在「'.types_render_field('place','').'」举办的「'.$post->post_title.'」展览，你想一起来吗？'; ?>
+        <h1 class="entry-title" style="font-weight: 300;">
+        <?php echo '我想去看在「'.types_render_field('place','').'」举办的「'.$post->post_title.'」展览，你想一起来吗？'; ?>
         </h1>
-        <div>
+        <div class="all-sorts-of-meta">
             <p>
                 <span class="time-span"><?=$date?></span>
                 <span class="glyphicon glyphicon-user" style=color:gray><?=$current_user->login?></span>
                 <span class="user-name-span"><?=$current_user->user_login?></span>
             </p>
-            <p id="show_detail">点击查看展览详情 <span class="glyphicon glyphicon-menu-down" style="color:gray"></span></p>
+            <p id="detailTrigger">点击查看展览详情 <span class="caret"></span></p>
         </div>
         </header><!-- .entry-header -->
-        <div class="entry-content" style="display:hidden;">
+        <div class="entry-content" id="eventDetail" style="display:hidden;">
             <?php twentyfourteen_post_thumbnail(); ?>
             <h2>展览信息</h2>
             <table class="table-show">
@@ -70,9 +70,7 @@ get_template_part('header','app');
                     if (!empty($organizer)):?>
                     <tr>
                         <th>策展人</th>
-                        <td><?php
-                            echo implode('、',$organizer);
-                        ?></td>
+                        <td><?php echo implode('、',$organizer); ?></td>
                     </tr>
                     <?php endif;
                     $pid = get_the_ID();
@@ -82,18 +80,14 @@ get_template_part('header','app');
                     ?>
                     <tr>
                         <th>艺术家</th>
-                        <td>
-                            <?php the_terms($pid,'artist');?>
-                        </td>
+                        <td><?php the_terms($pid,'artist');?></td>
                     </tr>
                     <?php endif;
                     if (!empty($city)):
                     ?>
                     <tr>
                         <th>城市</th>
-                        <td>
-                            <?php the_terms($pid,'city');?>
-                        </td>
+                        <td><?php the_terms($pid,'city');?></td>
                     </tr>
                     <?php endif;
                     $url = types_render_field('url',array('output'=>'html'));
@@ -101,10 +95,7 @@ get_template_part('header','app');
                     ?>
                     <tr>
                         <th>网址</th>
-                        <td><?php
-                            echo  types_render_field('url',array('output'=>'html'));
-                            ?>
-                        </td>
+                        <td><?php echo types_render_field('url',array('output'=>'html')); ?></td>
                     </tr>
                     <?php endif;
                     $phone = types_render_field('phone','');
@@ -119,16 +110,28 @@ get_template_part('header','app');
             </table>
             <div class="show-content">
                 <h2>展览介绍</h2>
-                <?php
-                echo wrap_tag(types_render_field('description',array('output'=>'raw')));
-                ?>
+                <?php echo wrap_tag(types_render_field('description',array('output'=>'raw'))); ?>
             </div>
-            </div> <!-- .entry-content -->
-            </article><!-- #post-## -->
-            <div class="container">
-                <button class="btn btn-lg color-red btn-not-rounded btn-block" id="accept-invite">报名参与</button>
-            </div>
-            <?php
-            echo the_join_list($post->ID,false);
-            get_template_part('footer','app');
-            ?>
+        </div> <!-- .entry-content -->
+    </article><!-- #post-## -->
+    <div class="container">
+        <button class="btn btn-lg color-red btn-not-rounded btn-block" id="accept-invite">报名参与</button>
+    </div>
+    <?php
+    echo the_join_list($post->ID,false);
+    get_template_part('footer','app');
+    ?>
+    <script type="text/javascript">
+        function showHideEventDetail (triggerNode, targetNode) {
+            if ( targetNode.style.display == 'hidden' ) {
+                targetNode.style.display = 'block';
+                triggerNode.classList.add('rotate-180');
+            } else {
+                targetNode.style.display = 'hidden';
+                triggerNode.classList.remove('rotate-180');
+            }
+        }
+        var detailTrigger = document.getElementById('detailTrigger');
+        var eventDetail = document.getElementById('eventDetail');
+        detailTrigger.onclick = showHideEventDetail(detailTrigger, eventDetail);
+    </script>

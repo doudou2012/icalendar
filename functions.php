@@ -907,25 +907,25 @@ function get_join_user($pid){
 function the_join_list($pid,$isOwn = false){
     $post = get_post($pid);
     $joins = get_join_user($pid);
-    if ($joins){
-        $str = '<div class="footer"> <hr />';
-        if ($isOwn){
-            if (!is_user_logged_in()) return false;
+    if ( $joins ) {
+        $str = '<div class="footer">';
+        if ( $isOwn ) {
+            if ( !is_user_logged_in() ) return false;
             $current_user = wp_get_current_user();
-            $userName = $current_user->display_name ? $current_user->display_name : $current_user->user_login;
-            if ( !in_array($userName,$joins) || (count($joins) == 1 && $userName == $joins[0])){
+            $userName = $current_user -> display_name ? $current_user -> display_name : $current_user -> user_login;
+            if ( !in_array ( $userName, $joins ) || ( count ( $joins ) == 1 && $userName == $joins[0] ) ) {
                 return false;
             }
-            $str .= '<span>时间:'.types_render_field('start-time',array('output'=>'normal')).'</span><span>还有谁去......</span>';
+            $str .= '<p>时间：'.types_render_field( 'start-time', array( 'output'=>'normal' ) ).'</p><p>还有谁去……</p>';
         }
-        else{
-            $str.='<span>还有谁去......</span>';
+        else {
+            $str .= '<p>还有谁去……</p>';
         }
-        $str.='<ul class="list-inline" >';
-        foreach ($joins as $v){
-            $str.='<li><span>'.$v.'</span></li>';
+        $str .= '<ul class="list-inline" >';
+        foreach ( $joins as $v ) {
+            $str .= '<li>'.$v.'</li>';
         }
-        $str.='</ul></div>';
+        $str .= '</ul></div>';
         return $str;
     }
     return false;

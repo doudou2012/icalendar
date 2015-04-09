@@ -198,3 +198,8 @@ input#datepicker.form-control{
 {
 
 }
+
+.rotate-180 {
+    -webkit-transition: all 0.3s linear;
+    -webkit-transform: rotate(180deg);
+}
