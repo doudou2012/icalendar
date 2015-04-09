@@ -171,3 +171,26 @@ input#datepicker.form-control{
     color: white;
     border: none;
 }
+
+.invite-form-card {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.invite-form-card h3 {
+    font-size: 17px;
+    text-align: center;
+}
+
+.invite-form-card .date-picker {
+    width: 100%;
+    height: 50px;
+    margin: 20px auto;
+}
+
+.invite-form-card .btn.btn-link {
+    margin: 20px auto;
+    display: block;
+}
