@@ -23,12 +23,8 @@ get_template_part('header','app');
         <?php echo '我想去看在「'.types_render_field('place','').'」举办的「'.$post->post_title.'」展览，你想一起来吗？'; ?>
         </h1>
         <div class="all-sorts-of-meta">
-            <p>
-                <span class="time-span"><?=$date?></span>
-                <span class="glyphicon glyphicon-user" style=color:gray><?=$current_user->login?></span>
-                <span class="user-name-span"><?=$current_user->user_login?></span>
-            </p>
-            <p id="detailTrigger">点击查看展览详情 <span class="caret"></span></p>
+            <p><span class="time-span"><?=$date?></span> 邀请人：<span class="glyphicon glyphicon-user" style=color:gray><?=$current_user->login?></span> <span class="user-name-span"><?=$current_user->user_login?></span></p>
+            <button class="btn btn-default btn-sm" id="detailTrigger">点击查看展览详情 <span class="caret"></span></button>
         </div>
         </header><!-- .entry-header -->
         <div class="entry-content" id="eventDetail" style="display:hidden;">
@@ -123,12 +119,13 @@ get_template_part('header','app');
     ?>
     <script type="text/javascript">
         function showHideEventDetail (triggerNode, targetNode) {
-            if ( targetNode.style.display == 'hidden' ) {
-                targetNode.style.display = 'block';
-                triggerNode.classList.add('rotate-180');
+            if ( targetNode.classList.toString().indexOf('hidden') == -1 ) {
+                targetNode.classList.add('hidden');
+                triggerNode.lastChild.classList.remove('rotate-180');
             } else {
-                targetNode.style.display = 'hidden';
-                triggerNode.classList.remove('rotate-180');
+                targetNode.classList.remove('hidden')
+                triggerNode.firstChild.innerText = '点击折叠';
+                triggerNode.lastChild.classList.add('rotate-180');
             }
         }
         var detailTrigger = document.getElementById('detailTrigger');
