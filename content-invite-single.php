@@ -23,7 +23,10 @@ get_template_part('header','app');
         <?php echo '我想去看在「'.types_render_field('place','').'」举办的「'.$post->post_title.'」展览，你想一起来吗？'; ?>
         </h1>
         <div class="all-sorts-of-meta">
-            <p><span class="time-span"><?=$date?></span> 邀请人：<span class="glyphicon glyphicon-user" style=color:gray><?=$current_user->login?></span> <span class="user-name-span"><?=$current_user->user_login?></span></p>
+            <ul>
+                <li>时间：<?=$date?></li>
+                <li>邀请人：<span class="glyphicon glyphicon-user" style=color:gray><?=$current_user->login?></span> <?=$current_user->user_login?></li>
+            </ul>
             <button class="btn btn-default btn-sm" id="detailTrigger" onclick="showHideEventDetail()">展览详情 <span class="caret"></span></button>
         </div>
         </header><!-- .entry-header -->
