@@ -26,18 +26,17 @@ get_template_part('header','app');
             <span class="user-name-span"><?=$current_user->user_login?></span>
         </div>
 	</header><!-- .entry-header -->
-    <?php 
-    $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
-    if ($str) {
-        $images = explode(' ',$str);
-//        $showBullet = wp_is_mobile()?false:true;
-        echo renderSliderImages($images);
-    }else{
-        twentyfourteen_post_thumbnail();
-    }
+    <div class="entry-content">
+        <?php
+        $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
+        if ($str) {
+            $images = explode(' ',$str);
+            echo renderSliderImages($images);
+        } else {
+            twentyfourteen_post_thumbnail();
+        }
 
-    ?>
-	<div class="entry-content">
+        ?>
         <h2>展览信息</h2>
         <table class="table-show">
             <tbody>
