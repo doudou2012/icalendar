@@ -146,7 +146,7 @@
                     date = encodeURIComponent($('input[name="date"]').val()),
                     title = $('#post_title').val();
                 var share_url = baseUrl + '/?invite&info&pid='+pid+'&date='+date;
-                var content = '我想去看<a href="'+share_url+'" >「'+title+'」</a>展览，你想一起来吗？';
+                var content = '我想去看「'+title+'」展览，你想一起来吗？';
                 shared(title,share_url,content);
             });
             $('#cancel_invite').on('click',function(){
