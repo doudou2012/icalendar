@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="<?=home_url().'/manifest.php'?>">
+<html manifest="<?=home_url()?>/manifest.php">
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
@@ -12,7 +12,7 @@
     <link rel='stylesheet' id='slider-style-css'  href="<?php echo get_template_directory_uri();?>/css/gxy-single-event.css" type='text/css' media='all' />
     <link rel='stylesheet' id='slider-style-css'  href="<?php echo get_template_directory_uri();?>/css/jquery.excoloSlider.css" type='text/css' media='all' />
     <script type="text/javascript">
-        //        layer.use('extend/layer.ext.js');
+        var home_url = "<?=home_url()?>";
     </script>
 </head>
 <body <?php body_class(); ?>>

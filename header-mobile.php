@@ -21,6 +21,9 @@
         <link rel='stylesheet' id='slider-style-css'  href="<?php echo get_template_directory_uri();?>/css/jquery.excoloSlider.css" type='text/css' media='all' />
         <link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/icalendar-app.css" rel="stylesheet" />
     <?php endif;?>
+    <script type="text/javascript">
+            var home_url = "<?=home_url()?>";
+    </script>
 </head>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">

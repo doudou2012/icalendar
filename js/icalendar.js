@@ -3,7 +3,7 @@
  * scroll http://excolo.github.io/Excolo-Slider/
  */
 (function($){
-    var baseUrl = window.location.pathname;
+    var baseUrl = home_url || window.location.origin;
     var shared = function(title,url,content){
         var param = {"title":title,"url":url,"content":content};
         webridge.jsToNative('shared',param,function(result,error){
