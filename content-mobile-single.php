@@ -112,17 +112,6 @@ $isFav = check_fav(get_the_ID());
                     </td>
                 </tr>
                 <?php endif;
-            $url = types_render_field('url',array('output'=>'html'));
-            if (!empty($url)):
-            ?>
-            <tr>
-                <th>网址</th>
-                <td><?php
-                    echo types_render_field('url',array('output'=>'html'));
-                    ?>
-                </td>
-            </tr>
-            <?php endif;
             $phone = types_render_field('phone','');
             if (!empty($phone)):
             ?>
