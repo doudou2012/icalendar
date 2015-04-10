@@ -17,7 +17,7 @@ $joins = get_join_user($pid);
 $current_user = wp_get_current_user();
 get_template_part('header','app');
 ?>
-<h1 class="page-title">活动邀请</h1>
+<h1 class="page-title">去看展吗？</h1>
 <hr>
 <article id="post-<?=$post->ID?>" <?php post_class(); ?>>
     <header class="entry-header">
@@ -115,7 +115,7 @@ get_template_part('header','app');
             </div>
         </div> <!-- .entry-content -->
         <div>
-            <button class="btn btn-lg color-red btn-not-rounded btn-block" id="accept-invite">报名参与</button>
+            <button class="btn btn-lg color-red btn-not-rounded btn-block" id="accept-invite">同去同去</button>
         </div>
     </article><!-- #post-## -->
     <?php
