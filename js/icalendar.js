@@ -98,7 +98,7 @@
         if ($('.nav-share').length > 0){
             $('.nav-share').on('click',function(){
                 var title = $('h1.entry-title').text();
-                shared(title,location.href,'<a href="'+location.href+'">'+title+'</a>');
+                shared(title,location.href,title);
             });
         }
 
