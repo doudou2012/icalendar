@@ -7,7 +7,7 @@
  */
 ?>
 <!DOCTYPE html>
-<html>
+<html manifest="<?=home_url()?>/manifest.php">
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -21,6 +21,9 @@
         <link rel='stylesheet' id='slider-style-css'  href="<?php echo get_template_directory_uri();?>/css/jquery.excoloSlider.css" type='text/css' media='all' />
         <link rel="stylesheet" href="<?php echo get_template_directory_uri();?>/css/icalendar-app.css" rel="stylesheet" />
     <?php endif;?>
+    <script type="text/javascript">
+            var home_url = "<?=home_url()?>";
+    </script>
 </head>
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">

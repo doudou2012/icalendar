@@ -70,7 +70,12 @@ my_get_header();
                     endif;
 				else :
 					// If no content, include the "No posts found" template.
-					get_template_part( 'content', 'none' );
+                    if ( isset($_GET['favorite'])):
+                        get_template_part( 'content', 'none-favorite' );
+					else:
+                        get_template_part( 'content', 'none' );
+
+                    endif;
 
 				endif;
 			?>

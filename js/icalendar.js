@@ -3,9 +3,9 @@
  * scroll http://excolo.github.io/Excolo-Slider/
  */
 (function($){
-    var baseUrl = window.location.pathname;
+    var baseUrl = home_url || window.location.origin;
     var shared = function(title,url,content){
-        var param = {"title":title,"url":url,"content":contet};
+        var param = {"title":title,"url":url,"content":content};
         webridge.jsToNative('shared',param,function(result,error){
             console.log(result);
         });
@@ -97,7 +97,8 @@
         }
         if ($('.nav-share').length > 0){
             $('.nav-share').on('click',function(){
-                shared($('h1.entry-title').text(),location.href,'');
+                var title = $('h1.entry-title').text();
+                shared(title,location.href,'<a href="'+location.href+'">'+title+'</a>');
             });
         }
 
@@ -144,8 +145,8 @@
                 var pid = parseInt($('#p_id').val()),
                     date = encodeURIComponent($('input[name="date"]').val()),
                     title = $('#post_title').val();
-                var share_url = location.protocol+'//'+location.host + baseUrl + '?invite&info&pid='+pid+'&date='+date;
-                var content = '我想去看<a href="'+location.href+'" >「'+title+'」</a>展览，你想一起来吗？';
+                var share_url = baseUrl + '/?invite&info&pid='+pid+'&date='+date;
+                var content = '我想去看<a href="'+share_url+'" >「'+title+'」</a>展览，你想一起来吗？';
                 shared(title,share_url,content);
             });
             $('#cancel_invite').on('click',function(){
