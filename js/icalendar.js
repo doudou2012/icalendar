@@ -4,8 +4,8 @@
  */
 (function($){
     var baseUrl = window.location.pathname;
-    var shared = function(content,url,img){
-        var param = {"title":content,"url":url};
+    var shared = function(title,url,content){
+        var param = {"title":title,"url":url,"content":contet};
         webridge.jsToNative('shared',param,function(result,error){
             console.log(result);
         });
@@ -145,7 +145,8 @@
                     date = encodeURIComponent($('input[name="date"]').val()),
                     title = $('#post_title').val();
                 var share_url = location.protocol+'//'+location.host + baseUrl + '?invite&info&pid='+pid+'&date='+date;
-                shared(title,share_url);
+                var content = '我想去看<a href="'+location.href+'" >「'+title+'」</a>展览，你想一起来吗？';
+                shared(title,share_url,content);
             });
             $('#cancel_invite').on('click',function(){
                 history.go(-1);
