@@ -97,7 +97,8 @@
         }
         if ($('.nav-share').length > 0){
             $('.nav-share').on('click',function(){
-                shared($('h1.entry-title').text(),location.href,'');
+                var title = $('h1.entry-title').text();
+                shared(title,location.href,'<a href="'+location.href+'">'+title+'</a>');
             });
         }
 
