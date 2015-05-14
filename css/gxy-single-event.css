@@ -1,0 +1,107 @@
+body {
+    font-family: Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 17px;
+    padding: 0;
+    margin: 0;
+    background-color: #FFFFFF;
+}
+
+h1, h2, h3, h4, th, td, p {
+    color: #1A1A1A;
+}
+
+article {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 10px 20px 10px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 1.5em;
+    font-weight: 100;
+    line-height: 1.2em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.3em;
+    line-height: 1em;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.post-thumbnail {
+    width: 100%;
+}
+
+img.attachment-twentyfourteen-full-width.wp-post-image {
+    width: 100%;
+    height: auto;
+}
+
+table.table-show {
+    width: 100%;
+    padding: 0;
+    margin: 1em 0;
+}
+
+tr {
+    line-height: 1.5em;
+}
+
+th {
+    padding: 0;
+    margin: 0;
+    width: 5em;
+    min-width: 4.4em;
+    vertical-align: top;
+    text-align: justify;
+}
+
+td {padding: 0;}
+
+span.artist {
+    display: inline-block;
+}
+
+p {
+    font-size: 1em;
+    font-weight: 100;
+    color: #333;
+    margin-bottom: 1em;
+}
+
+a {
+    text-decoration: none;
+}
+/*
+ * fanzhanao add
+ */
+table.table-show, .table-show tr,.table-show th,.table-show td{
+    border-width: 0;
+}
+footer#colophon.site-footer {
+    max-width: 94vw;
+    margin: 0 auto 40px auto;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding: 40px 0 0 0;
+}
+
+input.search-field {
+    -webkit-appearance: none;
+    height: 40px;
+    font-size: 16px;
+    border:1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 3px rgba(150, 150, 150, 0.3);
+    vertical-align: middle;
+}
+
+input.search-submit {
+    -webkit-appearance: none;
+    height: 40px;
+    font-size: 16px;
+    border:1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+    vertical-align: middle;
+}
