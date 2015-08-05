@@ -73,9 +73,17 @@ $isFav = check_fav(get_the_ID());
                 <th>展览地址</th>
                 <td><?php echo $address ; ?></td>
             </tr>
-           <?php endif;
-            $host  =  types_render_field('hosts','');
-            if (!empty($host)):
+                <?php endif;
+                $url = types_render_field('url','');
+                                if ($url):
+               ?>
+            <tr>
+                <th>网址</th>
+                <td><?php echo $url ; ?></td>
+                </tr>
+            <?php endif;
+                $host  =  types_render_field('hosts','');
+                if (!empty($host)):
             ?>
             <tr>
                 <th>主办单位</th>
