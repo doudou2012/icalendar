@@ -74,6 +74,14 @@ $isFav = check_fav(get_the_ID());
                 <td><?php echo $address ; ?></td>
             </tr>
            <?php endif;
+                $url = types_render_field('url','');
+                if ($url):
+            ?>
+                    <tr>
+                        <th>网址</th>
+                        <td><?php echo $url ; ?></td>
+                    </tr>
+                    <?php endif;
             $host  =  types_render_field('hosts','');
             if (!empty($host)):
             ?>

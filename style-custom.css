@@ -281,6 +281,11 @@ input.search-submit {
     /*max-height: 230px;*/
 }
 
+#slider-single img{
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
 
 
 

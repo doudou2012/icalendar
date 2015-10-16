@@ -843,7 +843,7 @@ function renderSliderImages($images)
         $images = explode(' ', $images);
     $html = '<div id="slider-single">';
     foreach ($images as $value) {
-        $html .= '<img src="' . $value . '" />';
+        $html .= '<img class="img-responsive center-block" src="' . $value . '" />';
     }
     $html .= '</div>';
     return $html;
