@@ -25,6 +25,7 @@
 <!--        <script type='text/javascript' src='--><?php //echo get_template_directory_uri();?><!--/js/wowslider/script.js'></script>-->
     <?php endif;?>
  <script type="text/javascript">
+     var isSingle = <?=  is_single() ? true : false?>
  $(document).ready(function(){
  	var ua = navigator.userAgent,
         reg = /Slate/;
@@ -35,7 +36,8 @@
 		$('.site-header').css('max-width','670px');
 		<?php endif;?>
 	};
-	$('.post-thumbnail img').css('max-height','230px');
+        if (!isSingle)
+            $('.post-thumbnail img').css('max-height','230px');
 	$(document.body).css({"overflow-x":"hidden","overflow-y":"hidden" });
  });
  </script>
@@ -50,7 +52,7 @@ if (ua_icalendar_app()){
     <ul>
       <?php if (count($cities) > 0):?>
       <?php foreach ($cities as $city):?>
-      <li><a href="<?=get_term_link($city)?>"><?=$city->name?></a></li>
+        <li><em>●</em><a href="<?=get_term_link($city)?>"><?=$city->name?></a></li>
       <?php endforeach;?>
       <?php endif;?>
       <li><a href="<?=home_url().'?city-list'?>" >更多»</a></li>
@@ -59,14 +61,18 @@ if (ua_icalendar_app()){
     <ul>
       <?php if (count($artist) > 0):?>
       <?php foreach ($artist as $art):?>
-      <li><a href="<?=get_term_link($art)?>"><?=$art->name?></a></li>
+      <li><em>●</em><a href="<?=get_term_link($art)?>"><?=$art->name?></a></li>
       <?php endforeach;?>
       <?php endif;?>
       <li><a href="<?=home_url().'?art-list'?>" >更多»</a></li>
     </ul>
+    <h3 id="clabout">关于</h3>
   </div>
 </div>
 <script type="text/javascript">
+    $('#clabout').click(function(){
+        location.href = "http://icalendar.bbwc.cn/about.html";
+    });
     function showHideCityMenu () {
         var cityMenu = document.getElementsByClassName('cityArtistMenuBg')[0];
         if (cityMenu.classList.toString().indexOf('hidden') == -1) {
