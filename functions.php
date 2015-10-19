@@ -855,7 +855,7 @@ function renderSliderImages($images)
 //    }
 //}
 
-add_action('wp_footer','flex_slider');
+//add_action('wp_footer','flex_slider');
 function flex_slider(){
 	if (!is_single()) {
 		echo <<<EOF
