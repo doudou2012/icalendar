@@ -57,6 +57,7 @@
             </div>
         </div>
     </header>
+
     <?php endif;?>
     <div id="main" class="site-main<?php if (ua_icalendar_app()) echo ' nav-margin-top'; ?>">
 

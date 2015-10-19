@@ -18,6 +18,7 @@ article {
 }
 
 h1 {
+
     font-size: 1.5em;
     font-weight: 100;
     line-height: 1.2em;
@@ -81,6 +82,7 @@ a {
 table.table-show, .table-show tr,.table-show th,.table-show td{
     border-width: 0;
 }
+
 footer#colophon.site-footer {
     max-width: 94vw;
     margin: 0 auto 40px auto;

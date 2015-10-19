@@ -86,7 +86,6 @@ $isFav = check_fav(get_the_ID());
             if (!empty($host)):
             ?>
             <tr>
-                <th>主办方</th>
                 <td><?php echo $host; ?></td>
             </tr>
             <?php endif;

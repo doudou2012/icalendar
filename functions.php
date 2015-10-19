@@ -253,7 +253,6 @@ function twentyfourteen_scripts() {
 
 	if ( is_front_page() && 'slider' == get_theme_mod( 'featured_content_layout' ) ) {
 		wp_enqueue_script( 'twentyfourteen-slider', get_template_directory_uri() . '/js/slider.js', array( 'jquery' ), '20131205', true );
-
 		wp_localize_script( 'twentyfourteen-slider', 'featuredSliderDefaults', array(
 			'prevText' => __( 'Previous', 'twentyfourteen' ),
 			'nextText' => __( 'Next', 'twentyfourteen' )
@@ -582,6 +581,7 @@ function custom_field_search($search){
 //add_filter( 'posts_search', 'custom_field_search' );
 function custom_search_where($where) { // put the custom fields into an array
     global $wpdb;
+
     if (is_admin()) return $where;
     if (isset($_GET['json'])) return $where;
     $s = get_query_var('s');
@@ -855,7 +855,7 @@ function renderSliderImages($images)
 //    }
 //}
 
-// add_action('wp_footer','flex_slider');
+//add_action('wp_footer','flex_slider');
 function flex_slider(){
 	if (!is_single()) {
 		echo <<<EOF
