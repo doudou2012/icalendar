@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by https://www.gitignore.io
 
 ### PhpStorm ###
@@ -50,10 +51,16 @@ crashlytics-build.properties
 
 
 ### WordPress ###
+=======
+>>>>>>> 40e65ecfcbcc0b131b0de07634b4095730c3da6a
 *.log
 .htaccess
 sitemap.xml
 sitemap.xml.gz
+<<<<<<< HEAD
+=======
+.idea
+>>>>>>> 40e65ecfcbcc0b131b0de07634b4095730c3da6a
 wp-config.php
 wp-content/advanced-cache.php
 wp-content/backup-db/
@@ -63,6 +70,7 @@ wp-content/cache/
 wp-content/upgrade/
 wp-content/uploads/
 wp-content/wp-cache-config.php
+<<<<<<< HEAD
 wp-content/plugins
 
 ### OSX ###
@@ -88,3 +96,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+=======
+>>>>>>> 40e65ecfcbcc0b131b0de07634b4095730c3da6a

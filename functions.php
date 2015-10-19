@@ -32,6 +32,7 @@
  *
  * @since Twenty Fourteen 1.0
  */
+define('INVITE_USER_KEY','invite_users');
 if ( ! isset( $content_width ) ) {
 	$content_width = 474;
 }
@@ -231,9 +232,11 @@ function twentyfourteen_scripts() {
 
 	// Load our main stylesheet.
 	wp_enqueue_style( 'twentyfourteen-style', get_stylesheet_uri(), array( 'genericons' ) );
-
+//	wp_enqueue_style( 'flexslider-style', get_template_directory_uri() . '/css/flexslider.css', array() );
+    wp_enqueue_style( 'slider-style', get_template_directory_uri() . '/css/jquery.excoloSlider.css', array() );
 	// Load the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'twentyfourteen-ie', get_template_directory_uri() . '/css/ie.css', array( 'twentyfourteen-style', 'genericons' ), '20131205' );
+    wp_enqueue_style( 'bootstrap-style' , 'http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css',array(),'');
 	wp_style_add_data( 'twentyfourteen-ie', 'conditional', 'lt IE 9' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -257,6 +260,9 @@ function twentyfourteen_scripts() {
 	}
 
 	wp_enqueue_script( 'twentyfourteen-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20140616', true );
+//	wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/jquery.flexslider.js');
+    wp_enqueue_script( 'slider',get_template_directory_uri() . '/js/jquery.excoloSlider.min.js');
+//    wp_enqueue_script( 'slider-script',get_template_directory_uri() . '/js/script.js', array('jquery','slider'));
 }
 add_action( 'wp_enqueue_scripts', 'twentyfourteen_scripts' );
 
@@ -575,33 +581,191 @@ function custom_field_search($search){
 //add_filter( 'posts_search', 'custom_field_search' );
 function custom_search_where($where) { // put the custom fields into an array
     global $wpdb;
-    $s = $_GET['s'];
-    if (!trim($s)) return $where;
 
-    $customs = array('wpcf-place', 'wpcf-address', 'wpcf-description','wpcf-organizer','wpcf-hosts');
-    $query = '';
-    $sep = '';
-    foreach($customs as $custom) {
-        $query .= $sep;//" OR (";
-        $query .= "(wp_postmeta.meta_key = '$custom')";
-        $query .= " AND (wp_postmeta.meta_value LIKE '%{$s}%')";
-        $query .= ")";
-        $sep = ' OR (';
+    if (is_admin()) return $where;
+    if (isset($_GET['json'])) return $where;
+    $s = get_query_var('s');
+    if (trim($s)){
+    	$where = " AND ($wpdb->posts.post_status = 'publish') ";
+    	$customs = array('wpcf-place', 'wpcf-address', 'wpcf-description','wpcf-organizer','wpcf-hosts');
+    	$query = '';
+    	$sep = '';
+    	foreach($customs as $custom) {
+        	$query .= $sep;//" OR (";
+        	$query .= "(wp_postmeta.meta_key = '$custom')";
+        	$query .= " AND (wp_postmeta.meta_value LIKE '%{$s}%')";
+        	$query .= ")";
+        	$sep = ' OR (';
+    	}
+    	$query = ' ('.$query;
+    	$where .= " AND ({$query})";
     }
-    $query = ' ('.$query;
-    $where = " AND ({$query}) AND ($wpdb->posts.post_status = 'publish') ";
+    if (!is_single() && !get_query_var('s')) {
+    	$where.= " AND  wp_postmeta.meta_key =  'wpcf-start-time'";
+    }
     return($where);
 }
 add_filter('posts_where', 'custom_search_where');
 function custom_filed_join($join){
-    $join = "INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
+	if (!is_single() || get_query_var('s'))  {
+		$join .= " INNER JOIN wp_postmeta ON (wp_posts.ID = wp_postmeta.post_id)";
+	}
     return $join;
 }
+
+function queryOrderby($orderby_statement){
+	if (! is_single() && !get_query_var('s')) {
+		$orderby_statement = ' wp_postmeta.meta_value DESC';
+	}
+	return $orderby_statement;
+}
 add_filter('posts_join','custom_filed_join');
+add_filter('posts_distinct', 'search_distinct');
+add_filter( 'posts_orderby','queryOrderby');
+
 function search_distinct() {
     return "DISTINCT";
 }
-add_filter('posts_distinct', 'search_distinct');
+
+add_filter('template_include', 'my_custom_template');
+function my_custom_template($single)
+{
+    if (isset($_GET['city-list']) || isset($_GET['art-list'])) {
+        $single = TEMPLATEPATH . '/content-city-list.php';
+    }
+    else if (isset($_GET['invite'])){
+        if (isset($_GET['form'])){
+            $single = TEMPLATEPATH . '/content-inviteform.php';
+        }
+        else if (isset($_GET['info'])){
+            $single = TEMPLATEPATH . '/content-invite-single.php';
+        }
+    }
+    return $single;
+}
+if (ua_icalendar_app()){
+    add_filter('gettext','archive_title');
+}
+function archive_title($translate){
+    global $wp_query;
+    if ($translate == '归档'){
+        if (get_query_var('s')){
+            return  get_query_var('s');
+        }else if (isset($_GET['favorite'])){
+            return '感兴趣的展览';
+        }else if ($wp_query->query_vars['taxonomy']){
+            $value    = get_query_var($wp_query->query_vars['taxonomy']);
+            $term = get_term_by('slug',$value,$wp_query->query_vars['taxonomy']);
+            return $term->name;
+        }
+    }
+    return $translate;
+}
+/**
+ * 获取轮播图片
+ */
+function get_slider_img(){
+    if (ua_icalendar_app() && (is_home() || is_front_page())){
+        if (isset($_GET['city-list']) || isset($_GET['art-list']) || isset($_GET['invite'])) return '';
+        $query_args = array(
+            'tag'=>'featured',
+            'post_type'=>'post',
+            'order'=>'DESC',
+            'limit' => 5
+        );
+        $img_posts = get_posts($query_args);
+        $html = '';
+        if (count($img_posts)){
+            $i = 1;
+            $html.='<div id="slider-home">';
+            foreach ($img_posts as $img_post) {
+                if ($img_post->post_type == 'post') {
+                    $html .= ( '<a href="'.get_permalink($img_post).'" >' . get_the_post_thumbnail($img_post->ID, 'large' ,array('id'=>'image-'.$i)).'</a>') ;
+                    ++$i;
+                }
+            }
+            $html.='</div>';
+        }
+        return $html;
+    }
+    return '';
+}
+/**
+ * 查询置顶贴
+ */
+add_filter( 'the_posts', 'sticky_post_top' );
+function sticky_post_top( $posts ) {
+	$page = get_query_var('paged');
+	if ($page > 1) return $posts;
+    $sticky_posts = get_option( 'sticky_posts' );
+	if ( is_main_query() && !is_single() && !is_admin() ) {
+        $oldPosts = $posts;
+		$post_nums = count($posts);
+		$sticky_offset = 0;
+		for ($i= 0; $i < count($post_nums) ; $i++){
+			if ( in_array( $posts[$i]->ID, $sticky_posts ) ) {
+				$sticky_post = $posts[$i];
+				array_splice( $posts, $i, 1 );
+				array_splice( $posts, $sticky_offset, 0, array($sticky_post) );
+				$sticky_offset++;
+				$offset = array_search($sticky_post->ID, $sticky_posts);
+				unset( $sticky_posts[$offset] );
+			}
+		}
+		if ( !empty( $sticky_posts) ) {
+            global $wp_query;
+            $stickArgs = array(
+                'post__in' => $sticky_posts,
+                'post_type' => $wp_query->query_vars['post_type'],
+                'post_status' => 'publish',
+                'tax_query' => $wp_query->tax_query->queries,
+                'nopaging' => true
+            );
+            $stickies = get_posts( $stickArgs );
+			foreach ( $stickies as $sticky_post ) {
+				array_splice( $posts, $sticky_offset, 0, array( $sticky_post ) );
+				$sticky_offset++;
+			}
+		}
+	}
+	return $posts;
+}
+
+add_action('init', 'event_rewrite');
+function event_rewrite() {
+    global $wp_rewrite;
+    add_rewrite_rule(
+        'event/(\d+)/?',
+        'index.php?post_type=event&p=$matches[1]',
+        'top'
+    );
+}
+
+add_filter('post_type_link', 'event_permalink', 1, 3);
+function event_permalink($post_link, $id = 0, $leavename) {
+    global $wp_rewrite;
+    $post = &get_post($id);
+    if ( is_wp_error( $post ) )
+        return $post;
+    if ($post->post_type != 'event') return $post_link;
+    $permalink_structure = get_option( 'permalink_structure' );
+    if (trim($permalink_structure) == '') return $post_link;
+    $newlink = $wp_rewrite->get_extra_permastruct('event');
+    $newlink = str_replace("%event%", $post->ID, $newlink);
+    $newlink = home_url(user_trailingslashit($newlink));
+    return $newlink;
+}
+/**
+ * 设置样式
+ */
+
+function set_sticky_class($classes) {
+	if ( is_sticky()){
+		$classes[] = 'sticky';
+	}
+	return $classes;
+}
+add_filter('post_class', 'set_sticky_class');
 
 //add_filter( 'posts_request', 'dump_request' );
 function dump_request( $input ) {
@@ -632,3 +796,182 @@ function wrap_tag($arr,$tagname='p',$class='',$string = true){
     }
     return $string === false ?  $result : implode(' ',$result);
 }
+
+function add_sticky_scripts() {
+  wp_enqueue_script( 'sticky_scripts', get_template_directory_uri() . '/js/sticky.js', array('jquery'), '1.0.0', true );
+  wp_localize_script( 'sticky_scripts', 'StickyAjax', array(
+    'ajaxurl' => admin_url( 'admin-ajax.php' ),
+    'security' => wp_create_nonce( 'sticky_post' ),
+    'StickyIds' => get_option ('sticky_posts')
+  ));
+
+}
+//add_action( 'wp_enqueue_scripts', 'add_sticky_scripts' );
+//add_action('wp_enqueue_scripts','add_icalendar_script');
+//function add_icalendar_script(){
+//    if (wp_is_mobile() && strpos($_SERVER['HTTP_USER_AGENT'], 'iArtCalendar') !== false  ){
+//        wp_enqueue_script( 'icalendar_scripts', get_template_directory_uri() . '/js/icalendar.js', array('jquery'), '1.0.0', true );
+//    }
+//}
+
+/**
+ * 判断是否为icalendar ua
+ * @return bool
+ */
+function ua_icalendar_app(){
+    return (preg_match('/iArt\s+Calendar/',$_SERVER['HTTP_USER_AGENT']) > 0 && wp_is_mobile()) ? true : false;
+}
+
+function my_action_callback() {
+  check_ajax_referer( 'sticky_post', 'security' );
+  $postId = $_POST['post_ID'];
+  if ($postId){
+  	if ($_POST['sticky'] == 'sticky') {
+  		stick_post( intval($postId) );
+  	}else{
+  		unstick_post( intval($postId));
+  	}
+  }
+  echo $postId;
+  die();
+}
+add_action( 'wp_ajax_my_action', 'my_action_callback' );
+
+function renderSliderImages($images)
+{
+    if (is_string($images))
+        $images = explode(' ', $images);
+    $html = '<div id="slider-single">';
+    foreach ($images as $value) {
+        $html .= '<img class="img-responsive center-block" src="' . $value . '" />';
+    }
+    $html .= '</div>';
+    return $html;
+}
+
+//function setArchiveTitle($title){
+//    if (isset($_GET[''])){
+//
+//    }
+//}
+
+//add_action('wp_footer','flex_slider');
+function flex_slider(){
+	if (!is_single()) {
+		echo <<<EOF
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.post-thumbnail img').css('max-height','230px');
+        });
+	</script>
+EOF;
+	}
+
+}
+
+function app_set_page_size($query){
+    if (!is_admin() && $query->is_main_query()){
+        $query->set('posts_per_page', 40);
+    }
+}
+if (ua_icalendar_app()){
+//    add_action( 'pre_get_posts', 'app_set_page_size' );
+}
+
+/**
+ * 判断是否已经收藏了
+ * @param $pid
+ * @return bool
+ */
+function check_fav($pid){
+    if (!is_user_logged_in()) return false;
+    if (intval($pid) > 0){
+        global $wpdb;
+        $rst = $wpdb->get_row($wpdb->prepare('SELECT post_id FROM wp_favorite WHERE user_id = %d  AND post_id=%d ',get_current_user_id(),$pid));
+        if ($rst && $rst->post_id){
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
+
+function get_join_user($pid){
+    if (intval($pid) > 0){
+        $join_users = get_post_meta($pid,INVITE_USER_KEY,true);
+        return  explode(',',$join_users);
+    }
+    return array();
+}
+
+function the_join_list($pid,$isOwn = false){
+    $post = get_post($pid);
+    $joins = get_join_user($pid);
+    if ( $joins ) {
+        $str = '<div class="footer">';
+        if ( $isOwn ) {
+            if ( !is_user_logged_in() ) return false;
+            $current_user = wp_get_current_user();
+            $userName = $current_user -> display_name ? $current_user -> display_name : $current_user -> user_login;
+            if ( !in_array ( $userName, $joins ) || ( count ( $joins ) == 1 && $userName == $joins[0] ) ) {
+                return false;
+            }
+            $str .= '<p>时间：'.types_render_field( 'start-time', array( 'output'=>'normal' ) ).'</p><p>还有谁去……</p>';
+        }
+        else {
+            $str .= '<p>还有谁去……</p>';
+        }
+        $str .= '<ul class="list-inline" >';
+        foreach ( $joins as $v ) {
+            $str .= '<li>'.$v.'</li>';
+        }
+        $str .= '</ul></div>';
+        return $str;
+    }
+    return false;
+}
+
+/**
+ * 自定义请求处理函数
+ */
+add_action('wp_loaded','customRequstHandler',11);
+function customRequstHandler(){
+    if (isset($_GET['invite'])){
+        $pid = $_GET['pid'];
+        if (isset($_GET['accept'])){//添加参加活动的昵称
+            $update  = updateJoinUserList($pid);
+            header('Content-type: application/json');
+            if ($update){
+                echo json_encode(array('success'=>true,data=>$pid));
+            }else{
+                echo json_encode(array('success'=>false,data=>0));
+            }
+            exit;
+        }
+    }
+}
+
+function updateJoinUserList($pid){
+    if (intval($pid) > 0){
+        $current_user = wp_get_current_user();
+        $join_users = get_post_meta($pid,INVITE_USER_KEY,true);
+        //获取当前的邀请用户列表
+        if (!$join_users){
+            $join_users= $current_user->display_name ? $current_user->display_name : $current_user->user_login;
+        }
+        if ($_REQUEST['nick']){
+            $nick = urldecode($_REQUEST['nick']);
+            if (!$join_users){
+                $join_users = $nick;
+            }else{
+                $join_arr = array_diff(explode(',',$join_users),array($nick));
+                array_push($join_arr,$nick);
+                $join_users = implode(',',$join_arr);
+            }
+
+        }
+        return update_post_meta($pid,INVITE_USER_KEY,$join_users);
+    }
+    return false;
+}
+

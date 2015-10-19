@@ -9,8 +9,9 @@
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */
+//$categories = get_terms(array('name'=>'city'));
+$isFav = check_fav(get_the_ID());
 ?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) && twentyfourteen_categorized_blog() ) : ?>
@@ -27,22 +28,41 @@
 			endif;
 		?>
 	</header><!-- .entry-header -->
+    <?php if (ua_icalendar_app()):?>
+        <p ><button type="button" id="add_fav" class="btn btn-link pull-right"><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i>收藏</button></p>
+    <?php endif;?>
+    <?php
+    $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
+    if ($str) {
+        $images = explode(' ',$str);
+//        $showBullet = wp_is_mobile()?false:true;
+        echo renderSliderImages($images);
+    }else{
+        twentyfourteen_post_thumbnail();
+    }
 
-    <?php twentyfourteen_post_thumbnail(); ?>
+    ?>
 	<div class="entry-content">
+        <?php if (ua_icalendar_app()):?>
+        <div class="btn-container">
+            <button class="btn btn-lg btn-not-rounded btn-half-width color-red" id="add_fav" ><i class="glyphicon <?= $isFav ? 'glyphicon-heart' : 'glyphicon-heart-empty' ?>"></i> 想去</button>
+            <button class="btn btn-lg btn-not-rounded btn-half-width color-red pull-right" id="invite-friends"><i class="glyphicon glyphicon-share-alt"></i> 邀请好友</button>
+        </div>
+        </div>
+        <?php endif;?>
         <h2>展览信息</h2>
         <table class="table-show">
             <tbody>
             <tr>
-                <th>展览时间</th>
-                <td><?php   echo types_render_field('start-time',array('output'=>'normal')), '&nbsp;  -   &nbsp;', types_render_field('end-time',array('output'=>'normal')); ?></td>
+                <th>时间</th>
+                <td><?php   echo types_render_field('start-time',array('output'=>'normal')), ' 到 ', types_render_field('end-time',array('output'=>'normal')); ?></td>
             </tr>
             <?php
                 $place= types_render_field('place','');
                 if (!empty($place)):
             ?>
             <tr>
-                <th>展览场馆</th>
+                <th>场馆</th>
                 <td><?php echo $place; ?></td>
             </tr>
             <?php endif;
@@ -50,15 +70,22 @@
                 if (!empty($address)):
             ?>
             <tr>
-                <th>展览地址</th>
+                <th>地址</th>
                 <td><?php echo $address ; ?></td>
             </tr>
            <?php endif;
+                $url = types_render_field('url','');
+                if ($url):
+            ?>
+                    <tr>
+                        <th>网址</th>
+                        <td><?php echo $url ; ?></td>
+                    </tr>
+                    <?php endif;
             $host  =  types_render_field('hosts','');
             if (!empty($host)):
             ?>
             <tr>
-                <th>主办单位</th>
                 <td><?php echo $host; ?></td>
             </tr>
             <?php endif;
@@ -92,22 +119,11 @@
                     </td>
                 </tr>
                 <?php endif;
-            $url = types_render_field('url',array('output'=>'html'));
-            if (!empty($url)):
-            ?>
-            <tr>
-                <th>网址</th>
-                <td><?php
-                    echo  types_render_field('url',array('output'=>'html'));
-                    ?>
-                </td>
-            </tr>
-            <?php endif;
             $phone = types_render_field('phone','');
             if (!empty($phone)):
             ?>
             <tr>
-                <th>联系电话</th>
+                <th>电话</th>
                 <td><?php echo types_render_field('phone',''); ?></td>
             </tr>
             <?php endif;?>
@@ -122,3 +138,4 @@
 
 	</div> <!-- .entry-content -->
 </article><!-- #post-## -->
+<?=the_join_list(get_the_ID(),true)?>

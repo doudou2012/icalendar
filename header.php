@@ -64,5 +64,5 @@
 			</div>
 		</div>
 	</header><!-- #masthead -->
-
+    <?php //echo get_slider_img();?>
 	<div id="main" class="site-main">

@@ -13,7 +13,7 @@
  * @subpackage iCalendar
  * @since iCalender 1.0
  */
-
+// get_slider_img();
 my_get_header()?>
 
 <div id="main-content" class="main-content">
@@ -42,7 +42,9 @@ my_get_header()?>
 
 				endwhile;
 				// Previous/next post navigation.
-				twentyfourteen_paging_nav();
+                if (!ua_icalendar_app()):
+				    twentyfourteen_paging_nav();
+                endif;
 
 			else :
 				// If no content, include the "No posts found" template.
