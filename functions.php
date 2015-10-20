@@ -951,6 +951,24 @@ function customRequstHandler(){
     }
 }
 
+/*
+ * 根据分类加载不同模版
+ */
+function load_single_template($template) {
+    $new_template = '';
+    // single post template
+    if( is_single() ) {
+      global $post;
+      // 'wordpress' is category slugs
+      if( has_term('event', 'category', $post) ) {
+        // use template file single-wordpress.php
+        $new_template = locate_template(array('single-wordpress.php' ));
+      }
+    }
+    return ('' != $new_template) ? $new_template : $template;
+  }
+add_action('template_include', 'load_single_template');
+
 function updateJoinUserList($pid){
     if (intval($pid) > 0){
         $current_user = wp_get_current_user();
