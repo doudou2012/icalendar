@@ -11,6 +11,7 @@
  */
 //$categories = get_terms(array('name'=>'city'));
 $isFav = check_fav(get_the_ID());
+global  $post;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
@@ -28,6 +29,7 @@ $isFav = check_fav(get_the_ID());
 			endif;
 		?>
 	</header><!-- .entry-header -->
+    <?php if(get_post_type($post) == 'event'):?>
     <?php if (ua_icalendar_app()):?>
         <p ><button type="button" id="add_fav" class="btn btn-link pull-right"><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i>收藏</button></p>
     <?php endif;?>
@@ -137,5 +139,8 @@ $isFav = check_fav(get_the_ID());
         </div>
 
 	</div> <!-- .entry-content -->
+        <?php else:?>
+        <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );?>
+        <?php endif;?>
 </article><!-- #post-## -->
 <?=the_join_list(get_the_ID(),true)?>

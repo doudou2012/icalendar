@@ -814,6 +814,24 @@ function add_sticky_scripts() {
 //    }
 //}
 
+/*
+ * 根据分类加载不同模版
+ */
+function load_single_template($template) {
+    $new_template = '';
+    // single post template
+    if( is_single()) {
+      global $post;
+      // 'wordpress' is category slugs
+      if( !has_term('event', 'category', $post) ) {
+        // use template file single-wordpress.php
+        $new_template = locate_template(array('content-mobile-single_1.php' ));
+      }
+    }
+    return ('' != $new_template) ? $new_template : $template;
+  }
+//add_action('template_include', 'load_single_template');
+
 /**
  * 判断是否为icalendar ua
  * @return bool
