@@ -31,7 +31,7 @@ global  $post;
 	</header><!-- .entry-header -->
     <?php if(get_post_type($post) == 'event'):?>
     <?php if (ua_icalendar_app()):?>
-        <p ><button type="button" id="add_fav" class="btn btn-link pull-right"><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i>收藏</button></p>
+        <p ><button type="button"  class="btn btn-link pull-right add_fav "><i class="glyphicon <?= $isFav ? ' glyphicon-heart' : ' glyphicon-heart-empty' ?>"></i>收藏</button></p>
     <?php endif;?>
     <?php
     $str = types_render_field('images',array('output'=>'raw','width'=>'400','height'=>'300','proportional'=>"true",'url'=>true));
@@ -47,7 +47,7 @@ global  $post;
 	<div class="entry-content">
         <?php if (ua_icalendar_app()):?>
         <div class="btn-container">
-            <button class="btn btn-lg btn-not-rounded btn-half-width color-red" id="add_fav" ><i class="glyphicon <?= $isFav ? 'glyphicon-heart' : 'glyphicon-heart-empty' ?>"></i> 想去</button>
+            <button class="btn btn-lg btn-not-rounded btn-half-width color-red add_fav"  ><i class="glyphicon <?= $isFav ? 'glyphicon-heart' : 'glyphicon-heart-empty' ?>"></i> 想去</button>
             <button class="btn btn-lg btn-not-rounded btn-half-width color-red pull-right" id="invite-friends"><i class="glyphicon glyphicon-share-alt"></i> 邀请好友</button>
         </div>
         </div>

@@ -11,8 +11,8 @@
         });
     };
     var changeStatus = function(op){
-        if  ($('#add_fav').length > 0){
-            var i = $('#add_fav').find('i')[0],
+        if  ($('.add_fav').length > 0){
+            var i = $('.add_fav').find('i')[0],
                 del_class='glyphicon-heart',add_class='glyphicon-heart-empty';
             if  (op == 1) {
                 del_class = 'glyphicon-heart-empty';
@@ -78,8 +78,8 @@
     }
     var layer_index;
     $(document).ready(function(){
-        if ($('#add_fav').length > 0){
-            $('#add_fav').on('click',function(){
+        if ($('.add_fav').length > 0){
+            $('.add_fav').on('click',function(){
                 pid = parseInt($('article:first').attr('id').replace(/[^\d]/g, ''));
                 if (pid > 0){
                     addFavorite(pid);
